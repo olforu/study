@@ -1,0 +1,2694 @@
+**常用工程命令**
+终端测试的时候需要锁定频点或者PCI，可以通过*#37375625#进入界面操作
+*#0808# 设置log打印种类
+*#0011# 实时手机网络信息
+*#12580*369# RF calibration
+*#9900# log抓取设置
+*#7284# log输出设置
+
+
+
+**高通工程师联系方式**
+
+wang qi:010-57760287
+
+
+
+****常用电话****
+金永杰：18002237171
+TO DO///////////////
+
+Created By: Haojun Wang (7/29/2014 4:26 AM)
+Dear customer, 
+
+It's an expected procedure--WCDMA oos due to no TRM resurce, because Sub2 is hold TRM rerousce for attach procedure. 
+Deatail procedure can be found below. 
+
+//Deatach procedure on sub1 for changing DDS 
+MSG [03007/02/03/04]NAS MM/High/Error/Fatal 06:46:20.266 gmmmsg.c 02836 ds1=MM= Sending DETACH REQUEST message 
+MSG [03007/02/03/04]NAS MM/High/Error/Fatal 06:46:20.415 gmmreg.c 14967 ds1=MM= Received DETACH ACCEPT 
+MSG [03007/02/03/04]NAS MM/High/Error/Fatal 06:46:20.641 mmrrcconn.c 00725 ds1=MM= MM sent RRC_SIM_UPDATE_REQ to RRC status:1 
+MSG [03011/02/03/04]NAS SM/High/Error/Fatal 06:46:20.642 smgmm.c 01379 ds1 Recd Signaling Connection Release Indication 
+
+
+//RRC changed to disconnected state 
+MSG [03005/02] WCDMA RRC/High 06:46:20.641 rrcmisc.c 01218 State changed to 0 from 3 
+
+//WCDMA oos due to no TRM resurce, because Sub2 is hold TRM rerousce for attach procedure 
+MSG [03005/02] WCDMA RRC/High 06:46:20.650 rrccsputil.c 20949 DSIM: setting flag oos_due_to_no_resource. 
+MSG [03005/02] WCDMA RRC/High 06:46:20.650 rrccsputil.c 10119 DSIM: Setting acq_status as SYS_ACQ_STATUS_NO_RESOURCE 
+MSG [03005/02] WCDMA RRC/High 06:46:20.650 rrccsputil.c 10202 RRCHS:OOS detected. Change cell status 
+MSG [03007/02] NAS MM/High 06:46:20.650 mmcoord.c 05031 =MM= Revd RRC_SERVICE_IND, NO SERVICE 
+
+//Sub2 send attach request to network 
+OTA LOG [0x5230/000/001]SS,GMM/UL/Attach Request 06:46:20.647 Length: 0053 
+
+Thanks, 
+Haojun
+ 
+Created By: Qingdong Zeng (7/29/2014 12:10 AM)
+Dear QC 
+
+My number is:020-32126509 
+
+Thanks.
+ 
+Created By: Haojun Wang (7/29/2014 12:08 AM)
+Dear customer 
+
+Do you mean sub1 and sub2 will show "no service" when you change DDS? How long does it get normal service? 
+Would you please give me you number? 
+
+Thanks, 
+haojun
+ 
+Created By: Qingdong Zeng (7/29/2014 12:06 AM)
+Dear QC 
+
+From log 07-23.14-47.isf, when default data subs changed to sub2,sub 1 happened OOS,please check why. 
+
+//data subs change CMD 
+2014 Jul 23 06:46:20.245 [CB] 0x138E QMI Link 1 RX PDU 
+Service_Nas { 
+ClientId = 2 
+DefaultDataSubscriptionTlv { 
+Default Data Subs = SECONDARY_SUBSCRIPTION 
+
+//no service happened, 
+MSG [03005/02] WCDMA RRC/High 06:46:20.576 rrccsputil.c 05730 Connected Mode ->Idle Tx. Attmpt acq on the best cell (scr 2288, pn 68128) in active set 
+MSG [03005/02] WCDMA RRC/High 06:46:20.576 rrccsputil.c 14832 ACQ_REQ for the best cell in active set. Freq 10589, SCR = 2288, PN = 68128 
+MSG [03005/02] WCDMA RRC/High 06:46:20.650 rrccsputil.c 10119 DSIM: Setting acq_status as SYS_ACQ_STATUS_NO_RESOURCE 
+MSG [03005/02] WCDMA RRC/High 06:46:20.650 rrccsputil.c 10202 RRCHS:OOS detected. Change cell status 
+MSG [03005/02] WCDMA RRC/High 06:46:22.203 rrccsputil.c 11080 No freq. found for PLMN MCC 454 MNC 19 
+MSG [03005/02] WCDMA RRC/High 06:46:22.203 rrccsputil.c 10202 RRCHS:OOS detected. Change cell status 
+
+Thanks.
+ 
+
+
+
+----I9060 SVN update
+
+----水平展开 H140630-3978
+
+I8260项目信息：
+http://kms.sec.samsung.net/club/club.menu.bbs.read.screen?p_club_id=1885&p_menu_id=299&p_group_id=282&message_id=1013965 
+
+
+//////////////////TO DO
+
+
+
+
+
+//////////////////关问题技巧/////////////////////////
+******case 1
+Modem crash occur in Qualcomm lib in MMOC module, need Qualcomm offer fixed lib, we can not modify these file by our selves.
+Qualcomm is preparing the modification lib files to us and it can be fix in next binary
+So, we suggest to fix this in MR version.
+
+
+
+
+PBS编译注意事项。
+1.build CMD 每个项目不同，需要从项目信息里面获取。
+
+
+////20130904
+ 威哥。I9507的代码是在165.213.202.38：1710上吗？
+
+
+??刘俊威(责任[E]/????)?? [8:41]:
+  CP 的是
+  你也可以从KMS上查询到
+??曾庆东(研究员[E]/????)?? [8:42]:
+  好。
+??刘俊威(责任[E]/????)?? [8:42]:
+  http://kms.sec.samsung.net/club/club.menu.bbs.read.screen?p_club_id=1885&p_menu_id=301&p_group_id=40&message_id=1148840 
+??曾庆东(研究员[E]/????)?? [9:38]:
+  威哥。有个”水平展开的问题“需要你的账号才能看代码，具体的情况给你邮件了。
+帐号：vincentlui  密码：cdma123456/call123456
+
+
+
+加班申请
+\\109.131.14.17\public\Common_SW_Group\OT\OT.html
+
+
+////20130905
+??曾庆东(研究员[E]/????)?? [8:55]:
+  炎坤。知道打印怎么弄吗？
+??郑炎坤(研究员[E]/????)?? [9:02]:
+  下载个打印驱动程序就行了
+??郑炎坤(研究员[E]/????)?? [9:04]:
+  你在109.131.7.200搜索printer(在ie里面输入)
+  里面的驱动程序可以用，安装的时候注意选择网速打印机
+  网络打印机
+??曾庆东(研究员[E]/????)?? [9:06]:
+  那个纸要自己备吗。
+郑炎坤(研究员[E]/????)?? [9:07]:
+  不用，茶水间那边的打印机有纸的
+??曾庆东(研究员[E]/????)?? [9:07]:
+  ok.
+??郑炎坤(研究员[E]/????)?? [9:07]:
+  你试试，打印不了我再过去看看，我前两天也搞了好久
+??曾庆东(研究员[E]/????)?? [9:08]:
+  要帐号和密码。
+??郑炎坤(研究员[E]/????)?? [9:09]:
+  sgmcsw
+  都是这个
+??曾庆东(研究员[E]/????)?? [9:23]:
+  没找到，有空来帮我看看。
+
+
+10:17 交了纸质打印安保协议书
+
+
+公司共享ftp
+
+ftp://109.131.7.153
+
+我的ip:109.131.12.50
+
+
+
+GT-S5830I_CHN_ZH
+
+
+10:55
+??曾庆东(研究员[E]/????)?? [10:50]:
+  hi。刚问文滔，像GT-S5830I_CHN_ZH 这种型号我们这边不做，都找不到。但那个【水平展开】列表里面又有，怎么弄。
+??黄东涛(研究员[E]/????)?? [10:50]:
+  在mr列表里面
+  这个以前是这样的，是hq本社那边做完之后，剩下的一堆mr问题就给我们这边跟进
+  让我们学习
+  现在就直接给我们这边做了
+??曾庆东(研究员[E]/????)?? [10:51]:
+  哦。
+??黄东涛(研究员[E]/????)?? [10:54]:
+  我给个6810的水平展开给你弄吧
+??曾庆东(研究员[E]/????)?? [10:54]:
+  好的。
+
+GT-S6810p全代码
+[CP View Spec] P4 Port: 1710
+TW: Permission: Read Write
+refer to: HUDSON_SGMC_JELLYBEAN_NEVISP_CP
+//CP_PROD/NEVIS/GT-S6810P_CHN_ZT/msp/... //Your_WorkSpace_Name/msp/... 
+注：我们会定期从EUR分支合并修改到TW分支
+
+
+p4使用：建一个新的workspace,映射时先去掉原来路径，选中要映射的文件夹，鼠标右键，查看路径......
+
+
+联通的卡被借走。
+
+
+郑则标借走LTE03，下班前还了。
+
+
+----出差
+    关于出差详细的打印，Expense Request(审批完成后)->Travel expense settlement->file attachment->New->print
+
+////20130906
+10:23 黄仲民借走LT03样机
+
+pending description format(补丁的格式)
+
+////20130909
+??梁世龙(研究员[E3]/????)?? [13:27]:
+[NOTICE]
+Dear all,
+
+各位LT03开发者，大家好！
+LT03 3G/WIFI 最新的Daily Binary已上传17服务器，Base CL: 1627358，请各模块下载自测验证修改和基本功能，
+请在9月11日(周三)中午前回复KMS帖子反馈自测结果，谢谢！
+版本地址：
+WIFI : \\109.131.14.17\public\Ongoing_Projects\__LT03-P60X_HKTW\0_Lt03_WIFI_TW\01_Daily_Release\Wifi_0909_daily
+ 
+3G:    \\109.131.14.17\public\Ongoing_Projects\__LT03-P60X_HKTW\1_Lt03_3G_TW\01_Daily_Release\3G_0909_daily
+
+KMS自测回复地址如下：
+http://kms.sec.samsung.net/club/club.menu.bbs.read.screen?page_num=1&p_club_id=1885&p_menu_id=310&p_group_id=40&search_field=&search_query=&search_category=&message_id=1237563
+[云服务器][ESCORT]
+name:Qingdong Zeng
+mysingle ID:qingdong.z
+dept:SRC-Guangzhou-S/W 3 Group
+serial number:VMware-42 38 98 32 99 fa 8c 0
+company:SAIT
+building:SAIT_SBC
+Place:SAIT_SBC
+
+
+////20130910
+LT03江少波借走，成闻博预约中。
+张武标来用LT03做过测试。
+
+////20130911
+
+水平展开：130830-1859：项目5301
+          130830-1858: 项目5301
+LT03 被王清波借走。
+
+
+//ICS_PROD/CORIPLUS/GT-S5301_CHN_ZH/CP/... //YOUR_WORKSPACE/... 
+
+
+徐先任的帐号
+zhilin.xu
+
+PSW:   475851832wsx
+
+
+  Dear all
+  我们part最新的手机卡信息都在这里
+http://kms.sec.samsung.net/club/club.menu.bbs.read.screen?page_num=1&p_club_id=1885&p_menu_id=192&p_group_id=190&search_field=&search_query=&search_category=&message_id=950877
+  大家有需要借卡或者不知道是借了谁的卡的可以在上面查看
+
+
+////20130912
+J 项目代码权限申请，锋哥，建勋，滔哥，冬勇
+
+
+////20130913
+关于J3G/LTE 代码权限
+场测  陈海强，吴示凡，曾庆东。主要没3819的GSM信号。
+
+////20130916
+??曾庆东(研究员[E3]/????)?? [10:34]:
+  hi.
+??邓晟中(先任[E4]/????)?? [10:35]:
+  Hi
+??曾庆东(研究员[E3]/????)?? [10:35]:
+  上周关于J 3G/LTE的权限申请批了吗？
+??邓晟中(先任[E4]/????)?? [10:35]:
+  AP 权限已经都批了
+??曾庆东(研究员[E3]/????)?? [10:36]:
+  CP 的我们没权限
+  .....
+  我们是CP这边的。
+??邓晟中(先任[E4]/????)?? [10:36]:
+  CP 要修改什么吗？
+  要是要修改的话，
+  1. 邀请本社加入修改
+??曾庆东(研究员[E3]/????)?? [10:36]:
+  目前没什么。但是，可能要看代码。
+??邓晟中(先任[E4]/????)?? [10:37]:
+  2. 自己拉分支出来
+  先验证下吧，我再问问本社，能不能开通 read 权限
+  ////20130918
+  MPS(Mobile Product Specifications)  http://mps.sec.samsung.net/index.aspx
+  与协议相关的关键字："network"  "wb amr"
+  最终生成的customer.xml在KMS项目spec里面。一般是CSC目录下面，服务器：165.213.202.45：1715
+  
+////20130923
+  领取vienna样机，p9001-3G，#21
+////20130927
+I9505 自测结果
+版本：JSS15J EMI1 test-keys
+call: ok
+sms:  ok
+data: ok
+N7100 自测结果
+版本：N7100zcall1
+call: ok
+sms:  ok
+data: ok
+今天seminar讲wcdma的无线资源管理流程。ps: 张苑很关心的给予帮助，说高能文档里面有各种流程的详细文档。
+
+
+////20130928
+  HQ P4 Server IP
+   - 165.213.202.80:1780
+   - 165.213.202.38:1710
+   - 165.213.202.37:1711
+   - 165.213.202.43:1713
+   - 165.213.202.44:1714
+   - 165.213.202.45:1715
+   - 165.213.202.41:1740
+   
+////20130929
+[dos命令]
+cmd中从c盘切换到e盘，只需要输入“e:”就行了  
+
+??苏国伟(先任[E4]/????)?? [9:45]:
+  庆东， 那个要重新烧回 正常的modem 来验证吧。
+  子龙，放一个正常的modem 到17 吧。
+??温子龙(研究员[E3]/????)?? [9:47]:
+  ok ==
+??温子龙(研究员[E3]/????)?? [9:51]:
+  \\109.131.14.17\public\Ongoing_Projects\__KS02_LTE(I9235HK)\Modem
+  已上传
+  
+  
+  
+////20131007
+CDMA手机信道锁/解锁：3215987123580 012 000000 
+高通帐号注册：
+Confirmation Code: CQCBSVR2 
+Date: 2013-10-07 01:11 PDT 
+Name: Qingdong Zeng 
+User Name: qingdong.z@samsung.com 
+帐号：qingdong.z@samsung.com
+密码：Pwd120697
+////20131015
+苏国伟：10楼 货梯边
+郑泽培： 13楼洗手间斜对面的白色写字板处
+////21031017
+infineon 提单帐号
+Qingdong Zeng
+qingdong.z@samsung.com
++86-13533495253
+帐号：zengqin
+密码：8Er)#WW;b4
+加班： \\109.131.14.17\public\Common_SW_Group\OT\OT_DATA
+////20131024
+KS02 NV备份
+  大家好，你们的KS02样机都是有RF的，烧今天的版本之前，需要进行一下NV备份，烧完之后需要NV恢复。关于如何操作等下会发一封邮件给你们。 只有这几台是有RF的，不能烧没了。 谢谢大家。
+  大家好，你们的KS02样机都是有RF的，烧今天的版本之前，需要进行一下NV备份，烧完之后需要NV恢复。关于如何操作等下会发一封邮件给你们。 只有这几台是有RF的，不能烧没了。 谢谢大家。
+??苏国伟(先任[E4]/????)?? [9:21]:
+  \\109.131.14.17\public\Ongoing_Projects\__KS02_LTE(I9235HK)\Doc\NV_backup_Restore
+  这里有具体方法。
+  你先忙，我想你帮忙看看电信LTE功能分册里面6.6.1LTE附着要求，与3GPP协议的TS 36.331的5.3.5和TS 24.401的5.3.2，以及24.301的5.5.1.3比对一下，看有没有问题，顺便熟悉一下LTE的流程
+  你今晚有空看也行
+??曾庆东(研究员[E3]/????)?? [16:43]:
+  嗯。
+??林佳(责任[E5]/????)?? [16:43]:
+  你先忙完手头的问题吧
+  
+  \\109.131.14.17\private\huangdongtao\KS02
+  直接烧modem就行
+  
+MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           07:54:26.283           mmsubstate.c  00083  ds1=MM= MM Substate is 8, event 44
+MSG        [03001/02] WCDMA L1/High                     07:54:26.283                  drx.c  07167  nudging RRC to read MIB every 7200 sec, 11250 DRX cycles check_needed:0
+
+////////////////
+////20140310////
+////////////////
+
+--To Do:
+
+1.水平展开
+2.card expiry
+3.9500 市场问题P140123-09610    Marketing issue: can't use FET CHT network after MK3 download.
+4.T53x feature check.
+****水平展开
+H140203-2928
+	
+Problem:
+
+
+[Kyle PRO] [S7580L] Automatic restart in 3G idle mode
+
+CL Number: 1710 - 1501897，1514687
+
+TEAM:  CP Protocol
+
+
+////////////////
+////20140311////
+////////////////
+
+--To Do:
+
+1.9500 市场问题P140123-09610    Marketing issue: can't use FET CHT network after MK3 download. ok
+2.card expiry
+3.学习LTE,seminar
+4.T531 modem crash patch request  ok
+5.加班调申请 ok
+6.325 自测
+
+////////////////
+////20140313////
+////////////////
+
+
+QC uses CR605699 to fix this issue. QC still is verifying this CR with NW. Once CR is ready, QC will release it to you at first time. 
+
+The following is detail CR info: 
+Problem Description: 
+TDM on/off pattern drift due to DMO slot suspension. From the FT, NW also has the same issue.It could cause conflict with measurement. It could also cause decode failure. 
+
+Change Description: 
+
+
+////////////////
+////20140318////
+////////////////
+
+--To Do:
+1.SRLTE 课程学习  公出申请
+
+
+
+////////////////
+////20140319////
+////////////////
+
+--ADB
+用ADB进入download模式，ADB reboot download/
+
+////////////////
+////20140326////
+////////////////
+
+
+6810P hudson
+http://109.131.7.117/build/jenkins/job/HUDSON_SGMC_JELLYBEAN_NEVISP_CP
+
+////////////////
+////20140327////
+////////////////
+
+N9005 hvolte kk
+
+//----
+曾庆辉(先任[E4]/????)?? [9:14]:
+编译页面路径：
+ root > MODEM>MODEM-MSM8974PRO-LINUX   >  
+
+./buildss.sh L I 3 1
+  http://10.252.244.51:8810/build/2093648
+  参考一下这个
+  他们昨晚pbs
+  要加那两个shelve
+  1713 HUDSON_CP_MSM8974_LA13MR_DEV
+  root MODEM MODEM-MSM8974-LINUX
+   http://10.252.244.51:8810/build/2093648
+这个就是新CP 的pbs，路径，配置都可以参考这个
+??曾庆东(研究员[E3]/????)?? [9:16]:
+  我自己弄，还是你们一起编译一下？
+??曾庆辉(先任[E4]/????)?? [9:16]:
+  你自己弄一下吧
+  这个已经psb完了
+----//
+
+
+////////////////
+////20140327////
+////////////////
+N9005_HVOLTE_KK ROMAING CL:1290346
+
+////////////////
+////20140331////
+////////////////
+N9005 HVOLTE KK Build Id:M8974A-AAAANAZM-2.0.10047
+
+
+
+////////////////
+////20140401////
+////////////////
+
+Keystring related:
+http://kms.sec.samsung.net/club/club.menu.bbs.read.screen?p_club_id=1885&p_menu_id=163&p_group_id=140&message_id=1894736 
+
+
+////////////////
+////20140402////
+////////////////
+--To Do
+1.N9007 kk feature list确认
+2.滔哥
+
+
+--关于block FDD 的讨论记录
+
+??谢亮(研究员[E3]/????)?? [9:53]:
+  hi, 9300I那个问题我这边昨晚后面看了下
+  我们发下去的东西有些问题 
+  已经改了
+??曾庆东(研究员[E3]/????)?? [13:12]:
+  hi,有个问题想请教一下你。
+  手机重启的时候，有些默认的QMI设置命令从AP下发给CP，那些命令里面的参数是AP从哪获得的？
+??谢亮(研究员[E3]/????)?? [13:14]:
+  不清楚。
+??曾庆东(研究员[E3]/????)?? [13:14]:
+  2014 Apr  2  10:16:10.753  [A8]  0x1390  QMI Link 2 RX PDU
+IFType = 1
+QmiLength = 23
+QmiCtlFlags = 0
+QmiType = NAS
+Service_Nas {
+   ClientId = 1
+   SduCtlFlags = REQ
+   TxId = 30
+   MsgType = QMI_NAS_SET_SYSTEM_SELECTION_PREFERENCE
+   MsgLength = 11
+   QmiNasSetSystemSelectionPreference {
+      QmiNasSetSystemSelectionPreferenceReqTlvs[0] {
+         Type = 21
+         Length = 8
+         QmiNasSetSysSelectionPrefReqLteBandPrefTlv {
+            Lte Band Pref = E_UTRA_OPERATING_BAND_33 | E_UTRA_OPERATING_BAND_34 | E_UTRA_OPERATING_BAND_35 | E_UTRA_OPERATING_BAND_36 | E_UTRA_OPERATING_BAND_37 | E_UTRA_OPERATING_BAND_38 | E_UTRA_OPERATING_BAND_39 | E_UTRA_OPERATING_BAND_40 | E_UTRA_OPERATING_BAND_41 | E_UTRA_OPERATING_BAND_42 | E_UTRA_OPERATING_BAND_43
+         }
+      }
+   }
+}
+  比如上面这条命令，  Lte Band Pref是你们配置的？
+??谢亮(研究员[E3]/????)?? [13:15]:
+  QMI_NAS_SET_SYSTEM_SELECTION_PREFERENCE 这个不是手动选网的命令么
+??曾庆东(研究员[E3]/????)?? [13:17]:
+  手机reboot,会有默认的选网参数发下来。
+??谢亮(研究员[E3]/????)?? [13:17]:
+   这个需要看一下代码才知道哦
+??曾庆东(研究员[E3]/????)?? [13:26]:
+  能帮忙确认一下，这个默认的配置是AP里面代码定的，还是其它配置文件决定的。
+??谢亮(研究员[E3]/????)?? [13:27]:
+  有AP的log么
+  另外是什么项目
+  看一下走的什么流程 AP不同的项目打开的FEATURE不太一样~
+??曾庆东(研究员[E3]/????)?? [13:28]:
+  ap log可以抓，但是项目是S4，我们这估计没权限。
+??谢亮(研究员[E3]/????)?? [13:29]:
+  H的 ？
+  先看下LOG吧
+??曾庆东(研究员[E3]/????)?? [14:04]:
+  我抓了一个9507的AP log,放在 \\109.131.14.17\private\zengqingdong\9507 ap log
+??谢亮(研究员[E3]/????)?? [14:09]:
+  这个不急吧  我现在在忙其他的
+  晚点看台
+??曾庆东(研究员[E3]/????)?? [14:11]:
+  好。
+??谢亮(研究员[E3]/????)?? [16:09]:
+  h
+  你刚才发的log
+  #define NAS_VAL_BAND_PREF_COMB_US               (NAS_VAL_BAND_PREF_GSM_850 | \
+145                                                 NAS_VAL_BAND_PREF_GSM_PCS_1900 | \
+146                                                 NAS_VAL_BAND_PREF_WCDMA_V_850 | \
+147                                                 NAS_VAL_BAND_PREF_WCDMA_II_PCS_1900)
+  发的是这个下去吧
+??曾庆东(研究员[E3]/????)?? [16:13]:
+  是呀。
+  还有个LTE的
+??谢亮(研究员[E3]/????)?? [16:13]:
+  刚才的LOG发的就是这个哦
+  不知道AP怎么发出来的
+??曾庆东(研究员[E3]/????)?? [16:15]:
+  就是说这些值不是在AP那边的代码里面确定的？
+??谢亮(研究员[E3]/????)?? [16:16]:
+  AP发下来在RIL设置的
+  根据AP的值去确定
+??曾庆东(研究员[E3]/????)?? [16:17]:
+  也就是说reboot的初始设置还是在AP那边定的？
+??谢亮(研究员[E3]/????)?? [16:18]:
+  不确定是CP给AP的 还是AP设置的
+??曾庆东(研究员[E3]/????)?? [16:19]:
+  初始化的时候，CP还会给AP发命令？
+??谢亮(研究员[E3]/????)?? [16:20]:
+  不知道呀
+??谢亮(研究员[E3]/????)?? [16:27]:
+   这个代码用的KK的还是 JB43的
+??曾庆东(研究员[E3]/????)?? [16:28]:
+  9507V的。
+??谢亮(研究员[E3]/????)?? [16:28]:
+  我没做这个项目
+??曾庆东(研究员[E3]/????)?? [16:30]:
+  其它的做过的项目是怎么弄的？
+??谢亮(研究员[E3]/????)?? [16:30]:
+  ..
+  没看过这方面的
+??谢亮(研究员[E3]/????)?? [16:38]:
+  SEC_PRODUCT_FEATURE_RIL_BLOCK_FDD_LTE
+  这个是打开了的吧
+??曾庆东(研究员[E3]/????)?? [16:41]:
+  在个feature在哪开？没见过呀。
+??谢亮(研究员[E3]/????)?? [16:41]:
+  这个FEATURE应该是打开的
+  1561//> RNTFIX
+1562//< RNTFIX:: China Unicom request : Block FDD LTE Band in China Mainland
+  这么注释的
+??曾庆东(研究员[E3]/????)?? [16:43]:
+  关闭FDD LTE?
+??谢亮(研究员[E3]/????)?? [16:43]:
+  153    int NETWORK_LTE_BAND_MODE_UNRECOGNIZED  = 0;
+154    int NETWORK_LTE_BAND_MODE_FDD_BAND = 1;
+155    int NETWORK_LTE_BAND_MODE_TDD_BAND = 2;
+156    int NETWORK_LTE_BAND_MODE_FDDTDD_BAND = 3;
+  发了int NETWORK_LTE_BAND_MODE_TDD_BAND = 2;】
+  然后就发送的刚才的给你们了
+  什么问题呀
+  什么问题呀？ 不明白这个是要干嘛
+??曾庆东(研究员[E3]/????)?? [16:48]:
+  LTE/auto模式下，手机reboot,搜运营商，发现搜不到LTE FDD的band. 
+  但是开机后，LTE/AUTO->wcdma auto->LTE/AUTO,就可能搜到。
+  肯定是9507V的AP那边有什么机制。
+  感觉不太正常。
+??谢亮(研究员[E3]/????)?? [16:55]:
+  感觉就是这么设置的
+??曾庆东(研究员[E3]/????)?? [16:56]:
+  关键是LTE/auto下reboot，手机就不支持LTE FDD的band了，这个正常？
+??谢亮(研究员[E3]/????)?? [16:59]:
+  AP是按卡的MCC值来判断的
+??曾庆东(研究员[E3]/????)?? [17:00]:
+  你是说，AP 根据卡的MCC，下发了不同的初始化命令给CP?
+??谢亮(研究员[E3]/????)?? [17:01]:
+  从代码来看是这么的
+??曾庆东(研究员[E3]/????)?? [17:01]:
+  soga.
+??谢亮(研究员[E3]/????)?? [17:03]:
+   LTE/auto模式下，手机reboot,搜运营商，发现搜不到LTE FDD的band. 
+ 但是开机后，LTE/AUTO->wcdma auto->LTE/AUTO,就可能搜到。
+  ？
+??曾庆东(研究员[E3]/????)?? [17:05]:
+  ?
+  按这个道理，我插移动的卡和插联通的卡，还初始化支持的频段会不一样/
+??谢亮(研究员[E3]/????)?? [17:06]:
+  一样的
+  460的都一样
+  ??谢亮(研究员[E3]/????)?? [16:44]:
+ 这个FEATURE应该是打开的
+ 1561//> RNTFIX
+1562//< RNTFIX:: China Unicom request : Block FDD LTE Band in China Mainland
+ 这么注释的
+  从这样来看应该是联通要求这么的
+  CMCC只有TD
+  电信不用GSMSERVICESTATETRACKER.
+  电信用的cdmaser..
+  所以代码应该是联通自己要求的
+  这个函数 首先是 如果不是 NETWORK_MODE_LTE_GSM_WCDMA 这个模式的 直接BREAK
+  然后判断是否漫游 漫游用 NETWORK_LTE_BAND_MODE_FDDTDD_BAND
+  再判断是否是中国大陆的卡 不是大陆卡NETWORK_LTE_BAND_MODE_FDDTDD_BAND
+
+  大陆卡则发 NETWORK_LTE_BAND_MODE_TDD_BAND
+??曾庆东(研究员[E3]/????)?? [17:15]:
+  9507V的代码能看到？
+??谢亮(研究员[E3]/????)?? [17:15]:
+  我看的其他代码
+  应该是一样的
+??曾庆东(研究员[E3]/????)?? [17:15]:
+  哦。
+  应该就是这样了。
+  但是他这个设置，只在手机reboot的时候有用呀。按LTE/AUTO->wcdma auto->LTE/AUTO,操作后，就没用了。
+??谢亮(研究员[E3]/????)?? [17:17]:
+  不明白
+??曾庆东(研究员[E3]/????)?? [17:17]:
+  应该只有联通的定制项目才有这个设置吧。
+??谢亮(研究员[E3]/????)?? [17:20]:
+  有那个宏控制嘛
+   SEC_PRODUCT_FEATURE_RIL_BLOCK_FDD_LTE
+
+  把这个关掉就不会了..
+  开机之后第一次卡状态变化之后会有这个
+??曾庆东(研究员[E3]/????)?? [17:23]:
+  嗯。
+  
+  
+////////////////
+////20140409////
+////////////////
+  
+//广州移动市场问题，2G到4G limited service  
+Created By: Phanidhar Kunala (4/8/2014 7:57 AM)
+Dear Customer, 
+
+Our NAS team found issue in their code. We cloned a Case#01512687 to support from NAS perspective further. They shall create a CR on new case and update you. 
+
+Kindly follow up the new case and close this case. 
+
+Regards, 
+Phani
+ 
+Created By: Phanidhar Kunala (4/7/2014 7:20 PM)
+Dear Customer, 
+
+Below is the analysis from NAS Team: 
+
+Log Analysis: 
+04-04.14-12_qsc.isf in case 1 logs. 
+//UE is doing CS+PS registration, CM sent CS_ONLY service request, PS DETACH is sent 
+06:08:18.807 cmregprx.c 1725 H =CMREGPRX= srv_domain 1 
+06:08:18.835 reg_send.c 1051 H =REG= MMR_REG_REQ PLMN(460-0) RAT(GSM) 
+06:08:18.836 gmmmsg.c 2470 H =MM= Sending DETACH REQUEST message 
+
+//UE received LU accept and then RR connection is released, the detach failed as well 
+06:08:19.671 mmmain.c 220 H =MM= MM Received LOCATION_UPDATING_ACCEPT 
+06:08:20.165 mmrrcconn.c 276 H =MM= RR Connection Released 
+
+//NAS sent service request to RR and reports CS+PS service to CM 
+06:08:20.166 mmrat.c 767 H =MM= Changing Service to 1 (1=CS/2=PS) 
+06:08:20.166 mmplmnsel.c 332 H =MM= MM sent RR_PLMN_SELECT_REQ 
+06:08:20.181 mmcoord.c 2172 H =MM= Revd RR_PLMN_SELECT_CNF w/ SRV-AC=3 
+06:08:20.180 mmsend.c 1514 H =MM= MM sent MMR_SERVICE_IND 
+06:08:20.180 mmsend.c 1518 H =MM= plmn_forbidden = 0 svc_status = 2 reg_svc_domain = 3 
+06:08:20.244 reg_state.c 4511 H =REG= CS_PS_SERVICE on HPLMN(460-0) 
+
+//NAS continued to perform the PS detach until max counters 
+06:08:33.837 gmm_main.c 2471 H =MM= Timer 33 expired 
+06:08:33.837 gmmmsg.c 2470 H =MM= Sending DETACH REQUEST message 
+... 
+06:09:33.847 gmm_main.c 2471 H =MM= Timer 33 expired 
+06:09:33.847 gmmreg.c 8087 H =MM= T3321 timeout counter = 5 
+06:09:33.852 gmm_main.c 832 H =MM= GMM state change from 1 to 0 
+//NAS didn’t send CS ONLY service ind to CM 
+
+They are checking whether it is a known issue. Once confirmed I shall let you know the details. 
+
+Regards, 
+Phani
+ 
+Created By: Phanidhar Kunala (4/4/2014 11:36 PM)
+Dear Customer, 
+
+Our CM team has provided the below analysis and now NAS team is looking into it. 
+
+Even though CM sent srv_domain as CS_ONLY. NAS responded back with CS_PS. So in all ss events, CM sent srv_domain as CS_PS. Request NAS folks to check the reason for sending CS_PS srv domain. 
+
+Log: 04-04.14-12_qsc.isf in case 1 logs. 
+
+//PS_DETACH from RIL 
+31984 23:11:07.345 cm.c 6526 H =CM= sys_sel_pref(),domain_pref 6,net_sel_mode_pref 3 prl_pref 16384 Call Manager/High 
+31985 23:11:07.345 cmdbg.c 1650 H =CM= >>CM phcmd 1: 19 Call Manager/High 
+
+//CM sent CS_ONLY service request. 
+32217 23:11:07.371 cmregprx.c 1722 H =CMREGPRX= net_sel_mode 0 Call Manager/High 
+32218 23:11:07.371 cmregprx.c 1725 H =CMREGPRX= srv_domain 1 Call Manager/High ? CS_ONLY. 
+32222 23:11:07.371 reg_state.c 3950 H =REG= CM_SERVICE_REQ Legacy/High 
+
+//NAS responded back with CS_PS service confirmation. 
+33780 23:11:08.807 reg_state.c 4511 H =REG= CS_PS_SERVICE on HPLMN(460-0) Legacy/High 
+33783 23:11:08.807 reg_send.c 430 H =REG= CM_SERVICE_CNF Legacy/High 
+33807 23:11:08.810 sd.c 18303 H =SD= GW acq success,srv_domain=3, status=2, sim_state=1 CDMA System Determination/High 
+33809 23:11:08.810 sd.c 18311 H =SD= mode=3, band=0x80 SS=0 CDMA System Determination/High 
+
+Regards, 
+Phani
+ 
+ 
+ 
+ 
+ 
+----I9300I build ID 
+
+Version Directory	AAAAANAZ
+Version Directory V2	M8626A-AAAANAZM-1.0.4016
+Compiled	Mar 19 2014 ,15:49:59
+Released	Dec 11 2013 ,02:00:00
+MSM	0x1509  0x1509
+MSM V2	0x00009151  0x9151
+Model	255
+Model V2	MSM8626
+Model Name V2	
+
+
+////////////////
+////20140410////
+////////////////
+
+To Do:
+1.水平展开 H140409-3377
+2.I9300I band check
+
+////////////////
+////20140414////
+////////////////
+N900U build ID:
+M8974A-AAAANAZM-2.0.10051
+
+
+N9007 build iD
+M8974A-AAAANAZM-2.0.10014   
+
+
+TAM:
+舒九耀：jshu@qti.qualcomm.com    13501203903   +86-10-57760289
+
+
+//三星VoLte架构
+http://kms.sec.samsung.net/club/club.menu.bbs.read.screen?p_club_id=1885&p_menu_id=504&p_group_id=140&message_id=2431081 
+
+
+黄东涛(研究员[E3]/????)?? [17:25]:
+cL：1608183
+
+
+
+I9300I feature  carrier name为FEATURE_SAMSUNG_CHN_OPEN
+I9300I CP HUDSON地址http://109.131.7.117/cp/view/01.CP/view/0.All/job/HUDSON_CP_S3VE_HKTW_KK/
+./buildss.sh 4 3 0 1
+1710 HUDSON_CP_MSM8X26_CP_DEV
+Patial  1660517 1664266
+ base 1657311
+ 
+I9300I HK KK SVN update CL:1667404/port:1710   new method CL:1733901   
+	SVN TO 04 CL:1881461
+	SVN TO 05 CL:1935663
+
+I9300I CRs(Limited service)
+609714 457826 and 488395
+
+ 
+ 
+ 
+ SS_8x28_S3_VE(CU)
+ M8626A-AAAANAZM-1.0.4016   
+
+ 
+
+  当初用自己的CP我开始都不知道，一直以为是用base的CP
+  用哪个CP分支是PL决定的吧
+  现在8626LA1.0已经没人维护了。。。
+??张苏弦(先任[E4]/????)?? [16:13]:
+  base 用的1.0
+  我们跟着BASE 走
+  我可以反馈给BASE
+  CP- Current Version Base CL 1657311 
+CP- Current Version Partial CL's 
+1660517
+ 
+ 
+N9005 volte  base:     1294012    build cmd:./buildss.sh L I 3 1  
+N9005 SVN update CL:1300892  PORT:1713
+				 CL:1312149   From 04 to 05
+				 CL:1315174   From 05 to 06
+				 CL:1317389   From 06 to 07
+				 CL:1318375   From 07 to 08
+call forwarding problem,new case: 01647934 
+
+FEATURE_SAMSUNG_CHN_PROTOCOL 定义在custsamsung_common.h
+
+T325 SVN CL:1300910    new cl:1307059
+
+  CP HUDSON http://109.131.7.117/build/jenkins/cp 一般，具体到不同的项目，需要在地址后面加job/项目HUDSON名
+例：http://109.131.7.117/build/jenkins/job/HUDSON_SGMC_MONDRIAN-LTE_HKTW_CP
+
+
+G530Y
+[View Spec] （注意CP分支为了支持B28，可能会变化 2014-07-23）
+
+//CP_DEV/Combination/MSM8916_LA1.0/... //HUDSON_CP_MSM8916_FORTUNALTE_TW/...
+//CP_DEV/Combination/Common/MSM_VER1.0/mits/... //HUDSON_CP_MSM8916_FORTUNALTE_TW/modem_proc/core/mits/...
+
+
+N9005 volte kk build ID:
+M8974A-AAAANAZM-2.0.10047  
+
+
+Fortuna TW G530Y 
+高通对应project名字：SS_8916_FORTUNA_TW
+**********N900U*********** 
+open feature_sups_retry  CL:1301723
+
+
+
+Dear All:
+    高通给我们公司的TAM 增加了一个人 Qin  Guowei (gqin@qti.qualcomm.com)  // 请发给他
+
+    另外原来的舒九耀 作为备份人员 (jshu@qti.qualcomm.com)   // 请抄送
+
+    以上请周知. 
+
+
+
+	
+	Call settings-->Additional settings-->result：
+prompt ”Network or SIM card error“   ----- FIXED
+  For issue 2：
+pre: **21*55001624#-->dial out
+Call settings-->Additional settings-->call forward-->Voice call && Video call-->ALways forward-->Trun off
+result：
+There isn't VoLTE icon, but the VoLTE panel button is on.
+Then dial out,it will fall to 3G ,then resume VoLTE(4G).
+  It took a long time and still in 4G.... I need to turn off and on the VoLTE network in the setting to reconnect the VoLTE network 
+
+  
+I9060HKTW SVN update CL:1685466   CL:1867449(02->03)
+
+BASE:2715251 CP BASE:1476402
+
+
+FET PLMN 466-01
+
+
+
+
+
+N9007 CP Workspace:  //CP_DEV/Qualcomm/MSM8974_LA1.3_HK/... 
+
+SVN update CL:1302329   01 to 02
+           CL:1307433
+
+
+
+////G850Y
+
+P140826-07353
+Limited service CL:1709780
+sheilding room emergency call CL:1711439
+Qingdong Zeng
+qingdong.z@samsung.com
++86-13533495253
+ zengqin
+ 8Er)#WW;b4
+ 
+
+
+////Infineon log capturing
+单步骤如下:()关键在于第二点)
+
+1.*#9900#=>Debug level enabled=>MID(if have setted then skip))
+
+
+2.*#9090#=>[1]LOG VIA IPC (if it is [1]LOG VIA USB then=>LOG VIA IPC SELECTED it will change to [1]LOG VIA IPC)=> Reset the phone by using HW key. (H/W restart is required in this step)
+
+after reboot *#9090#=>check whether it is [1] LOG VIA IPC, if not, resetting it again.
+
+3.*#9900#=>silent log:=>ON
+
+
+4.start reproduction test
+
+
+5.issue happened=>*#9900#=> silent log=>off
+
+
+6.*#9900#=>Run dumpstate/logcat/modem log=>Copy to sdcard(include CP Ramdump) the cp log is named as”AP_BASED_CPLOG_ISTP_TRACE_0_20140808143217.istp” in the log folder.
+
+
+
+//G850Y search network slow problem
+??曾庆东(研究员[E3]/????)?? [17:10]:
+  hi,各位。
+  RIL那边，是根据CP上传的消息，通知上层显示数据图标的。
+  CP的什么消息。
+??陈本庆(先任[E4]/????)?? [17:13]:
+  永裕，SETUP_DATA_CALL 下发以及 接受CP 反馈，对应什么消息？
+??唐永裕(研究员[E3]/????)?? [17:15]:
+  发下去的是这个 
+E RILD    : [G] TX: (M)GPRS_CMD  GPRS_DEFINE_PDP_CONTEXT  SET 
+  response 是这个
+ E RILD    : [G] RX: (M)GPRS_CMD  GPRS_IP_CONFIGURATION  NOTI 
+  不应该说是response，应该说是notify
+??曾庆东(研究员[E3]/????)?? [17:16]:
+  里面的参数？
+??唐永裕(研究员[E3]/????)?? [17:17]:
+  你们是在讨论P140814-01965 这个问题吗？
+??曾庆东(研究员[E3]/????)?? [17:17]:
+  P140815-05100    LTE Power on time is fail
+??唐永裕(研究员[E3]/????)?? [17:17]:
+  噢噢
+  看看
+??曾庆东(研究员[E3]/????)?? [17:17]:
+  这个是说显示数据图标慢的。
+  确实比对比慢。
+  但是从log看，CP这边应该是10s左右就PDP activate成功了，但是AP显示那边用了30s左右。
+  但是不知道是CP上传消息慢了，还是RIL那边处理慢了。
+??陈本庆(先任[E4]/????)?? [17:19]:
+  有没log
+??曾庆东(研究员[E3]/????)?? [17:20]:
+  没抓AP log，这个always的， 马上可以抓一个。
+??唐永裕(研究员[E3]/????)?? [17:23]:
+  没有卡啊，可以提供个AP log看看？
+??曾庆东(研究员[E3]/????)?? [17:24]:
+  稍等，帮你们抓一个。
+??黄东涛(研究员[E3]/????)?? [17:25]:
+  擦
+  難道是ril crash的問題導致的？
+??唐永裕(研究员[E3]/????)?? [17:26]:
+  有可能，LTE
+  赶紧抓个log看看，是不是跟那些FC问题是一样的
+  
+  无法邀请 ?陈本庆(先任[E4]/????)? 加入此会议。此人无法联系并且可能已脱机。
+  
+??唐永裕(研究员[E3]/????)?? [18:52]:
+  刚才问题P140815-05100    LTE Power on time is fail 抓的log data call setup的时间没问题了
+08-18 17:30:05.017  3328  3480 D RILJ    : [rild] [0149]> SETUP_DATA_CALL 16 0 cmnet null null 0 IP
+08-18 17:30:05.062  3328  3410 D RILJ    : [rild] [0149]< SETUP_DATA_CALL DataCallResponse: {version=7 status=0 retry=-1 cid=1 active=2 type=IP' ifname='rmnet0' addresses=[10.103.223.229] dnses=[221.179.38.7,120.196.165.7] gateways=[10.103.223.1]}
+  你们看看这个问题
+P140814-01965    G850Y_CHT 3G_G850Y search network is slow.
+两者应该是一样的
+这个问题里面的log的data call 的setup时间就有问题了
+08-13 14:28:32.290  3169  3297 D RILJ    : [rild] [0152]> SETUP_DATA_CALL 5 0 internet   0 IP
+08-13 14:29:04.053  3169  3273 D RILJ    : [rild] [0152]< SETUP_DATA_CALL DataCallResponse: {version=7 status=0 retry=-1 cid=1 active=2 type=IP' ifname='rmnet0' addresses=[10.192.239.6] dnses=[168.95.1.1,168.95.192.1] gateways=[10.192.239.1]}
+  隔了32s
+??黄东涛(研究员[E3]/????)?? [18:54]:
+  永裕，你还是看这个吧P140815-05100  
+  一个是3G一个是lte
+??唐永裕(研究员[E3]/????)?? [18:59]:
+  08-18 17:29:17.020  2411  2471 E RILD    : Modem is in ONLINE state
+08-18 17:29:20.675  3328  3410 D RILJ    : [rild] [UNSL]< UNSOL_RIL_CONNECTED {7} //RIL 连接成功
+08-18 17:29:25.785  2411  3106 E RILD    : [G] RX: (M)DISP_CMD  DISP_RSSI_INFO  NOTI l:8 m:ff a:00 [ 39 ] //CP 上报网络信号
+08-18 17:30:05.017  3328  3480 D RILJ    : [rild] [0149]> SETUP_DATA_CALL 16 0 cmnet null null 0 IP //建立数据链接
+08-18 17:30:05.062  3328  3410 D RILJ    : [rild] [0149]< SETUP_DATA_CALL DataCallResponse: {version=7 status=0 retry=-1 cid=1 active=2 type=IP' ifname='rmnet0' addresses=[10.103.223.229] dnses=[221.179.38.7,120.196.165.7] gateways=[10.103.223.1]}
+从下班时抓的log，没发现什么问题，时间很正常了
+
+??黄东涛(研究员[E3]/????)?? [19:01]:
+  08-18 17:29:17.020  2411  2471 E RILD    : Modem is in ONLINE state
+08-18 17:29:20.675  3328  3410 D RILJ    : [rild] [UNSL]< UNSOL_RIL_CONNECTED {7} //RIL 连接成功
+08-18 17:29:25.785  2411  3106 E RILD    : [G] RX: (M)DISP_CMD DISP_RSSI_INFO NOTI l:8 m:ff a:00 [ 39 ] //CP 上报网络信号
+08-18 17:30:05.017  3328  3480 D 
+  其实时间不正常的
+  PDP请求active的时间
+  已经是半分钟之后的了
+  PDP contaxt很快就active上去，但是请求下来太慢了
+??唐永裕(研究员[E3]/????)?? [19:08]:
+  噢噢，那这个发下来时间是DATA那边的问题了
+  本庆走了？
+??曾庆东(研究员[E3]/????)?? [19:12]:
+  貌似AP 发得有问题，
+3717	0	19	00h:00m:06s 972.584319ms	SI_INIT_IND
+109988	0	19	00h:00m:15s 914.308151ms	SMREG_PDP_ACTIVATE_CNF
+493917	0	17	00h:00m:36s 793.566491ms	[IPC][AP->CP Fmt] (M)GPRS[13]  IPC_GPRS_DEFINE_PDP_CONTEXT[1]  SET[3] mseq:0xb0 aseq:0x0
+493999	0	17	00h:00m:36s 802.861953ms	[IPC][CP->AP Fmt] (M)GPRS[13]  IPC_GPRS_IP_CONFIGURATION[9]  NOTI[3] mseq:0xff aseq:0x0
+
+  间隔时间太长了。从SMREG_PDP_ACTIVATE_CNF  到 IPC_GPRS_DEFINE_PDP_CONTEXT
+??唐永裕(研究员[E3]/????)?? [19:13]:
+  我拉data的李勇先任进来看看吧
+??唐永裕(研究员[E3]/????)?? [19:17]:
+  hi 刘勇先任
+有个G850Y TW的问题想麻烦你看一下，因为本庆下班了
+  曾庆东(研究员[E3]/????)?? [17:25]:
+ P140815-05100    LTE Power on time is fail
+  log 在 \\109.131.14.17\share\yongyu.tang\Data_call
+  ??唐永裕(研究员[E3]/????)?? [19:08]:
+ 08-18 17:29:17.020  2411  2471 E RILD    : Modem is in ONLINE state
+08-18 17:29:20.675  3328  3410 D RILJ    : [rild] [UNSL]< UNSOL_RIL_CONNECTED {7} //RIL 连接成功
+08-18 17:29:25.785  2411  3106 E RILD    : [G] RX: (M)DISP_CMD DISP_RSSI_INFO NOTI l:8 m:ff a:00 [ 39 ] //CP 上报网络信号
+08-18 17:30:05.017  3328  3480 D RILJ    : [rild] [0149]> SETUP_DATA_CALL 16 0 cmnet null null 0 IP //建立数据链接
+08-18 17:30:05.062  3328  3410 D RILJ    : [rild] [0149]< SETUP_DATA_CALL DataCallResponse: {version=7 status=0 retry=-1 cid=1 active=2 type=IP' ifname='rmnet0' addresses=[10.103.223.229] dnses=[221.179.38.7,120.196.165.7] gateways=[10.103.223.1]}
+  黄东涛(研究员[E3]/????)?? [19:09]:
+ 08-18 17:29:17.020  2411  2471 E RILD    : Modem is in ONLINE state
+08-18 17:29:20.675  3328  3410 D RILJ    : [rild] [UNSL]< UNSOL_RIL_CONNECTED {7} //RIL 连接成功
+08-18 17:29:25.785  2411  3106 E RILD    : [G] RX: (M)DISP_CMD DISP_RSSI_INFO NOTI l:8 m:ff a:00 [ 39 ] //CP 上报网络信号
+08-18 17:30:05.017  3328  3480 D 
+ 其实时间不正常的
+ PDP请求active的时间
+ 已经是半分钟之后的了
+ PDP contaxt很快就active上去，但是请求下来太慢了
+  setup data call 的请求下来太慢了
+??刘勇(先任[E4]/????)?? [19:20]:
+  ??唐永裕(研究员[E3]/????)?? [19:17]:
+ hi 刘勇先任
+有个G850Y TW的问题想麻烦你看一下，因为本庆下班了
+ 曾庆东(研究员[E3]/????)?? [17:25]:
+ P140815-05100    LTE Power on time is fail
+ log 在 \\109.131.14.17\share\yongyu.tang\Data_call
+ ??唐永裕(研究员[E3]/????)?? [19:08]:
+ 08-18 17:29:17.020  2411  2471 E RILD    : Modem is in ONLINE state
+08-18 17:29:20.675  3328  3410 D RILJ    : [rild] [UNSL]< UNSOL_RIL_CONNECTED {7} //RIL 连接成功
+08-18 17:29:25.785  2411  3106 E RILD    : [G] RX: (M)DISP_CMD DISP_RSSI_INFO NOTI l:8 m:ff a:00 [ 39 ] //CP 上报网络信号
+08-18 17:30:05.017  3328  3480 D RILJ    : [rild] [0149]> SETUP_DATA_CALL 16 0 cmnet null null 0 IP //建立数据链接
+08-18 17:30:05.062  3328  3410 D RILJ    : [rild] [0149]< SETUP_DATA_CALL DataCallResponse: {version=7 status=0 retry=-1 cid=1 active=2 type=IP' ifname='rmnet0' addresses=[10.103.223.229] dnses=[221.179.38.7,120.196.165.7] gateways=[10.103.223.1]}
+ 黄东涛(研究员[E3]/????)?? [19:09]:
+ 08-18 17:29:17.020  2411  2471 E RILD    : Modem is in ONLINE state
+08-18 17:29:20.675  3328  3410 D RILJ    : [rild] [UNSL]< UNSOL_RIL_CONNECTED {7} //RIL 连接成功
+08-18 17:29:25.785  2411  3106 E RILD    : [G] RX: (M)DISP_CMD DISP_RSSI_INFO NOTI l:8 m:ff a:00 [ 39 ] //CP 上报网络信号
+08-18 17:30:05.017  3328  3480 D 
+ 其实时间不正常的
+ PDP请求active的时间
+ 已经是半分钟之后的了
+ PDP contaxt很快就active上去，但是请求下来太慢了
+ setup data call 的请求下来太慢了
+  创锐，看下是等待哪个条件耗时了
+??郑创锐(研究员[E3]/????)?? [19:22]:
+  好
+??郑创锐(研究员[E3]/????)?? [19:32]:
+  08-18 17:30:04.967  3328  3328 D DCT     : trySetupData for type efault due to simLoaded apnContext={mApnType=default mState=IDLE mWaitingApns={null} mWaitingApns
+??郑创锐(研究员[E3]/????)?? [19:35]:
+  08-18 17:29:58.102  3328  3410 D RILJ    : [rild] [0104]< DATA_REGISTRATION_STATE {1, a50f, 02af0f15, 14, null, 4}
+08-18 17:29:58.467  3328  3328 D DCT     : trySetupData for type efault due to dataAttached 
+08-18 17:29:58.467  3328  3328 D DCT     : isDataAllowed: not allowed due to - SIM not loaded
+//上报PS 可用，但是这个时候卡没加载好，所以没满足条件下发data call
+   08-18 17:30:04.967  3328  3328 D DCT     : trySetupData for typeefault due to simLoaded apnContext={mApnType=default mState=IDLE mWaitingApns={null} mWaitingApns
+//在卡加载完，这个时候再去发起data call 就成功了
+  08-18 17:29:25.785  2411  3106 E RILD    : [G] RX: (M)DISP_CMD DISP_RSSI_INFO NOTI l:8 m:ff a:00 [ 39 ] //CP 上报网络信号
+。。
+08-18 17:29:58.102  3328  3410 D RILJ    : [rild] [0104]< DATA_REGISTRATION_STATE {1, a50f, 02af0f15, 14, null, 4}
+这期间也有20多秒，但是卡加载慢也是一个原因
+??曾庆东(研究员[E3]/????)?? [19:40]:
+  把卡的拉进来吧。
+??唐永裕(研究员[E3]/????)?? [19:43]:
+  黄河清先任
+  有个G850Y TW的问题想麻烦你看一下
+  创锐，你跟黄河清先任说一下吧
+??郑创锐(研究员[E3]/????)?? [19:44]:
+  曾庆东(研究员[E3]/????)?? [17:25]:
+ P140815-05100    LTE Power on time is fail
+ log 在 \\109.131.14.17\share\yongyu.tang\Data_call
+
+  上面分析到是
+setup data call 的请求下来太慢了
+ 创锐，看下是等待哪个条件耗时了
+  data call下去慢是因为PS 注册上报慢和卡加载慢
+08-18 17:29:58.467  3328  3328 D DCT     : isDataAllowed: not allowed due to - SIM not loaded
+  麻烦看一下卡的加载流程
+   ??唐永裕(研究员[E3]/????)?? [19:08]:
+ 08-18 17:29:17.020  2411  2471 E RILD    : Modem is in ONLINE state
+08-18 17:29:20.675  3328  3410 D RILJ    : [rild] [UNSL]< UNSOL_RIL_CONNECTED {7} //RIL 连接成功
+08-18 17:29:25.785  2411  3106 E RILD    : [G] RX: (M)DISP_CMD DISP_RSSI_INFO NOTI l:8 m:ff a:00 [ 39 ] //CP 上报网络信号
+08-18 17:30:05.017  3328  3480 D RILJ    : [rild] [0149]> SETUP_DATA_CALL 16 0 cmnet null null 0 IP //建立数据链接
+08-18 17:30:05.062  3328  3410 D RILJ    : [rild] [0149]< SETUP_DATA_CALL DataCallResponse: {version=7 status=0 retry=-1 cid=1 active=2 type=IP' ifname='rmnet0' addresses=[10.103.223.229] dnses=[221.179.38.7,120.196.165.7] gateways=[10.103.223.1]}
+ 黄东涛(研究员[E3]/????)?? [19:09]:
+ 08-18 17:29:17.020  2411  2471 E RILD    : Modem is in ONLINE state
+08-18 17:29:20.675  3328  3410 D RILJ    : [rild] [UNSL]< UNSOL_RIL_CONNECTED {7} //RIL 连接成功
+08-18 17:29:25.785  2411  3106 E RILD    : [G] RX: (M)DISP_CMD DISP_RSSI_INFO NOTI l:8 m:ff a:00 [ 39 ] //CP 上报网络信号
+08-18 17:30:05.017  3328  3480 D 
+ 其实时间不正常的
+ PDP请求active的时间
+ 已经是半分钟之后的了
+ PDP contaxt很快就active上去，但是请求下来太慢了
+
+  郑创锐(研究员[E3]/????)?? [19:36]:
+ 08-18 17:29:58.102  3328  3410 D RILJ    : [rild] [0104]< DATA_REGISTRATION_STATE {1, a50f, 02af0f15, 14, null, 4}
+08-18 17:29:58.467  3328  3328 D DCT     : trySetupData for typeefault due to dataAttached 
+08-18 17:29:58.467  3328  3328 D DCT     : isDataAllowed: not allowed due to - SIM not loaded
+//上报PS 可用，但是这个时候卡没加载好，所以没满足条件下发data call
+  08-18 17:30:04.967  3328  3328 D DCT     : trySetupData for typeefault due to simLoaded apnContext={mApnType=default mState=IDLE mWaitingApns={null} mWaitingApns
+//在卡加载完，这个时候再去发起data call 就成功了
+ 08-18 17:29:25.785  2411  3106 E RILD    : [G] RX: (M)DISP_CMD DISP_RSSI_INFO NOTI l:8 m:ff a:00 [ 39 ] //CP 上报网络信号
+。。
+08-18 17:29:58.102  3328  3410 D RILJ    : [rild] [0104]< DATA_REGISTRATION_STATE {1, a50f, 02af0f15, 14, null, 4}
+这期间也有20多秒，但是卡加载慢也是一个原因
+
+??黄河清(先任[E4]/????)?? [19:47]:
+  这是GSM型号？
+  单卡还是双卡？
+??曾庆东(研究员[E3]/????)?? [19:49]:
+  G850Y  TW  LTE 单卡
+??黄河清(先任[E4]/????)?? [19:52]:
+  SIM的加载取决于CP呀
+  很难优化的
+??黄河清(先任[E4]/????)?? [19:57]:
+  其实我觉得data那边不需要等到record全部Load完  只需要Imsi读到就可以了
+  这样能够快个十几秒
+  只需要把registerForRecordsloaded改为registerForImsiReady就行
+??郑创锐(研究员[E3]/????)?? [20:00]:
+  那卡的CP 状态还没确定，我们这个时候下发也不好啊
+??黄河清(先任[E4]/????)?? [20:02]:
+  还有好多OEM_HOOK_RAW的消息
+  应该也减慢了速度吧
+  为什么会这么多OEM_HOOK_RAW呀
+??刘勇(先任[E4]/????)?? [20:03]:
+  这个流程从1713~1718都是这样，肯定有其存在的意义的
+  没法动这样的流程
+  hook 是谁发起的
+??黄河清(先任[E4]/????)?? [20:04]:
+  不知道呀
+??刘勇(先任[E4]/????)?? [20:04]:
+  看hook到那个mgr
+  处理了
+??黄河清(先任[E4]/????)?? [20:06]:
+  处理是在simmgr  但不是卡发起的
+  不知道telephony哪里发起的
+??黄河清(先任[E4]/????)?? [20:12]:
+   08-18 17:29:58.102  3328  3410 D RILJ    : [rild] [0104]< DATA_REGISTRATION_STATE {1, a50f, 02af0f15, 14, null, 4}
+08-18 17:29:58.467  3328  3328 D DCT     : trySetupData for typeefault due to dataAttached 
+08-18 17:29:58.467  3328  3328 D DCT     : isDataAllowed: not allowed due to - SIM not loaded
+//上报PS 可用，但是这个时候卡没加载好，所以没满足条件下发data call
+  08-18 17:30:04.967  3328  3328 D DCT     : trySetupData for typeefault due to simLoaded apnContext={mApnType=default mState=IDLE mWaitingApns={null} mWaitingApns
+
+这个log表示卡加载也就耽误了6s吧？
+??郑创锐(研究员[E3]/????)?? [20:13]:
+  嗯，2个发起条件都慢
+卡的条件更慢点，所以如果DATA_REG快的话，卡条件不满足也无法发起
+??黄河清(先任[E4]/????)?? [20:24]:
+  08-18 17:29:38.170  3328  3328 D RILJ    : [rild] [0059]> iccIO: SIM_IO 0xc0 0x6f7b  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+
+08-18 17:29:58.225  3328  3410 D RILJ    : [rild] [0059]< SIM_IO IccIoResponse sw1:0x90 sw2:0x0
+
+这中间RIL貌似出现过异常
+  08-18 17:29:44.855  4292  4292 E RILS    : onDestroy start
+08-18 17:29:44.855  4292  5185 E RILS    : Hit EOS reading message length
+08-18 17:29:44.855  4292  5185 I RILS    : Disconnected from 'Multiclient' socket
+08-18 17:29:44.855  4292  5185 E RILS    : Thread interrupted...start to exit - Multiclient, TID: 149
+08-18 17:29:44.855  4292  5185 E RILS    : Thread is terminated by InterruptedException
+08-18 17:29:44.855  4292  4292 E RILS    : onDestroy finish
+  08-18 17:29:43.310  2411  3106 E RILD    : Reader: TIMEOUT
+08-18 17:29:43.310  2411  3106 E RILD    : IpcModem: rocessTimeout msg->mObj=0x0, modem type=4
+08-18 17:29:43.310  2411  3106 E RILD    : Modem Not Responding Count: 0
+  貌似中间RIL重启了一次
+  导致慢了
+  RILS    的异常有关系吗？永裕？
+??黄河清(先任[E4]/????)?? [20:30]:
+  RILJ发请求到simmgr这个过程耗的时间太长了
+??曾庆东(研究员[E3]/????)?? [20:31]:
+   貌似中间RIL重启了一次
+ 导致慢了
+ RILS    的异常有关系吗？永裕？
+??唐永裕(研究员[E3]/????)?? [20:33]:
+  RILS 不是我们这边的RIL相关的，不知道是什么了
+??黄河清(先任[E4]/????)?? [20:33]:
+   08-18 17:29:38.170  3328  3328 D RILJ    : [rild] [0059]> iccIO: SIM_IO 0xc0 0x6f7b  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+RILJ发起请求
+08-18 17:29:58.220  2411  2515 E RILD    : SIM-MGR: evt(201)
+08-18 17:29:58.220  2411  2515 E RILD    : SMS-MGR: evt(110)
+08-18 17:29:58.220  2411  2515 E RILD    : DoGetSmscAddress():__
+08-18 17:29:58.220  2411  2515 E RILD    : [G] TX: (M)SMS_CMD  SMS_SVC_CENTER_ADDR  GET l:7 m:70 a:00 [ ]
+08-18 17:29:58.225  3328  3410 D RILJ    : [rild] [0059]< SIM_IO IccIoResponse sw1:0x90 sw2:0x0
+花了近20s  RILJ的请求才到SIMMGR
+??唐永裕(研究员[E3]/????)?? [20:33]:
+  中间RIL重启了一次
+这个没有吧
+??黄河清(先任[E4]/????)?? [20:34]:
+   08-18 17:29:43.310  2411  3106 E RILD    : Reader: TIMEOUT
+08-18 17:29:43.310  2411  3106 E RILD    : IpcModem:rocessTimeout msg->mObj=0x0, modem type=4
+08-18 17:29:43.310  2411  3106 E RILD    : Modem Not Responding Count: 0
+RILD貌似就这个异常  不知会不会导致延时
+??黄河清(先任[E4]/????)?? [20:44]:
+  其他看不出有啥问题了
+??唐永裕(研究员[E3]/????)?? [20:44]:
+  08-18 17:29:38.170  3328  3328 D RILJ    : [rild] [0059]> iccIO: SIM_IO 0xc0 0x6f7b
+这个在simmgr处理应该是 SIM-MGR: evt(101)吧
+  201是GET_SIM_IO_DONE了
+??黄河清(先任[E4]/????)?? [20:45]:
+  是处理101事件
+  101也就在上面一点点呀
+  08-18 17:29:58.180  2411  2515 E RILD    : SIM-MGR: evt(201)
+08-18 17:29:58.180  2411  2515 E RILD    : SIM-MGR: evt(101)
+??唐永裕(研究员[E3]/????)?? [21:25]:
+  河清先任，
+08-18 17:29:38.170  3328  3328 D RILJ    : [rild] [0059]> iccIO: SIM_IO 0xc0 0x6f7b  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:46.775  2411  2515 E RILD    : SIM-MGR: evt(101)
+08-18 17:29:46.775  2411  2515 E RILD    : [G] TX: (M)SEC_CMD  SEC_RSIM_ACCESS  GET l:2c m:4f a:00 [ C0 00 10 A0 00 00 00 87 10 02 FF 86 F0 00 89 FF FF FF FF E2 2F 01 00 3F 00 00 00 00 00 00 00 00 00 00 00 00 0F ]
+08-18 17:29:58.220  2411  3106 E RILD    : [G] RX: (M)SEC_CMD  SEC_RSIM_ACCESS  RESP l:2f m:00 a:6f [ 90 00 25 62 23 82 02 41 21 83 02 6F 7B A5 06 80 01 71 C0 01 00 8A 01 05 8B 03 6F 06 04 80 02 00 0C 81 02 00 19 88 01 68 ]
+08-18 17:29:58.220  2411  2515 E RILD    : SIM-MGR: evt(201)
+08-18 17:29:58.225  3328  3410 D RILJ    : [rild] [0059]< SIM_IO IccIoResponse sw1:0x90 sw2:0x0
+
+[0059]这个命令下去的处理过程应该是这样的
+??黄河清(先任[E4]/????)?? [21:25]:
+  不是
+  08-18 17:29:38.170  3328  3328 D RILJ    : [rild] [0059]> iccIO: SIM_IO 0xc0 0x6f7b  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:58.180  2411  2515 E RILD    : SIM-MGR: evt(101)
+08-18 17:29:58.180  2411  2515 E RILD    : [G] TX: (M)SEC_CMD  SEC_RSIM_ACCESS  GET l:2c m:6f a:00 [ C0 00 10 A0 00 00 00 87 10 02 FF 86 F0 00 89 FF FF FF FF 7B 6F 02 00 3F FF 7F 00 00 00 00 00 00 00 00 00 00 0F ]
+08-18 17:29:58.220  2411  3106 E RILD    : [G] RX: (M)SEC_CMD SEC_RSIM_ACCESS RESP l:2f m:00 a:6f [ 90 00 25 62 23 82 02 41 21 83 02 6F 7B A5 06 80 01 71 C0 01 00 8A 01 05 8B 03 6F 06 04 80 02 00 0C 81 02 00 19 88 01 68 ]
+08-18 17:29:58.220  2411  2515 E RILD    : SIM-MGR: evt(201)
+08-18 17:29:58.225  3328  3410 D RILJ    : [rild] [0059]< SIM_IO IccIoResponse sw1:0x90 sw2:0x0
+
+  08-18 17:29:58.220  2411  3106 E RILD    : [G] RX: (M)SEC_CMD  SEC_RSIM_ACCESS  RESP l:2f m:00 a:6f [ 90 00 25 62 23 82 02 41 21 83 02 6F 7B A5 06 80 01 71 C0 01 00 8A 01 05 8B 03 6F 06 04 80 02 00 0C 81 02 00 19 88 01 68 ]
+  RSP是这个
+??唐永裕(研究员[E3]/????)?? [21:29]:
+  08-18 17:29:38.140  3328  3328 D RILJ    : [rild] [0045]> iccIO: SIM_IO 0xc0 0x2fe2  path: 3F00,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.145  3328  3328 D RILJ    : [rild] [0046]> iccIO: SIM_IO 0xc0 0x6f02  path: 3F007F43,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.150  3328  3328 D RILJ    : [rild] [0047]> iccIO: SIM_IO 0xc0 0x6f3e  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.150  3328  3328 D RILJ    : [rild] [0048]> iccIO: SIM_IO 0xc0 0x6fc9  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.150  3328  3328 D RILJ    : [rild] [0049]> iccIO: SIM_IO 0xc0 0x6fad  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.150  3328  3328 D RILJ    : [rild] [0050]> iccIO: SIM_IO 0xc0 0x6f38  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.155  3328  3328 D RILJ    : [rild] [0051]> iccIO: SIM_IO 0xc0 0x6f46  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.155  3328  3328 D RILJ    : [rild] [0052]> iccIO: SIM_IO 0xc0 0x6fcd  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.155  3328  3328 D RILJ    : [rild] [0053]> iccIO: SIM_IO 0xc0 0x6fc6  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.160  3328  3328 D RILJ    : [rild] [0054]> iccIO: SIM_IO 0xc0 0x6fc5  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.160  3328  3328 D RILJ    : [rild] [0055]> iccIO: SIM_IO 0xc0 0x6f16  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.165  3328  3328 D RILJ    : [rild] [0056]> iccIO: SIM_IO 0xc0 0x6f15  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.170  3328  3328 D RILJ    : [rild] [0057]> iccIO: SIM_IO 0xc0 0x6f02  path: 3F007F43,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.170  3328  3328 D RILJ    : [rild] [0058]> iccIO: SIM_IO 0xc0 0x6fe5  path: 3F007F10,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:38.170  3328  3328 D RILJ    : [rild] [0059]> iccIO: SIM_IO 0xc0 0x6f7b  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+
+这一堆命令是干嘛的啊？
+??黄河清(先任[E4]/????)?? [21:30]:
+  08-18 17:29:38.170  3328  3328 D RILJ    : [rild] [0059]> iccIO: SIM_IO 0xc0 0x6f7b  path: 3F007FFF,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:58.180  2411  2515 E RILD    : SIM-MGR: evt(101)
+
+08-18 17:29:58.180  2411  2515 E RILD    : [G] TX: (M)SEC_CMD  SEC_RSIM_ACCESS  GET l:2c m:6f a:00 [ C0 00 10 A0 00 00 00 87 10 02 FF 86 F0 00 89 FF FF FF FF 7B 6F 02 00 3F FF 7F 00 00 00 00 00 00 00 00 00 00 0F ]
+08-18 17:29:58.220  2411  3106 E RILD    : [G] RX: (M)SEC_CMD  SEC_RSIM_ACCESS  RESP l:2f m:00 a:6f [ 90 00 25 62 23 82 02 41 21 83 02 6F 7B A5 06 80 01 71 C0 01 00 8A 01 05 8B 03 6F 06 04 80 02 00 0C 81 02 00 19 88 01 68 ]
+08-18 17:29:58.220  2411  2515 E RILD    : SIM-MGR: evt(201)
+08-18 17:29:58.225  3328  3410 D RILJ    : [rild] [0059]< SIM_IO IccIoResponse sw1:0x90 sw2:0x0
+  这样才是整个流程
+  上面那一堆命令就是simrecords里面请求读卡的信息
+  基本都是20s后才发到simmgr里面处理
+  我要下班了
+??唐永裕(研究员[E3]/????)?? [21:32]:
+  哎，我也要帮黄总发版本，没时间看了
+  明天再看吧
+??唐永裕(研究员[E3]/????)?? [21:33]:
+  08-18 17:29:38.140  3328  3328 D RILJ    : [rild] [0045]> iccIO: SIM_IO 0xc0 0x2fe2  path: 3F00,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:47.980  3328  3410 D RILJ    : [rild] [0045]< SIM_IO IccIoResponse sw1:0x90 sw2:0x0
+
+08-18 17:29:38.145  3328  3328 D RILJ    : [rild] [0046]> iccIO: SIM_IO 0xc0 0x6f02  path: 3F007F43,0,0,15 aid: A0000000871002FF86F00089FFFFFFFF
+08-18 17:29:52.060  3328  3410 D RILJ    : [rild] [0046]< SIM_IO IccIoResponse sw1:0x6a sw2:0x82
+  前面几个都是很快就返回了
+  我明天再看看后面几个为什么处理这么久吧
+
+  
+  
+  
+  
+  
+call miss /////////////////////////////////////
+??唐永裕(研究员[E3]/????)?? [20:09]:
+  庆东，不好意思，刚开始看
+  里面这么多log，要看哪一个啊？
+??曾庆东(研究员[E3]/????)?? [20:11]:
+  。。。。每一个都要看，
+??唐永裕(研究员[E3]/????)?? [20:11]:
+  每个都有CP log吧？
+??曾庆东(研究员[E3]/????)?? [20:12]:
+  他分三个文件夹，你就照他分的来，MO MT的，我现在在看G850Y send G850Y receiver  fail  log
+  你也先看这个吧。
+??唐永裕(研究员[E3]/????)?? [20:12]:
+  OK
+??唐永裕(研究员[E3]/????)?? [20:33]:
+  按照测试的意思
+G850Y  To G850Y  1412 sender
+这个文件时MO的log吧
+  但是这个里面一样很多MT的log了
+  只是那两个手机互打吧？
+??曾庆东(研究员[E3]/????)?? [20:34]:
+  是呀
+  你按际的烈出来就行了。
+??唐永裕(研究员[E3]/????)?? [20:35]:
+  但是我在
+“G850Y  To G850Y  1412 sender” 
+MO的log 是4个打出的
+
+"G850Y To  G850Y   1412 receiver"
+MT 6个打进的
+??曾庆东(研究员[E3]/????)?? [20:35]:
+  确定一下哪一个miss了
+??唐永裕(研究员[E3]/????)?? [20:36]:
+  ＯＫ
+??唐永裕(研究员[E3]/????)?? [20:46]:
+  妹的，这些ｌｏｇ很凌乱啊
+  你有空过来一下我这里吗
+??曾庆东(研究员[E3]/????)?? [20:47]:
+  是呀，我这边看，没有miss，而且只有5个call。
+??唐永裕(研究员[E3]/????)?? [21:13]:
+  S5 send  G850Y recviver  fail  log.zip
+  S5 to 850 1342  MT:
+08-20 13:35:46.840  2321  3407 E RILD    : [G] RX: (M)SS_CMD  SS_INFO  NOTI l:19 m:ff a:00 [ 31 00 00 00 0A 20 30 39 37 31 35 39 35 33 35 34 00 00 ]
+08-20 13:35:46.845  2321  3407 E RILD    : [G] RX: (M)CALL_CMD  CALL_INCOMING  NOTI l:b m:ff a:00 [ 00 01 01 00 ]
+08-20 13:38:00.691  2321  3407 E RILD    : [G] RX: (M)SS_CMD  SS_INFO  NOTI l:19 m:ff a:00 [ 31 00 00 00 0A 20 30 39 37 31 35 39 35 33 35 34 00 00 ]
+08-20 13:38:00.691  2321  3407 E RILD    : [G] RX: (M)CALL_CMD  CALL_INCOMING  NOTI l:b m:ff a:00 [ 00 01 01 00 ]
+08-20 13:39:15.437  2321  3407 E RILD    : [G] RX: (M)SS_CMD  SS_INFO  NOTI l:19 m:ff a:00 [ 31 00 00 00 0A 20 30 39 37 31 35 39 35 33 35 34 00 00 ]
+08-20 13:39:15.437  2321  3407 E RILD    : [G] RX: (M)CALL_CMD  CALL_INCOMING  NOTI l:b m:ff a:00 [ 00 01 01 00 ]
+  S5 1342  MO:
+Line 46636: 08-20 13:35:41.729  1251  1251 D RILJ    : [rild] [0477]> DIAL type 0 domain 1 
+Line 51175: 08-20 13:37:25.366  1251  1251 D RILJ    : [rild] [0580]> DIAL type 0 domain 1  //miss
+Line 52820: 08-20 13:37:54.558  1251  1251 D RILJ    : [rild] [0611]> DIAL type 0 domain 1 
+Line 53907: 08-20 13:38:06.567  1251  1251 D RILJ    : [rild] [0634]> DIAL type 0 domain 1  //miss
+Line 55898: 08-20 13:39:08.819  1251  1251 D RILJ    : [rild] [0665]> DIAL type 0 domain 1   
+Line 57168: 08-20 13:39:21.419  1251  1251 D RILJ    : [rild] [0688]> DIAL type 0 domain 1  //miss
+??唐永裕(研究员[E3]/????)?? [21:23]:
+  1.G850Y send G850Y receiver  fail  log.zip
+“G850Y  To G850Y  1412 sender” 
+MO：
+08-20 13:34:57.518  2321  2430 E RILD    : [G] TX: (M)CALL_CMD  CALL_OUTGOING  EXEC l:63 m:9a a:00 [ 00 01 00 0A 21 30 39 37 31 35 39 35 35 37 34 00 00 00 00 00 00 00 00 00 00 00 
+
+08-20 13:55:30.495  2321  2430 E RILD    : [G] TX: (M)CALL_CMD  CALL_OUTGOING  EXEC l:63 m:5f a:00 [ 00 01 00 0A 21 30 39 37 31 35 39 35 33 35 39 00 00 00 00 00 00 00 00 00 00 00
+08-20 14:08:26.032  2321  2430 E RILD    : [G] TX: (M)CALL_CMD  CALL_OUTGOING  EXEC l:63 m:41 a:00 [ 00 01 00 0A 21 30 39 37 31 35 39 35 33 35 39 00 00 00 00 00 00 00 00 00 00 00 
+08-20 14:08:43.222  2321  2430 E RILD    : [G] TX: (M)CALL_CMD  CALL_OUTGOING  EXEC l:63 m:71 a:00 [ 00 01 00 0A 21 30 39 37 31 35 39 35 33 35 39 00 00 00 00 00 00 00 00 00 00 00
+
+
+"G850Y To  G850Y   1412 receiver"
+MT:
+08-20 13:39:15.437  2321  3407 E RILD    : [G] RX: (M)SS_CMD  SS_INFO  NOTI l:19 m:ff a:00 [ 31 00 00 00 0A 20 30 39 37 31 35 39 35 33 35 34 00 00 ]
+08-20 13:39:15.437  2321  3407 E RILD    : [G] RX: (M)CALL_CMD  CALL_INCOMING  NOTI l:b m:ff a:00 [ 00 01 01 00 ]
+08-20 13:43:17.233  2321  3407 E RILD    : [G] RX: (M)SS_CMD  SS_INFO  NOTI l:19 m:ff a:00 [ 31 00 00 00 0A 20 30 39 37 31 35 39 35 33 35 34 00 00 ]
+08-20 13:43:17.233  2321  3407 E RILD    : [G] RX: (M)CALL_CMD  CALL_INCOMING  NOTI l:b m:ff a:00 [ 00 01 01 00 ]
+08-20 13:47:17.183  2321  3407 E RILD    : [G] RX: (M)SS_CMD  SS_INFO  NOTI l:19 m:ff a:00 [ 31 00 00 00 0A 20 30 39 37 31 35 39 35 33 35 34 00 00 ]
+08-20 13:47:17.183  2321  3407 E RILD    : [G] RX: (M)CALL_CMD  CALL_INCOMING  NOTI l:b m:ff a:00 [ 00 01 01 00 ]
+08-20 13:52:32.254  2321  3407 E RILD    : [G] RX: (M)SS_CMD  SS_INFO  NOTI l:19 m:ff a:00 [ 31 00 00 00 0A 20 30 39 37 31 35 39 35 33 35 34 00 00 ]
+08-20 13:52:32.254  2321  3407 E RILD    : [G] RX: (M)CALL_CMD  CALL_INCOMING  NOTI l:b m:ff a:00 [ 00 01 01 00 ]
+
+08-20 13:55:36.119  2321  3407 E RILD    : [G] RX: (M)SS_CMD  SS_INFO  NOTI l:19 m:ff a:00 [ 31 00 00 00 0A 20 30 39 37 31 35 39 35 35 37 33 00 00 ]
+08-20 13:55:36.119  2321  3407 E RILD    : [G] RX: (M)CALL_CMD  CALL_INCOMING  NOTI l:b m:ff a:00 [ 00 01 01 00 ]
+08-20 14:08:32.535  2321  3407 E RILD    : [G] RX: (M)SS_CMD  SS_INFO  NOTI l:19 m:ff a:00 [ 31 00 00 00 0A 20 30 39 37 31 35 39 35 35 37 33 00 00 ]
+08-20 14:08:32.535  2321  3407 E RILD    : [G] RX: (M)CALL_CMD  CALL_INCOMING  NOTI l:b m:ff a:00 [ 00 01 01 00 ]
+??唐永裕(研究员[E3]/????)?? [21:35]:
+  13:55:30.495　持续13:55:30--13:55:45
+14:08:26.032         14:08:26--14:08:41
+14:08:43.222         14:08:43--14:09:10
+  “G850Y  To G850Y  1412 sender”  MO持续的时间
+  而且都是成功的，正常挂断的
+??曾庆东(研究员[E3]/????)?? [21:36]:
+  。。。。。
+??曾庆东(研究员[E3]/????)?? [21:43]:
+  call:1	持续7s	  
+887123	0	19	00h:01m:00s 851.523477ms	URRC_DATA_REQ
+1092367	0	19	00h:01m:07s 045.032222ms	MMCC_DATA_REQ
+
+call:2 持续13s
+1622644	0	19	00h:01m:23s 413.585241ms	URRC_DATA_REQ
+1931522	0	19	00h:01m:36s 309.129947ms	MMCC_DATA_REQ
+??唐永裕(研究员[E3]/????)?? [21:49]:
+  13:55:33.810  3167  3266 D RILJ    : [rild] [1150]< GET_CURRENT_CALLS  [id=1,ALERTING
+13:55:45.840  2321  3405 E RILD    : [G] RX: (M)CALL_CMD  CALL_STATUS  NOTI l  m:ff a:00 [ 00 01 01 04 00 05 ]
+
+14:08:29.882  3167  3266 D RILJ    : [rild] [1344]< GET_CURRENT_CALLS  [id=1,ALERTING
+14:08:41.342  3167  3266 D RILJ    : [rild] [1352]< HANGUP_FOREGROUND_RESUME_BACKGROUND
+
+14:08:45.742  3167  3266 D RILJ    : [rild] [1358]< GET_CURRENT_CALLS  [id=1,ALERTING,
+14:09:10.542  3167  3266 D RILJ    : [rild] [1366]< HANGUP_FOREGROUND_RESUME_BACKGROUND 
+??曾庆东(研究员[E3]/????)?? [21:50]:
+  Alerting 不是开始接电话的标志。
+??唐永裕(研究员[E3]/????)?? [21:51]:
+  嗯嗯
+??唐永裕(研究员[E3]/????)?? [21:54]:
+  08-20 13:55:42.835  2321  3405 E RILD    : [G] RX: (M)CALL_CMD  CALL_STATUS  NOTI l  m:ff a:00 [ 00 01 01 03 00 00 ]
+08-20 13:55:45.840  2321  3405 E RILD    : [G] RX: (M)CALL_CMD  CALL_STATUS  NOTI l  m:ff a:00 [ 00 01 01 04 00 05 ]
+
+08-20 14:08:34.862  2321  3405 E RILD    : [G] RX: (M)CALL_CMD  CALL_STATUS  NOTI l  m:ff a:00 [ 00 01 01 03 00 00 ]
+08-20 14:08:41.337  2321  3405 E RILD    : [G] RX: (M)CALL_CMD  CALL_STATUS  NOTI l  m:ff a:00 [ 00 01 01 04 00 05 ]
+
+08-20 14:08:57.422  2321  3405 E RILD    : [G] RX: (M)CALL_CMD  CALL_STATUS  NOTI l  m:ff a:00 [ 00 01 01 03 00 00 ]
+08-20 14:09:10.542  2321  3405 E RILD    : [G] RX: (M)CALL_CMD  CALL_STATUS  NOTI l  m:ff a:00 [ 00 01 01 04 00 05 ]
+  这个是精确到CP的时间了
+   03代表Connected  ，04代表Release
+??曾庆东(研究员[E3]/????)?? [21:56]:
+  那就是说CP这边露了第最前面一个电话，后面两个是和AP对应的。
+??唐永裕(研究员[E3]/????)?? [21:56]:
+  可能之前的slient log没打开？
+??唐永裕(研究员[E3]/????)?? [22:00]:
+  下班吧，明天再看吧  
+  
+  
+----DC-HSDPA
+ 1、
+HSDPA（High Speed Downlink Packet Access)高速下行分组接入，是一种移动通信协议，亦称为3.5G(3&frac12;G)。该协议在WCDMA下行链路中提供分组数据业务，
+在一个5MHz载波上的传输速率可达8-10 Mbit/s（如采用MIMO技术，则可达20 Mbit/s）。在具体实现中，采用了自适应调制和编码（AMC）、多输入多输出（MIMO）、
+混合自动重传请求（HARQ）、快速调度、快速小区选择等技术。
+2、 Dual-Cell HSDPA (also known as: Dual-Carrier HSPA or Dual-Cell HSPA) is a wireless broadband standard based on HSPA that is defined in 3GPP UMTS release 8.
+Dual Cell (DC-)HSDPA is the natural evolution of HSPA by means of carrier aggregation in the downlink[1]. UMTS licenses are often issued as 10 or 15 MHz paired 
+spectrum allocations. The basic idea of the multicarrier feature is to achieve better resource utilization and spectrum efficiency by means of joint resource 
+allocation and load balancing across the downlink carriers.
+An advanced HSPA network can theoretically support up to 28 Mbit/s and 42 Mbit/s with a single 5 MHz carrier for Rel7 (MIMO with 16QAM) and Rel8 (64-QAM + MIMO),
+ in good channel condition with low correlation between transmit antennas. An alternative method to double the data rates is to double the bandwidth, i.e. 10 MHz 
+ by using DC-HSDPA. Additionally, some diversity and joint scheduling gains can also be expected [2] with improved QoS for end users in poor environment conditions
+ where existing techniques such as MIMO spatial multiplexing cannot be used to increase data rates. In 3GPP a study item was completed in June 2008. The outcome can
+ be found in a technical report [3]. New HSDPA UE categories 21-24 have been introduced that support DC-HSDPA. DC-HSDPA can support up to 42Mbit/s, but unlike HSPA, 
+ it does not need to rely on MIMO transmission.
+From Release 9 onwards it will be possible to use DC-HSDPA in combination with MIMO used on both carrier[4]. The support of MIMO in combination with DC-HSDPA will allow 
+operators deploying Release 7 MIMO to benefit from the DC-HSDPA functionality as defined in Release 8. While in Release 8 DC-HSPDA can only operate on adjacent carriers,
+ Release 9 allow that the paired cells can operate on two different frequency bands.
+
+ 
+ 
+ 
+ 
+ 
+********GCF测试********
+
+----常用设置
+	APP->Samsung Keystring->input "*#27663368378#"->send keystring->[2]UE SETTING&INFO->[1]SETTING->[1]PROTOCOL->[4]GCF->[1]GSM/(E)GPRS/WCDMA GCF ON
+	NV1877/4548/441/946/2954?
+----测试实验室
+	KTL  SGS  7Layer sportan     常用仪表：GRUT  Anite
+
+----GCF 测试协议访文档
+	3GPP TS 51.010-1（GSM对应的）
+	3GPP TS 34.123-1（WCDMA对应的）
+	3GPP TS 36.523-1（LTE对应的）
+
+----测试详细步骤
+	二、Conformance Toolset的使用
+	创建项目
+	1.test project 
+	new -> create project (add project name)-> save [只能构建一次]
+	编辑ICS/IXIT [PICS/PIXIT]->save 
+	2.test plan
+	选择构建project->add plan name[可多次构建]
+	add test cases到plan
+	3.test run（运行case）
+	run added test cases
+	4.test result （查看log，及获取仪表log）
+	测试完后到result项->open folder->获取仪表log
+
+----pics相关
+	最开始的pics文档是excel形式的，
+	如果第一次测试需要自己配置仪表对应的pics参数，这个会占用很多时间
+	2G的大约1h
+	3G的大约2h~3h
+	4G的大约2h+
+	Anite设备的pics如果配置完成，最终会变成一个XML文件
+	有base的项目可以请求使用ANITE 设备的Test House pics XML文件
+	然后对比base的pics和自己的差异，来改动xml文件
+	如果没有base的项目，直接向使用ANITE 设备的Test House请求pics的XML文件
+
+
+	在本社ANITE设备测试条件
+	1）TC 是否有效 （红色TC  no licence/紫色需要修改pics/确认TC使用SIM总类,如需special#13,10sim卡，本社没卡测试）
+	2) 文档：PICS(xml)& RTR(band)
+	3）Device
+
+///////RS参考信号
+http://wenku.baidu.com/link?url=Z7e4TKel7X3IZae9Ycd_dcozMso1_ePRL5F3oAC2dSoUOMnwjnutJi_r7hYt1E0emnjns505tk5q-moWXmME3Goz8tXQuR2-Y-a8deqRjsO###
+
+//////LTE 基本知识题库
+http://wenku.baidu.com/link?url=s0K5lQrRbWkPHAPf_KQZ4_0cFtoojd3Tg2L53GcyuQO0TvTtV1uYSR7Mhbox-gwTDmlXw3ESR8R6rVbJw2zuJqruo0mzsTKiQY2f1k00wnW
+
+
+----about CA isssue
+	P141015-01774    FET lab CA problem
+	P141015-01760    FET lab CA problem
+	
+	//peak data rate problem
+		P141006-02269    TWM requested CA issue
+		
+		
+////////////////
+////20141020////
+////////////////
+   //case review update
+   后续需要跟高通review的问题单发给刘东升责任， 不再发给陈景郁先任。 
+   另外， 附件PPT是陈景郁的一些简单总结，方便大家更好的理解高通的资源利用。
+
+ //LTE学习文档
+	http://wenku.baidu.com/link?url=xDhstmH1DkGJTUZaXdI6LShLVdDFE8MHbklycTKDo4F8QjpuiG0jmGTNZ9XUa59Z9tfQNB-iIE_vXXYeXVfLTa417AJj-t1Qg-g75jhK_uy
+	
+////////////////
+////20141023////
+////////////////	
+----A3 HK
+--setup feature
+	??孔杰(先任[E4]/????)?? [10:39]:
+	  庆东
+	  A7 HK需要setup
+	  频段和CMCC open向一样的，和你确认下需不需要继承CMCC open的feature
+	??曾庆东(研究员[E3]/????)?? [10:55]:
+	  call协议这边，参考A3 HK的setup文件的配置。
+	??孔杰(先任[E4]/????)?? [10:56]:
+	  擦，直接说继承不继承嘛
+	  A3 HK 8916的？
+	  /* CARRIER */
+	#define FEATURE_SAMSUNG_HK_OPEN
+	#define FEATURE_SAMSUNG_CHN_CMCC_OPEN
+	  那我按A3 HK来了
+	??曾庆东(研究员[E3]/????)?? [11:01]:
+	  好。
+	 
+IMEISVN 升级到02 CL:1829197
+		升级到03 CL:1871898
+		升级到04 CL:1918057
+		升级到05 CL:1934878
+PBS:https://cp.qb.sec.samsung.net/build/3467622	  
+	  
+	  
+	  
+	  
+??杨冰(研究员[E3]/????)?? [22:31]:
+  陈健 麻烦他好多次了  干脆多麻烦一下
+  天津有3个人在这里整天没事做
+??曾庆东(研究员[E3]/????)?? [22:31]:
+  嗯。你跟他们打个招呼，说有可能找他们帮忙。
+  
+  
+  
+    hi guys
+  01806241
+  \\109.131.14.16\sw\Personal\zhou.han\share2
+  patch放在这里
+  大部分是c文件
+  ??韩洲(先任[E4]/????)?? [13:38]:
+ hi guys
+ 01806241
+ \\109.131.14.16\sw\Personal\zhou.han\share2
+ patch放在这里
+ 
+ 
+P140827-04994   call emergercy number  abnormal  
+	1.这个是CMCC 4GLTE网络配置的问题。
+	2.当手机注册到CMCCLTE网络上时，网络下发ECC_CAL_L_LIST给手机，其中包含了：110，119,120,122这几个号码.也就是说，网络给手机定义了，这几个号码，就是紧急号码。
+	3.“120”并不是GSM SPEC中定义的ecall，手机应该以normal call的形式发送请求给网络，由网络进行判定。而当手机拨打以上这几个号码的时候，手机都按照网络配置的ecall 类型上报给网络，所以出现了这个现象
+	4.请使用G900I，G8508S手机或者其他能够使用中国移动4G网络的手机，进行对比测试。都会有同样的问题存在。
+
+	5.这个问题已经报给10086，这个问题估计过段时间会消失。对比情况请查看附件视频.
+
+	6.请参考下面IMC的分析说明：
+	Dear Customer, thanks very much for providing the latest trace. It shows the full story now and we can see why we interprete 120 as EM number for 'Ambulance'. This configuration is given to us in LTE only, so thats the reason why we initially don't apply it in GSM single mode RAT configuration.
+	Please see the analysis below for details and close this CR. There's no CP related issues evident in traces. Behaviour can be verified with competitor solution if desired.
+
+MPSS.DPM.2.0.c5-00008-M8936FAAAANUZM-1.9416.2   
+
+----ant bar(I9300I)
+	Dear all
+	  After checking the code,ant bar for I9300I definition(By feature:FEATURE_SAMSUNG_4ANTBAR,it is the same with Base) is as below:
+	For GSM:
+	BAR Rx power(RSSI)
+	4  Over -86
+	3  -87 ~ -93
+	2  -94 ~ -97
+	1 -98 ~ -101
+	0 Under -102
+	 
+	For WCDMA:
+	BAR Rx power(RSCP)
+	4  Over -89
+	3  -90~ -97
+	2  -98 ~ -103
+	1 -104 ~ -109
+	0 Under -110
+	
+	For LTE
+	ant_rsrp_table[1] = -115;
+    ant_rsrp_table[2] = -103;
+    ant_rsrp_table[3] = -91;
+    ant_rsrp_table[4] = -79;
+
+
+----P4 custom tool setting
+  -o --server http://109.131.7.117:7479 --username jianping.ye --p4-client $c --p4-port $p %c
+  
+  
+----Manual network selection
+	Created By: Xiuqiu Xia (12/14/2014 6:07 PM)
+	Dear Customer, 
+	About your concern of manual search forbidden PLMN, please refer to below information. 
+	1.When user choose forbidden PLMN to camp, UE would try to register on it. When get network reject, it would indicate to upper layer. 
+	2. User can select other PLMN after get notification from UI. 
+	3. If use doesn't choose other PLMN and do reset/LPM operation, UE is still in manual network selection state and do manual select on RPLMN. Please refer to below spec: 
+	3GPP 23.122 4.4.3.1.2: 
+	If the user does not select a PLMN, the selected PLMN shall be the one that was selected before the PLMN selection 
+	procedure started. If no such PLMN was selected or that PLMN is no longer available, then the MS shall attempt to 
+	camp on any acceptable cell and enter the limited service state. 
+	Thanks, 
+
+
+	Dear Customer, 
+	Please find answers to your queries below : 
+	2.But after power-up or fly-mode, the network select type is still Manual,does it normal? 
+	-----> this needs to be checked by MMODE team as Service request comes from CM to NAS 
+	3.When UE in Manual mode, what the PLMN search order, RPLMN->EHPLMN->EPLMN? 
+	------> If PLMN is undefined that is if the PLMN ID is not provided by CM, then the UE uses the last RPLMN.If that not present then EHPLMN/HPLMN. 
+	Please let me know if you would like me to reassign case to the MMODE team to help answer your 2nd query. 
+	Thanks, 
+	Anar
+	Created By: Phaneendra Cheekatla (12/15/2014 5:11 AM)
+	
+	
+	Dear Customer, 
+	2.But after power-up or fly-mode, the network select type is still Manual,does it normal? 
+	Ans : YES. It will be manual mode. 
+	CM stores the network selection mode in NV memory at power down/LPM and uses the same manual/auto mode at power-up or online. 
+	Below is the NV item where we store the network selection mode. 
+	NV_NET_SEL_MODE_PREF_I = 849 
+	For 3rd query,whether the PLMN ID is provided by CM after fly mode 
+	Answer : 
+	at power-up or flight mode off, CM will give the INVALID PLMN ID. 
+	CM doesn't store the PLMN-ID. CM only stores the network selection mode manual/automatic. 
+	The order that is followed by NAS is already mentioned in previous comment. 
+	"UE first uses the last RPLMN.If that not present then EHPLMN/HPLMN. " 
+	Thank you, 
+	Phani Ch.
+
+	
+	
+	MPSS.DPM.2.0.c5-00008-M8936FAAAANUZM-1.9416.2  
+	MPSS.DPM.2.0.c5-00008-M8936FAAAANUZM-1.9416.2  
+	
+
+----A7 HK limited service for a while.	
+	//Step3: 3s later, CMSS Hybr GW Change with MASK “GW Serving Status, True Serving Status” and UE goto LIMITED service. 
+MSG [00005/02] Call Manager/High 03:22:03.624 cmss.c 09723 =CM= CMSS Hybr GW Change 0x0 0x14000 
+MSG [00005/02] Call Manager/High 03:22:04.623 cmss.c 09723 =CM= CMSS Hybr GW Change 0x2 0xe6 // GW Serving Status, True Serving Status 
+MSG [00000/02] Legacy/High 03:22:04.629 qmi_nas.c 02577 qmi_nas_get_reg_state srv_status=1 sim_state=1 state=2 
+MSG [00000/02] Legacy/High 03:22:07.983 qmi_nas.c 02577 qmi_nas_get_reg_state srv_status=1 sim_state=1 state=2
+
+
+////////////////
+////20141229////
+////////////////
+----Project
+------A7
+    P141223-01851  It displays "emergency call only" for a while 
+		[问题点] Status:display CU 3G,then display emergency call only for a while ,then display CU 3G all the time 
+		[再现路径] [#10红签，sometimes:8/10]
+		Path:slot1 none,slot2 CU SIM card > power on > pull down noti bar > check the SIM status 
+        QC case::01853672
+		CM layer works abnormally.
+			Created By: Guojing Liu (12/28/2014 7:55 PM)
+			Dear customer, 
+
+			Thanks for your correct issue description. 
+
+			Both new and original log show the same things: 
+
+			- step1: SIM2 got full service on WCDMA normally 
+			- step2: Preference changed on SIM2, so service request started again and got CS service available on UMTS 
+			- Step3: 3s later, CMSS Hybr GW Change with MASK “GW Serving Status, True Serving Status” and UE goto LIMITED service 
+
+			Next step: 
+			1, I will further track root caseu and get back soon. 
+			2, warm notes: please kindly upgrade your QXDM to above 03.14.807 version in the future test due to many MSG not found as below. 
+			
+	P141212-08104  TWM 4G DL UL speed lose A3  
+		从新硬件抓的log看：
+		From new log by Dongtao huang on 12/27:
+		There still big delta between two antennas,which may led to report average CQI lower than A3
+					 Log                   RSRP[0]          RSRP[1]                CQI
+		diag_log_20141227_210920.isf   -49.19216667   -56.85638889         14.69026549
+		diag_log_20141227_210838.isf   -47.79414038   -49.04166667         14.9038674
+
+		从上面的RSRP天线1和天线2的数据看，A7的两根天线差值达到7dB
+		 按照高通提供的参考，超过5dB的RF就会有问题
+	build id:MPSS.DPM.2.0.c5-00008-M8936FAAAANUZM-1.9416.2  
+------A7HK SVN update
+	CL:1919960   from 2 to 3
+----others
+	12/21-12/23 出差深圳报销处理
+	
+----life
+	1.东涛从台湾寄回了传说中的核桃酥，吃起来很爽口。
+	2.大神和日辉表示请假回去过元旦了
+	3.火车票好难抢，是否考虑找人帮忙抢，who?
+	
+Infineon case for:AOC problem	
+	SECDB00309237  SECDB00309228  SECDB00310496 --own
+	
+	
+\\109.131.14.17\share_CleanOnSunday\dongtao huang
+
+------I9500_LL
+SVN update:1860063
+
+
+
+----I9505_LL
+	AOC disable CL:1873673   cherry-picking to CP_MAIN: CL 1874235
+	SVN update cl:1840719
+	    02->03   cl:2006928
+	
+----N9100_LL
+  CMCC roaming searching time within 1min
+	  1875360
+	  韩国人都有修改的8974
+	  MSM8974_LA3.0的
+	  es0306.yang提交的
+  CP_PROD/Muscat/....   CL:1885512
+  
+  
+  P150609-05290  data throughput problem
+  
+  
+----online 与 sim available
+	online理解为协议栈起来了
+	sim available 表示sim卡初始化好了
+	
+	
+	
+	??曾庆东(研究员[E3]/????)?? [15:58]:
+  hi，永琪。
+??NiuYongqi(职员Ⅲ[G]/????)?? [15:58]:
+  Hi
+  是A700  ACT那个问题吗
+  他们周末重新挂一遍
+??曾庆东(研究员[E3]/????)?? [15:59]:
+  嗯。感谢。
+??NiuYongqi(职员Ⅲ[G]/????)?? [15:59]:
+  没事
+??曾庆东(研究员[E3]/????)?? [15:59]:
+  还有那个ACT脚本。能共享一下吗，我们也可以在广州这边多测试一下。
+??NiuYongqi(职员Ⅲ[G]/????)?? [16:00]:
+  恩
+??NiuYongqi(职员Ⅲ[G]/????)?? [16:16]:
+  Hi
+  我刚才问苏鹏代理了
+  他说用FTAT的工具
+  没有脚本了
+  那个工具可以下载
+  我把他拉到群里你问问他吧
+  @曾庆东
+  你有什么问题在这里问吧
+??曾庆东(研究员[E3]/????)?? [16:22]:
+  苏代理，你好。
+我们想在广州这边也测试一下ACT打电话这个问题，以前是有ACT脚本。
+现在用FTAT，可否共享一下这个工具（或者下载地址）。
+针对这个测试项目，软件需要怎么设置。
+??Su Peng(Assistant Manager/Samsung Electronics)?? [16:28]:
+  发邮件给你
+??曾庆东(研究员[E3]/????)?? [16:31]:
+  收到，谢谢。
+??Su Peng(Assistant Manager/Samsung Electronics)?? [16:32]:
+  设置简单，看到VOICE的界面基本没问题了
+  通话时间30秒
+  
+  
+  
+  
+----G7105 SVN
+	02->03  CL:1922776
+  
+  
+  
+  
+ ********e-learnig password****
+ *pwd120697
+ 
+ 
+ 
+910U没有setup，没有拉分支，用csccode区分项目：partial CL：1884291
+
+
+********IP info********
+	曾庆东	qingdong.z	SW 3G 3P	10F	109.131.14.162	14F	109.131.18.91	2015/3/6	
+
+********T815C********
+----shannon
+		Log capture:
+			Dear all,
+			Please refer the CP log catch method when you test Call/data/protocol.
+			Method:
+			1.*#9900#->Debug Level->MID
+			2.*#6278355872# ->diag setting ->diag to sdcard 
+			3.restart the phone，//log will auto generation
+			log will auto generation after you power on, log file will be "Myfile->Log000", 
+			the log file will occupy the storage, please delete the useless log files.
+			Any question, please connact with Mr. Jianping Ye derectly, 
+
+			
+			Dear all,
+
+ 
+
+	<IMEI wite in DM tool>
+		A.     Shannon DM -> Tool -> Edit Registry -> CAL.Common.Imei -> input IMEI value  (setting to Hexa!) ->  push Button below for registry update
+
+
+
+		Let me tell you my guess.
+
+		 
+
+		If you did setting below before, 
+
+
+	
+	
+	Protocol setting
+		Press *#27663368378#, then you just see below screens.
+
+		 > If you press 'Reset Default', the UE reset to Field Test mode. 
+		 
+
+
+		your device is already set for field test mode.
+
+		and, if you changed setting only this : NASU.DivDuplexMode = 0x32 
+
+		then, your result can make sense. 
+
+		 
+
+		please check Gmc.DynamicDuplexModeUpdate = 0  (Equiment test mode:0, Field test mode:1)
+
+		and update the result.
+
+	-------------------------------------------------------------------------------------------------------------------------------
+
+		 1) Gmc.DynamicDuplexModeUpdate = 0  (Equiment test mode:0, Field test mode:1)
+
+		 2) NASU.DivDuplexMode = 0x32 (TD-LTE / FD-LTE / TD-SCDMA )
+
+		 3) NASL3.MM.GMM IntegrityCheckSupported =0  (TD-SCDMA Intergrity protection no support)
+
+		 4) NASL3.MM.MM IntegrityCheckSupported=0  (TD-SCDMA  Intergrity protection no support)
+
+		 5) UL3.Cap.MultiCellSupport_DC_HSDPA = 0  (Tab S2  UE capability - 3G DS no support)
+
+	-----------------------------------------------------------------------------------------------------------------------------------
+
+	Important CL:
+		For frequency lock:1925828
+	
+	
+	CP Info 
+		Prebuilt type: Prebuilt 
+		Port:  1710
+		Build command： ./makel_shannon.sh 6 CHNOPEN GTS210 3 (VERSION) $P4_CHANGELIST HUDSON NA C 
+		Branch [CP_DEV]
+		Branch: //MODEM_MAIN/DMC/SHANNON333/REL_SMP1100_MCD/
+		Template: TEMPLATE_DPI_SHANNON-SS333_GTS210LTE-CHN-OPEN_MODEM-MAIN 
+		PBS 　http://cp.qb.sec.samsung.net/overview/1245 
+		RBS 　http://cp.qb.sec.samsung.net/overview/5984 
+		Feature 　 
+
+		
+		Please refer to the below information:
+
+		
+  CP OC2
+  http://cp.qb.sec.samsung.net/build/3666773
+
+  
+  S.LSI Case Review Board 
+	http://109.131.14.186/formcs
+	
+	入网测试
+		NAL 测试版本
+		  http://mosaic.sec.samsung.net/club/club.menu.bbs.read.screen?p_club_id=1885&p_menu_id=572&p_group_id=569&message_id=3556539
+		Jonghun Rhee(S6/Principal Engineer/Samsung Electronics)?? [10:29]:
+	  I got issues from PLM about TS36.523,
+	  and those TCs are PCT test cases,
+	  For PCT test cases, the person who take review first is ??? ?? (thomas.shin).
+	  about chapter 6 and 8
+	  So for further failed TCs, please assign to him first.
+	  And for chapter 7, 
+	  ??? ?? (jslee73) for the first reviewer.
+	CP S.LSI 模块负责人:
+
+For the following projects please assign the issue to the appropriate engineer.
+
+	SHANNON333 CMCC? TD-SCDMA/TDD LTTE ??? ??  ???
+	Galaxy-Tab-S2-L CN CHINA [T815C] 
+	Galaxy-Tab-S2-S CN CHINA [T715C]  
+
+	 
+
+	Below are contact person for the specific issue:
+
+	- 2G protocol issue : JUNHO LEE (??? ??) /  TAEHO HA  (??? ??)  / YongBum Kim (??? ??) / Wonho Lee (??? 
+
+	  ??)
+
+	- 3G  
+
+			. VT call  issue : JinYoung OH (??? ??), Hursh (??? ??), JONGHAN KIM (??? ??),  YoungYong Lee (??? 
+
+			  ??)
+
+			. Data Tput : Sungwook Park (??? ??)
+
+			. Call drop, Call connectivity ? etc: Hursh  (??? ??), YoungYong Lee (??? ??), JONGHAN KIM (??? ??)
+
+	- 4G 
+
+			. Volte / VT call  : Dongcheol Heo (??? ??) / Thomas JK Shin (??? ??) / Jai-Dong KIM (??? ??)
+
+			. CSFB : Thomas JK Shin (??? ??)
+
+			. etc : Thomas JK Shin (??? ??), JaeKyu Lee (??? ??), kanggyu lee (??? ??)      
+
+	- Crash : Jae-Young Yi (??? ??)
+
+	- USIM : Taeung Yoon (??? ??) ( Protocol 2 Lab), Yong-Chul Choi (??? ??), Chuljin Kim (??? ??)
+
+	- SIPC : Seo, Hanshin (??? ??), Kyounga Kim (??? ??), Jeong-Eun Park (??? ??)
+
+	- BSP (CP side) : Daesop Park (??? ??), Yong-Chul Choi (??? ??)
+
+	- Voice quality (CP side) : TaeKyun Jung (??? ??), Won-Cheol Kim (??? ??),  JunHyuk Hong (??? ??)
+
+	- ETC : Kyouwoong Kim (??? ??), Jeongmi You (??? ??)
+	 
+
+
+	  
+----CA TEST
+	??曾庆辉(先任[E4]/????)?? [14:50]:
+	  AP： https://android.qb.sec.samsung.net/build/4601719
+	CP： http://cp.qb.sec.samsung.net/build/3700351
+	  CP是刚编译的，AP是昨天编译的
+	  用CHN烧后，切换csc到tw,
+	方法： http://mosaic.sec.samsung.net/club/club.menu.bbs.read.screen?page_num=1&p_club_id=1885&p_menu_id=696&p_group_id=40&search_field=&search_query=&search_category=&message_id=3602199
+	  看一下有没有enable CA成功
+	??曾庆东(先任[E4]/????)?? [14:55]:
+	  ok.
+	??曾庆东(先任[E4]/????)?? [14:58]:
+	  我说OK是烧机验证一下，结果还没有呢？ 
+	??江沛凡(责任[E5]/????)?? [14:59]:
+	   ？
+	我明白了，反正有结果后再反馈。	  
+	
+
+
+	Dear All，
+
+	 
+
+	关于TW项要求显示4G+的功能，CP这边会通过SIPC消息上报CA和BW的状态，在代码中也已经针对该功能进行相关的修改，可上报SCellStatus和TotalBW给AP进行判断是否显示4G+。
+
+	 
+
+	 void sipcGprsSendLteCaStatusNtf(u8 ucStatus, u8 ucTotBw)
+	{
+	 sipcGprsLTECAStatusNtf* pTxNtfMsg = NULL;
+
+	 pTxNtfMsg = (sipcGprsLTECAStatusNtf*) pal_MemAlloc(pal_EMemMidPmd, sizeof(sipcGprsLTECAStatusNtf));
+	 if (pTxNtfMsg == NULL)
+	 {
+	  return;
+	 }
+	 memset(pTxNtfMsg, 0, sizeof(sipcGprsLTECAStatusNtf));
+
+	 pTxNtfMsg->scellStatus = ucStatus;
+	 pTxNtfMsg->totalBW = ucTotBw;
+
+	 SIPC_FLOWT(GPRS, 2, "Tx LTE CA Status NTF (SCellStatus=0x%X, TotalBW=%d(Mhz)", pTxNtfMsg->scellStatus, pTxNtfMsg->totalBW);
+	 sipcSendCmdNtf(SIPC_MAIN_CMD_GPRS, SIPC_GPRS_LTE_CA_STATUS, sizeof(sipcGprsLTECAStatusNtf), (u8 *)pTxNtfMsg);
+	}
+	BRs，
+	
+	刚刚检查了T815C项目最新的代码，在lte_uecapa_updateopinfo.c文件中已经进行了针对TW项目enable CA的修改，而对HK项是disable的，如下：
+
+	 
+
+	else if(LTERRC_SUPPORT_VARIANT(OPT_CARRIER_TYPE,OP_CHNOPEN))
+	 {
+	  // Only CA Enable wiith CHNOPEN BRI
+	  if(strncmp((char *)(CscType.CscString), "BRI", 3) != 0)
+	  {
+	   LTERRC_CA_DISABLE();
+	   LTERRC_FUNCTION_TRACE("Forced to Disable CA if CSC [%c%c%c] != BRI", (RRC_TID, CscType.CscString[0], CscType.CscString[1], CscType.CscString[2], DBG_ESCVAL));
+	  }
+	 }
+
+ 
+CA disable 定义：
+#define LTERRC_CA_DISABLE()    AlpssCfg.Rel10_CaEnable=FALSE
+
+
+
+
+
+    
+//T815C锁PCI方法，请参考：
+
+	Install Keystring
+
+	1.Band locking
+
+		*#2263#->[2]Band Selection->choose band
+
+	2.Cell Locking(GSM/WCDMA/LTE)
+
+		*#27663368378#->[2]UE Setting&Information->[1]Setting->[1]Protocol->[1]As->[2]Frequency Lock->choose RAT(GSM/WCDMA/LTE)
+
+	3.LTE PCI locking(For Example)
+
+		choose LTE cell locking->[1]set Band-> "More"(on right-top)->Key input->input Band XX
+
+		->(Back and choose)[2] EARFCN->[A]Delete->Key input->input xxx(EARFCN value)
+
+		->(Back and choose)[3] PCI->[A]Delete->Key input->input xxx(PCI value)
+
+		->(Back and choose)[4] you can check if above operation take effective
+
+	4.Disable Locking
+
+		 *#27663368378#->[2]UE Setting&Information->[1]Setting->[1]Protocol->[1]As->[2]Frequency Lock->[4]Reset
+
+
+
+		 
+		 
+张金(研究员[E3]/????)?? [17:15]:
+  有的。 你复制的那段就有
+??曾庆东(先任[E4]/????)?? [17:16]:
+  哦。 就是T815C 的编译现在是包含了？
+CL多少？
+??张金(研究员[E3]/????)?? [17:16]:
+  32978   这个是DEV的， 我看看PROD 上有没
+  CL: 36359 这个是在PROD 上的
+  最好确认下修改点，我看不懂..
+??曾庆东(先任[E4]/????)?? [17:18]:
+  我没权限看，只要描述是一样的，就说明是同一个问题。
+??张金(研究员[E3]/????)?? [17:18]:
+  你们组都没权限看么
+??曾庆东(先任[E4]/????)?? [17:19]:
+  嗯。
+  36359 那应该没有在之前的的编译里面哦   CL_SYNC 28104   CL_PARTIAL 34802 
+??张金(研究员[E3]/????)?? [17:20]:
+  36359 这个是在 SMP11.018 目录的
+  TABS2 的是 SMP11.019 的吧
+??曾庆东(先任[E4]/????)?? [17:21]:
+  嗯。
+  没有是吧，那得叫系统帮忙合一下。
+??张金(研究员[E3]/????)?? [17:22]:
+  我看了 SMP11.019 这个目录下是没有
+??曾庆东(先任[E4]/????)?? [17:46]:
+  TABS2这个分支的完整路径是什么？
+??张金(研究员[E3]/????)?? [17:48]:
+  //PROD/Strawberry/SMP1100/SMP11.019
+
+1. ?? ?? ??
+
+   - 1?) ?? Mode ?? ???(???? ?? -> ???? ??) 5?/2? -> 1? ??
+
+     2?) ??? ?? Mode ?? ???? ???, Stored RPLMN ?? ? Full ??(WCDMA? ???)
+
+  -> LL OS ????? ?? ??? ??? ???? ????? ??? ??? ???? ?.
+
+      LL? ?? ???? ??? ?? ???(2?) ?? ??.
+
+   1. ?? ?? ?? --》 had been applied since OD9.
+
+[对策] Please verify it in PRA version  		 
+GSM
+ 
+RSSI>=-87
+ 
+-88>=RSSI>=-94
+ 
+-95>=RSSI>=-98
+ 
+-99>=RSSI>=-102
+ 
+-103>=RSSI
+ 
+
+TD-SCDMA
+ 
+RSCP>=-88
+ 
+-89>=RSCP>=-92
+ 
+-93>=RSCP>=-97
+ 
+-98>=RSCP>=-102
+ 
+-103>=RSCP
+ 
+
+WCDMA
+ 
+RSCP>=-90
+ 
+-91>=RSCP>=-98
+ 
+-99>=RSCP>=-104
+ 
+-105>=RSCP>=-110
+ 
+-111>=RSCP
+ 
+
+LTE
+ 
+RSRP>=-97
+ 
+-98>=RSRP>=-105
+ 
+-106>=RSRP>=-113
+ 
+-114>=RSRP>=-120
+ 
+-121>=RSRP
+ 
+********标准配置参数及意义
+	
+HSDPA / HSUPA    HSDPA (Cat 24)_42.2Mbps          HSUPA (Cat 6)_5.76Mbps
+ 
+
+****QC case****
+	 更新到#7填写正确的DMSS build ID,这个是提供高通目前项目使用的代码版本信息。
+	 可以在代码路径CP_DEV\Combination\MSM8916_LA1.0 下about.html文件找到。注意
+	 最好提供对应的版本信息。例如报问题的版本是NH1,对应的CP CL是165490.这个CL对
+	 应的about.html是#7，那么先把about.html，再找modem_proc的build id
+	
+	高通的CR一般有四种形式提供。
+		Test code：作为非正式的代码，提供给你验证修改是否有效。一般是我们通过附加上传.c文件到case，QC直接修改后我们编译测试。验证成功后请要求正式的SBA。
+		Test SBA：高通不确认修改是否完全解决问题，加了一些debug代码，可以合到正式代码上的修改。通过主页的Docs&Downloads下载。只有case owner有权限下载。拿到后需要自行合到P4上。
+		Official SBA: 高通正式的SBA。通过主页的Docs&Downloads下载。只有case owner有权限下载。拿到后需要自行合到P4上。
+		高通直接合到下一个build,我们只需等新的build出来，确认是否包含这个CR即可。确认方法为检查fixed_crs.xls @CP_DEV\Combination\MSM8916_LA1.0\modem_proc
+		PS：需要检查fixed_crs.xls 的各个历史版本。
+
+****个税申报网站
+	http://www.gdltax.gov.cn/wsgs/ 
+	
+	
+*******韩国出差流程********
+1.填写邀请函
+	a)填写《邀请函格式》的Invitee那一栏和停留时间段
+	
+	
+----个人所得税	
+	实得：125,616.15
+	出差日当：3380.32
+	税金：10,671.37
+	公积金超标计税：？
+	公益基金总额：60
+	其它计税：460.00
+
+	总额：140,187.84
+
+	10,671.37
+
+
+	98187.84
+	
+6.2.1.4(B3~900)    P150409-04141   //广州和韩国可以测过
+6.1.1.2                P150409-04022  //广州这边可以没过，HQ分析北京Fail log说来设置APN
+6.2.1.2(B3~UI)     P150409-04105 //广州这边的测试结果fail，韩国分析是仪器问题，建议用B7测。
+9.2.3.3.5             P150409-04053  //已经修改，SMP11001897, SMP11001946 were submitted to SMP1100
+6.2.2.2(B3-900)    P150409-03983    //Anite script issue,用 R&S equipment测试
+
+
+
+E:\Project\T815C
+
+
+
+	[T815C CHN][Field Test]MMS sending fail for sometime
+	
+	MMS sending fail for a period of time during driving test
+	
+	SW:T815CZCE0AOD9
+	CU card
+	Sending MMS but fail
+
+
+	sending MMS success.
+	
+	
+ SMP11002872.   PRASAD DANDRA   CL:1948948
+
+ 
+ ??张志荣(先任[E4]/????)?? [19:03]:
+  Hi, 庆东
+  今天你泳杰找第三方测的T815C
+  \\109.131.14.16\sw\Personal\yongjie.lv\T815C
+  LOG在这里
+??曾庆东(先任[E4]/????)?? [19:04]:
+  OK
+  
+  
+  
+********如何设置高通silent log的抓log配置********  
+  方法如下：
+
+1. 先adb pull /etc/Diag.cfg上来。
+
+  1.1 手机设置成adb 端口
+
+  1.2  打开adb tool ,在adb 命令窗输入adb devices，查看有没有设备，如果有的话，会给一个device 对应的list 
+
+  1.2  输入命令adb remount  进行挂载，这样电脑可以对手机进行读写
+
+  1.3 adb pull /etc/Diag.cf  d:\  把原来的cfg弄出来进行编辑
+
+2. QXDM的F12窗口里
+  2.1 右键选config，弹出窗口
+  2.2 左下角的SD 那里有个下拉菜单
+  2.3 选load diag masks for stream1(试过就这个可以） 把上面弄出的Diag.cfg  load 进来进行编辑
+  2.4 然后在这个窗口里，把对应的message等mask勾好
+  2.5 然后再在这个下拉菜单里，save出来一个cfg文件 还是stream1吧
+
+3.重新push进手机
+
+   adb push d:\Diag.cfg etc/Diag.cfg
+
+ 
+
+谢谢。
+----N9100 HK LL
+	svn :
+		cp1的1965084
+		CP2的1965086
+		
+	svn05:
+		dev cp1:1983370 
+		    cp2:1979439
+
+KWANGHWI SIM 
+
+N9100 HK LL 5.1 OS升级项目，由于之前5.0项目是在CP_PROD上开发，现在5.1转到CP_MAIN上，CP需要重新setup，现setup工作已完成，请检查CP相关模块的基本功能，谢谢！
+
+    setup信息如下：
+
+    CP_DEV CL:1985268
+    CP_MAIN CL:1985295
+
+----enable CP silent log
+	?任计羽(研究员[E3]/????)?? [11:06]:
+	  1. Enter the reocvery mode.
+		Power off -> Press Volume Up+Home+Power Key at the same time.
+	2. Select "Enable cp logging" in the recovery mode menu.
+
+	  3.按开机键，开机
+	   
+	  中文版：
+	1.进入recovery mode 方法：
+		关机
+		同时按Volume Up+Home +Power 键进入 recovery mode
+	  2.使用Volume Up或Down进行上下选择，选择“Enable cp logging”
+	  3.按开机键
+	  4.其他的抓log流程不变。
+
+//T815C RAI reading problem
+	??曾庆东(先任[E4]/????)?? [10:34]:
+	  hi,郭凯
+	??郭凯(职员Ⅲ[G]/????)?? [10:35]:
+	  你好
+	??曾庆东(先任[E4]/????)?? [10:36]:
+	  关于问题 P150717-04675  the data connection long time when off "Airplane mode"  
+	  你的问题点是   开关飞行模式后 数据连接起来的时间很长?
+	??郭凯(职员Ⅲ[G]/????)?? [10:38]:
+	  是ide
+	  的
+	??曾庆东(先任[E4]/????)?? [10:39]:
+	  从log看，是手机发起PS 注册时，网络长时间没有回复所致。
+	请问这个问题每次开关飞行模式都会出现吗？
+	??郭凯(职员Ⅲ[G]/????)?? [10:39]:
+	  是 每次都这样
+	??曾庆东(先任[E4]/????)?? [10:41]:
+	  其运营商的它卡呢？
+	??郭凯(职员Ⅲ[G]/????)?? [10:43]:
+	  同样的一张卡在G9200里 都是正常的注册时间
+	??曾庆东(先任[E4]/????)?? [10:44]:
+	  也是设置成3G吗？
+	??郭凯(职员Ⅲ[G]/????)?? [10:44]:
+	  就是关闭飞行模式之后 注册到网络上的时间 
+	??曾庆东(先任[E4]/????)?? [10:45]:
+	  那是一张CMCC 的3G卡，是吗？
+	??郭凯(职员Ⅲ[G]/????)?? [10:45]:
+	  恩
+	  你可以看一下之前N9208 里面有一个类似的问题
+	  我同事之前提的T715C 也是同样的问题 已经解决了
+	??曾庆东(先任[E4]/????)?? [10:48]:
+	  请用G9200 和 T815C 在相同环境下测试，并抓CP log，多做几次，我们好做对比分析。
+	  能给一下问题单号吗？
+	??郭凯(职员Ⅲ[G]/????)?? [10:50]:
+	  P150717-00807 
+ 
+//compile link-- Prod PBS
+ https://cp.qb.sec.samsung.net/overview/9641
+ 
+//T815C SVN update
+CL:41101   01 to 02 
+CL:56637   02 to 03
+ 
+
+//shannon333 分支 
+J7				//PROD/Strawberry/SMP1100/SMP11.018/                 
+SM-T815C_CHN_CHN		//PROD/Strawberry/SMP1100/SMP11.019/   	
+SM-T815C_CHN_ZH			//PROD/Strawberry/SMP1100/SMP11.019   
+SM-A800YZ_SEA_ZT		//PROD/Strawberry/SMP1100/SMP11.0120  
+SM-A800IZ_SEA_ZT		//PROD/Strawberry/SMP1100/SMP11.032
+
+MPSS.DI.3.0.c5-00418-M9625TAARANSZM-1.23934.2.24370.1   
+
+P141117-03434 LU?? ??? ??  SM-G7200_CHN_CHC  Galaxy-Grand-Max CN CHINA   
+P150122-02235 999-99 PLMN? ????? ? ???? ??  SM-G9250_CHN_CHC  Zero CN CHINA   
+
+
+
+
+??曾庆东(先任[E4]/????)?? [17:22]:
+  Dear Mr Kim
+??Sihyun Kim(S5/Senior Engineer/Samsung Electronics)?? [17:37]:
+  Hi.. 
+??曾庆东(先任[E4]/????)?? [17:37]:
+   Would you help to merge CL:2003489  PORT:1710    from DEV to Main.
+??Sihyun Kim(S5/Senior Engineer/Samsung Electronics)?? [17:39]:
+  Is there anyone who has the auth for it?
+  Anyway, I just integrate it with CL#2003516
+  Please add member for it.... 
+  Please ask to add member to 'younseob.seo'
+??曾庆东(先任[E4]/????)?? [17:41]:
+  sorry, I'm not clear what you mean.
+??Sihyun Kim(S5/Senior Engineer/Samsung Electronics)?? [17:42]:
+  Is there anyone who has an authority fot integration
+  I mean at your team...
+  If not
+  you may ask to add someone for integration by request to younseob.seo 
+??曾庆东(先任[E4]/????)?? [17:43]:
+  No, we can not apppy the MAIN branch right.
+  I will try to contach  with  younseob.seo 
+
+??Sihyun Kim(S5/Senior Engineer/Samsung Electronics)?? [17:44]:
+  OK..
+??曾庆东(先任[E4]/????)?? [17:44]:
+  Thank you.
+  
+  
+CALL DROP TF
+类型 2 (4件) 2G Handover 后 Frequency Offset 达到非正常的 1Khz 以上 (S.LSI 全model)
+在Handover前Frequency添加确认变更范围有效性的routine(SMPNBE11000817) 
+----CL86502
+  
+类型 4 (1件) Hard handover 失败后进行 rollback时 以弱电场Issue导致 rollback 失败(S.LSI 全model)
+ 修正为3G to 2G Hard handover失败后rollback 时在现有 Active Set 中选择Best Cell来进行 (S.LSI全model, SMPJ711001223)  
+----CL74143
+  
+ 型 3 (1件) GSM中 Call disconnect后 虽然以3G redirection, 但是无法在3G camping(S.LSI 全model)
+ 修正为对redirected frequency的Cell Search 执行结果 Suitable Cell 被发现（这句话有语法错误，如无法看懂建议与发件人重新进行沟通）. SMZE10001217)
+此问题虽然不是对 Call drop 有直接影响 
+  ----CL89055
+但是在 2G call之后会发生无法Camp 3G的问题因此修正.  
+  
+******A8 TW VE*******
+支持接口人：sg1211.yeo@samsung.com.
+
+E:\Project\A8000 VE TW\Problems\search NW issue
+
+
+??曾庆东(先任[E4]/????)?? [13:51]:
+  Dear Mr KIM
+??HYUNDONG KIM(S5/Senior Engineer/Samsung Electronics)?? [13:53]:
+  Hello, Mr.Zeng.
+??曾庆东(先任[E4]/????)?? [13:53]:
+  Are you responsible for SM-G7200_CHN_CHC ?
+??HYUNDONG KIM(S5/Senior Engineer/Samsung Electronics)?? [13:53]:
+  yes.
+  do you have some issues ?
+??曾庆东(先任[E4]/????)?? [13:54]:
+  there is a MR problem about it   P151029-04882 ,
+I submit a case to QC, they need  below info to check further:
+1. Modem build ID
+2. Project name
+   Customer Project
+??HYUNDONG KIM(S5/Senior Engineer/Samsung Electronics)?? [13:56]:
+  what mean Project name ?
+  Galaxy-Grand-Max or not ?
+??曾庆东(先任[E4]/????)?? [13:59]:
+  I think it means what we called the project at QC side.
+
+??HYUNDONG KIM(S5/Senior Engineer/Samsung Electronics)?? [13:59]:
+  Galaxy-Grand-Max.
+??曾庆东(先任[E4]/????)?? [14:00]:
+  and the Modem build ID?  CP branch?
+??HYUNDONG KIM(S5/Senior Engineer/Samsung Electronics)?? [14:01]:
+  ?????. ??? ???.
+  G7200 CP? modem build id? ?? ?????
+  https://cp.qb.sec.samsung.net/build/3689089
+  ??? ?? cp ?????.....
+??HYUNDONG KIM(S5/Senior Engineer/Samsung Electronics)?? [14:05]:
+  about.html? ?? MSM8939.LA.2.0.1
+  ?? build id ????
+??曾庆东(先任[E4]/????)?? [14:24]:
+  the problem SW version is G7200ZCU1AOH2  , and we need the corresponding CP build ID like:
+ MPSS.DPM.2.0.c5-00008-M8936FAAAANUZM-1.9416.2   
+??HYUNDONG KIM(S5/Senior Engineer/Samsung Electronics)?? [14:26]:
+  MPSS.DPM.2.0.c5-00056-M8936FAAAANUZM-2
+  
+  
+ /////////////////J7 CMCC///////////////////////
+ 
+CP
+TEMPLATE(1750)
+TEMPLATE_D4_SMP1100_COMMON_MAIN
+RBS(Hudson/QB)
+https://cp.qb.sec.samsung.net/overview/11165
+PBS(QB)
+https://android.qb.sec.samsung.net/overview/7448
+ 
+*******************Branch mapping*******************
+  N9005LL_CP: 1713 //CP_DEV/Qualcomm/MSM8974_LA1.3_MR
+  SM-T525(Picasso):1713: //CP_PROD/VIENNALTE/SM-T525_CHN_ZH
+  
+  
+  4.2.2.6 Evaluation of cell re-selection criteria
+The UE shall evaluate the cell re-selection criteria defined in TS 25.304 for the cells, which have new measurement
+results available, at least every DRX cycle.
+UE shall perform cell reselection immediately after the reselection criteria have been met (e.g. the UE has found a
+higher ranked suitable cell or the UE has found a suitable cell on a higher priority RAT), unless less than 1 second has
+elapsed from the moment the UE started camping on the serving cell. The ranking of the cells shall be made according
+to the cell reselection criteria specified in TS25.304.
+
+            interRATTreselectionScalingFactor 4
+
+			
+			
+Lenovo VIBE Z2 Pro   iphone6s/6s plus
+OPPO R7t
+
+
+E:\学习\KHQ surpport
+
+
+
+IPv4 address: 109.131.18.241
+IPv4 subnet mask: 255.0.0.0
+IPv4 default gateway: 109.131.18.1
+IPv4 DNS server: 203.241.132.34
+
+
+A7_Max 1dB add.QCN
+A5_Max 0.7dB add.QCN
+
+a8000 #40   given CP
+
+
+1 16 20 29 32
+14 17 21 23 26
+5 20 23 29 32
+5 16 20 25 29
+
+
+2 3 5 25 32
+1 16 20 29 32
+14 17 21 23 26
+5 20 23 29 32
+
+A7100_#1_1130_night.zip
+A7100_#2 1130_night.zip
+A8000_#40_1130_night.zip
+A8000_#43_1130_night.zip
+G9008V_#1_1130_night.zip
+G9008V_#2_1130_nightl.zip
+
+
+//A9 call A9  MT side mute
+---MO log
+	MO_A9000#71_callmute_A9toA9__MTmute_1918.isf
+---MT log
+	12-01.19-25.isf	
+	
+
+//S5 call A9  MO side mute
+---MO log
+	Mo_G9008#2_callmute_S5toA9_S5MOmute_1722.isf	
+---MT log
+	12-01.19-25.isf	
+	
+	
+	A7100_#1_1202.zip
+	A7100_#2_1202.zip
+	A8000_#1_1202.zip
+	A8000_#2_1202.zip
+	G9008V_#1_1202.zip
+	G9008V_#2_1202.zip
+
+super password--->password "5903365113726913"
+
+
+Dear QC
+    There is test about N9005 W2L reslection in Macau.But sometimes UE reselect back to LTE very slow.
+Please check attached log, and answer below question based on the log.
+
+1.We see that UE is try to cell reselect to cell_id 441,But don’t know why selected cell_id 147 (not cell_id 441) for acquisition. Finally acquisition fail and reached maximum acquisition attempt. 
+///////////////////////////////////At  log : 10-30.10-31.dlf
+MSG        [03001/02] WCDMA L1/High                     02:27:49.163               srchcr.c  12777  ABS_PRIO: CEL RESEL IND for LTE Freq: 1275, Cell_id: 441
+MSG        [09501/02/09]LTE RRC/High/CSP                  02:27:49.225          lte_rrc_csp.c  14919  CSP: Acquistion Cnf is failure
+
+2.We see that UE is try to cell reselect to cell_id 242 but don’t know why acquisition fail and result in “no suitable cell to reselect”
+//////////////////at log:11-25.16-32.dlf
+MSG        [03001/02] WCDMA L1/High                     08:31:23.607               srchcr.c  12784  ABS_PRIO: CEL RESEL IND for LTE Freq: 1275, Cell_id: 242
+MSG        [03001/02] WCDMA L1/High                     08:31:24.861               srchcr.c  13087  Did not find suitable ncell to reselect
+MSG        [03001/02] WCDMA L1/High                     08:31:24.861               srchcr.c  13400  ABS_PRIO: No Suitable cell to reselect.
+
+Thanks.
+
+
+The card info is as below:
+
+
+
+ 
+ 
+ Phone number
+ 
+  IMSI
+ 
+
+ 1
+ 
+13922706201
+ 
+460002497259427
+ 
+
+ 2
+ 
+13924130878
+ 
+460004104218038
+ 
+
+ 3
+ 
+13922402374
+ 
+460000005893842
+ 
+
+ 4
+ 
+13902275607
+ 
+460002508512584
+ 
+
+ 5
+ 
+13922702621
+ 
+460002497313074
+ 
+
+ 6
+ 
+13922112634
+ 
+460002706963009
+ 
+
+ 7
+ 
+13922102945
+ 
+460002706917759
+ 
+
+ 8
+ 
+13922435081
+ 
+460000005650744
+ 
+
+9
+ 
+13922423679
+ 
+460000005893843
+ 
+
+10
+ 
+13902274697
+ 
+460002508429491
+ 
+1.负责项目问题
+项目名称    解决问题数   参数问题数
+ 
+差支持韩国支持T815C 测试 2015.06.03-2015.07.04
+支持HKQ测试1个月，涉及A5,A7,A9
+Seminar 报告《Introduction to ESM》
+Call mute 问题分析总结共享
+
+20:05:48.865	20:05:48.365639	MM_RAT	TraceFlow	ds_mm_Tdscdma_Cal_Done is 0	ds_mm_Main.c (../../../HEDGE/NASL3/DS_MM/Code/Src)	8395	
+
+
+/////////////A7108 CP build link
+https://cp.qb.sec.samsung.net/overview/11194
+
+/////////////J7108 CP build link
+https://cp.qb.sec.samsung.net/build/4431770
+
+
+
+------GCF 实验室------
+SGS
+7Layer
+CTTL
+***@sgs.com
+***@7Layers.com
+*@cttl-t.com
+
+KOREA TESTING LA
+
+@ KWANGHWI SIM
+
+
+P160112-04102  [SMC][NS-IOT] 8.2.3.2B应该就是 NS-IOT_0076    10.2.3.2B UE application layer Bidirectional performance for Transmit diversity Mode (TM2) , UDP ----pass
+////////////J1x HK
+    LSI contact person 
+		http://mosaic.sec.samsung.net/club/club.menu.bbs.read.screen?p_club_id=1885&p_menu_id=559&p_group_id=557&message_id=4571971
+
+    SVN update: 01->02  CL:201791
+		
+FTA 送测版本		
+https://android.qb.sec.samsung.net/build/8433838
+
+
+中航嘉信  帐号：qingdong.z@samsung.com 密码：Password_120697
