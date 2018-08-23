@@ -67,6 +67,10 @@
 	MSG     [05012/02]DS AT Command Parser/High          00:03:40.076    dsatclient_ex.c  00447  cmd_data->data.external_client.send_at_cmd.at_cmd_buff[4] = 0x6d m
 	MSG     [05012/02]DS AT Command Parser/High          00:03:40.076    dsatclient_ex.c  00447  cmd_data->data.external_client.send_at_cmd.at_cmd_buff[5] = 0x65 e
 	MSG     [05012/02]DS AT Command Parser/High          00:03:40.076    dsatclient_ex.c  00447  cmd_data->data.external_client.send_at_cmd.at_cmd_buff[6] = 0x69 i
+//AT command and arguements
+	[5012/0002] | MSG | 1980/01/06 00:28:43.695 | DS AT Command Parser/High | [          dsatcmdp.c   1136] ATCoP Operating mode = 0, Present mode = 3, Qcsimapp = 0 | 
+	[5012/0002] | MSG | 1980/01/06 00:28:43.695 | DS AT Command Parser/High | [          dsatcmdp.c   1225] Command Name +cgatt Op = 0xb  | 
+	[5012/0002] | MSG | 1980/01/06 00:28:43.695 | DS AT Command Parser/High | [          dsatcmdp.c   1229] arg[0] = 1 | 
 
 
 
@@ -185,8 +189,8 @@ Call Manager/High         00:06:52.592           cmdiag.c  00207  =CM= Received 
 	MSG        [04001/02] GSM L1/High                       08:34:16.585           l1_sc_main.c  00931  Starting SCE (3)//Dedicated TCH
 
 //GSM Random access fail
-	[4009/0002] | MSG | 1980/01/06 00:00:57.677 | GSM GPRS GRR/High | [ rr_conn_establish.c    897] gs1:Abort IA proc.(cause=2, fail=0, back to idle=0) |  | 0x7900040000743db4000000008103a90f0400000001000000020000000000000000000000677325643a41626f72742049412070726f632e2863617573653d25642c206661696c3d25642c206261636b20746f2069646c653d2564290072725f636f6e6e5f65737461626c6973682e6300 |  | 
-	[4009/0002] | MSG | 1980/01/06 00:00:57.677 | GSM GPRS GRR/High | [ rr_conn_establish.c    929] gs1:Conn failed and not camped |  | 0x7900010000743db400000000a103a90f0400000001000000677325643a436f6e6e206661696c656420616e64206e6f742063616d7065640072725f636f6e6e5f65737461626c6973682e6300 |  | 
+	[4009/0002] | MSG | 1980/01/06 00:00:57.677 | GSM GPRS GRR/High | [ rr_conn_establish.c    897] gs1:Abort IA proc.(cause=2, fail=0, back to idle=0) 
+	[4009/0002] | MSG | 1980/01/06 00:00:57.677 | GSM GPRS GRR/High | [ rr_conn_establish.c    929] gs1:Conn failed and not camped 
 
 ----GSM paging
 	MSG        [04001/02] GSM L1/High                       07:50:10.119              l1_idle.c  04440  gs2:PCH decoded (Arfcn=724 PgBlk=1 fn=1408430)
@@ -319,13 +323,13 @@ Call Manager/High         00:06:52.592           cmdiag.c  00207  =CM= Received 
 	
 	
 //GSM Radio link failure	
-	[4009/0002] | MSG | 1980/01/06 00:00:18.199 | [      rr_procedure.c    357] gs1:L2 Radio Link Failure due to error 17 | GSM GPRS GRR/High |  | 0x790002000034df38000000006501a90f040000000100000011000000677325643a4c3220526164696f204c696e6b204661696c7572652064756520746f206572726f722025640072725f70726f6365647572652e6300 |  | 
-	[4001/0002] | MSG | 1980/01/06 00:00:18.199 | [gl1_arbitrator_cxm.c    502] gs1:GARB -> CXM : MCS_CXM_COEX_POWER_IND UL=309dBm10 DL=-1002dBm10 linksets=8 | GSM L1/High |  | 0x790004000034df3800000000f601a10f04000000010000003501000016fcffff08000000677325643a47415242202d3e2043584d203a204d43535f43584d5f434f45585f504f5745525f494e4420554c3d256464426d313020444c3d256464426d3130206c696e6b736574733d256400676c315f61726269747261746f725f63786d2e6300 |  | 
-	[4613/0001] | MSG | 1980/01/06 00:00:18.199 | [       lmtsmgr_cmd.c   1198] Received power update for tech 2 num entries 8 | CXM/Medium |  | 0x790002000034df3800000000ae040512020000000200000008000000526563656976656420706f7765722075706461746520666f722074656368202564206e756d20656e7472696573202564006c6d74736d67725f636d642e6300 |  | 
-	[4009/0002] | MSG | 1980/01/06 00:00:18.199 | [        rr_control.c  16333] gs1:Radio Link Failure | GSM GPRS GRR/High |  | 0x790001000034df3800000000cd3fa90f0400000001000000677325643a526164696f204c696e6b204661696c7572650072725f636f6e74726f6c2e6300 |  | 
-	[4001/0002] | MSG | 1980/01/06 00:00:18.199 | [             vtmrs.c    358] gs1:VSTMR execute FN:1368033 end_qs:451 | GSM L1/High |  | 0x790003000034df38000000006601a10f0400000001000000e1df1400c3010000677325643a5653544d52206578656375746520464e3a256420656e645f71733a25640076746d72732e6300 |  | 
-	[0032/0002] | MSG | 1980/01/06 00:00:18.199 | [tcxomgr_rot_client_handling.c    605] tcxomgr_get_client_rgs: Temp: 23523 Rot: 909 VCO Type: 13 Uncertainty: 1 system: 4 AS_ID: 0 | TCXO Manager/High |  | 0x790006000034df38000000005d02200004000000e35b00008d0300000d0000000100000004000000000000007463786f6d67725f6765745f636c69656e745f7267733a2054656d703a20256420526f743a2025642056434f20547970653a20256420556e6365727461696e74793a2025642073797374656d3a2025642041535f49443a202564007463786f6d67725f726f745f636c69656e745f68616e646c696e672e6300 |  | 
-	[4009/0002] | MSG | 1980/01/06 00:00:18.199 | [   rr_conn_release.c   1722] gs1:Release Link (RLF) | GSM GPRS GRR/High |  | 0x790001000034df3800000000ba06a90f0400000001000000677325643a52656c65617365204c696e6b2028524c46290072725f636f6e6e5f72656c656173652e6300 |  | 
+	[4009/0002] | MSG | 1980/01/06 00:00:18.199 | [      rr_procedure.c    357] gs1:L2 Radio Link Failure due to error 17 | GSM GPRS GRR/High 
+	[4001/0002] | MSG | 1980/01/06 00:00:18.199 | [gl1_arbitrator_cxm.c    502] gs1:GARB -> CXM : MCS_CXM_COEX_POWER_IND UL=309dBm10 DL=-1002dBm10 linksets=8 | GSM L1/High
+	[4613/0001] | MSG | 1980/01/06 00:00:18.199 | [       lmtsmgr_cmd.c   1198] Received power update for tech 2 num entries 8 | CXM/Medium 
+	[4009/0002] | MSG | 1980/01/06 00:00:18.199 | [        rr_control.c  16333] gs1:Radio Link Failure | GSM GPRS GRR/High 
+	[4001/0002] | MSG | 1980/01/06 00:00:18.199 | [             vtmrs.c    358] gs1:VSTMR execute FN:1368033 end_qs:451 | GSM L1/High 
+	[0032/0002] | MSG | 1980/01/06 00:00:18.199 | [tcxomgr_rot_client_handling.c    605] tcxomgr_get_client_rgs: Temp: 23523 Rot: 909 VCO Type: 13 Uncertainty: 1 system: 4 AS_ID: 0 | TCXO Manager/High 
+	[4009/0002] | MSG | 1980/01/06 00:00:18.199 | [   rr_conn_release.c   1722] gs1:Release Link (RLF) | GSM GPRS GRR/High 
 		
 
 **********************GSM DATA Call***************************
@@ -363,40 +367,71 @@ MSG        [04001/01] GSM L1/Medium                     01:10:10.595     gpl1_gp
 MSG        [04001/01] GSM L1/Medium                     01:10:11.455     gpl1_gprs_transfer_if.c  07802  gs1:PL1: RELEASE UL TBF
 
 //UE decodes PCH for immediate assignment by matching TLLI(temporary logic link identifier)
-MSG        [04001/02] GSM L1/High                       01:09:14.987     l1_idle.c  04776  gs2:PCH decoded (Arfcn=675 PgBlk=1 fn=2160337) for GAS ID 0x01
-MSG        [04009/02] GSM GPRS GRR/High                 01:10:27.725     rr_gprs_conn_establish.c  01349  gs1:Matched IA using TLLI
-MSG        [04009/02] GSM GPRS GRR/High                 01:10:27.725     rr_gprs_conn_establish.c  01357  gs1:Immed. Assign is for mobile
-MSG        [04009/02] GSM GPRS GRR/High                 01:10:27.725     rr_gprs_conn_establish.c  00798  gs1:Rcvd single IA msg
+	MSG        [04001/02] GSM L1/High                       01:09:14.987     l1_idle.c  04776  gs2:PCH decoded (Arfcn=675 PgBlk=1 fn=2160337) for GAS ID 0x01
+	MSG        [04009/02] GSM GPRS GRR/High                 01:10:27.725     rr_gprs_conn_establish.c  01349  gs1:Matched IA using TLLI
+	MSG        [04009/02] GSM GPRS GRR/High                 01:10:27.725     rr_gprs_conn_establish.c  01357  gs1:Immed. Assign is for mobile
+	MSG        [04009/02] GSM GPRS GRR/High                 01:10:27.725     rr_gprs_conn_establish.c  00798  gs1:Rcvd single IA msg
 
 //receives the downlink tbf establishment from the network
-MSG        [04001/01] GSM L1/Medium                     01:10:11.025     gpl1_gprs_shared_transfer.c  01932  gs1: RLC ACK mode
-MSG        [04001/01] GSM L1/Medium                     01:11:26.190     gpl1_gprs_transfer.c  00592  gs1:PL1: PH_CONNECT_IND [1] [802269]
+	MSG        [04001/01] GSM L1/Medium                     01:10:11.025     gpl1_gprs_shared_transfer.c  01932  gs1: RLC ACK mode
+	MSG        [04001/01] GSM L1/Medium                     01:11:26.190     gpl1_gprs_transfer.c  00592  gs1:PL1: PH_CONNECT_IND [1] [802269]
 
 //GMM sends PDP accept to SM
-MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           01:10:11.131             gmm_main.c  03174  ds2=MM= Send GMMSM_UNITDATA_IND
-MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           01:10:11.132                smgmm.c  02185  ds2Received ACTIVATE_PDP_ACCEPT
+	MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           01:10:11.131             gmm_main.c  03174  ds2=MM= Send GMMSM_UNITDATA_IND
+	MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           01:10:11.132                smgmm.c  02185  ds2Received ACTIVATE_PDP_ACCEPT
+
+//LLC confirm,  LLC RAB has to be established before sending before sending SMREG_PDP_ACTIVATE_CNF
+	[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [           smsndcp.c    304] Sent GSNSM_ACTIVATE_IND, PDP : 5 | 
+	[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [             smgmm.c   2874] PDP 0 ACTIVATED, Waiting LLC Confirm  | 
+	[3011/0001] | MSG | 2017/02/21 09:01:33.799 | NAS SM/Medium | [            smtask.c   1136]  Putting CMD in sm_cmd_q  | 
+	[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [           smsndcp.c    155] Received command from SNDCP | 
+	[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [           smsndcp.c    447] Received LLC Activate confirm | 
+
+//PDP activate confirmed
+	[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [              smcm.c   2584]  Sending SMREG_PDP_ACTIVATE_CNF to CM TI: 0, NSAPI: 5 | 
+
+
 //data call connected
-MSG        [05005/02] DS 3G Manager/High                01:10:11.133             ds3gcmif.c  05268  Rx'ed CM_CALL_CONNECTED_CMD
+	MSG        [05005/02] DS 3G Manager/High                01:10:11.133             ds3gcmif.c  05268  Rx'ed CM_CALL_CONNECTED_CMD
+
 //data call end
-MSG        [05005/02] DS 3G Manager/High                02:57:42.490             ds3gcmif.c  02869  Data call ended for call_id 1
+	MSG        [05005/02] DS 3G Manager/High                02:57:42.490             ds3gcmif.c  02869  Data call ended for call_id 1
 
 
-MSG        [04001/01] GSM L1/Medium                     01:58:15.595       gpl1_gprs_rrbp.c  00936  RRBP:slamTn=0,OTA_Tn=7,FN=1106151
+	MSG        [04001/01] GSM L1/Medium                     01:58:15.595       gpl1_gprs_rrbp.c  00936  RRBP:slamTn=0,OTA_Tn=7,FN=1106151
+
+	MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_umts_pdn_context.c  00793  Setting up UMTS PDP IP call
+	MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  15272  Setting up Type PDP-IP stack
+	MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  15286  PDP type IPV4 is selected in setupPdpIP
+	MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  14437  Setting up Type IP V4 PS Iface
+	MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  14463  PDP address for type IP call :ac03084
+
+
+//RLC sequence is 44, 29 octets is to be sent
+	[4008/0001] | MSG | 1980/01/06 00:01:51.081 | GSM GPRS GRLC/Medium | [           grlcsgm.c    665] gs1:GRLU SGM p=44 l=29 rem=0 | 
+
+
+//GSM grlc data to be sent，octs: PUD length 
+	[4008/0001] | MSG | 1980/01/06 00:01:10.102 | GSM GPRS GRLC/Medium | [        grlculproc.c   5748] gs1:GRLU tbf_est rlc_mode=0 ptc=9 prio=2 | 
+	[4008/0001] | MSG | 1980/01/06 00:01:10.102 | GSM GPRS GRLC/Medium | [        grlculproc.c   5755] gs1:GRLU         cause=2 phase=100 o/c=0 | 
+	[4008/0001] | MSG | 1980/01/06 00:01:10.102 | GSM GPRS GRLC/Medium | [        grlculproc.c   5762] gs1:GRLU         octs=29 blks=2 psn=36 | 
+	[4006/0001] | MSG | 1980/01/06 00:01:51.081 | GSM GPRS GMAC/Medium | [      gmactransfer.c   1568] gs1:MAC Rcvd L1_MAC_1ST_DATA_BLOCK_SENT | 
+ 
+
+//No ACK from network	
+	[4008/0001] | MSG | 1980/01/06 00:01:17.201 | GSM GPRS GRLC/Medium | [            grlcul.c   2484] gs1:GRLU A Expy T3182 1 NoAcknack | 
+	[4006/0001] | MSG | 1980/01/06 00:01:56.344 | GSM GPRS GMAC/Medium | [      gmactransfer.c   1647] gs1:MAC Rcvd RM_UL_RELEASE_IND |
 
 
 
 
-MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_umts_pdn_context.c  00793  Setting up UMTS PDP IP call
-MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  15272  Setting up Type PDP-IP stack
-MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  15286  PDP type IPV4 is selected in setupPdpIP
-MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  14437  Setting up Type IP V4 PS Iface
-MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  14463  PDP address for type IP call :ac03084
+
 
 
 **********************GSM EVENT***************************
 ----handover event
-EVENT      [00450]    EVENT_GSM_MESSAGE_RECEIVED        07:28:41.486     HANDOVER_COMMAND
-EVENT      [00430]    EVENT_GSM_HANDOVER_START          07:28:41.486     HANDOVER_TYPE: GSM to GSM BCCH_ARFCN: 37405, BSIC: 0x27 <4,7> HandoverRef:99
+	EVENT      [00450]    EVENT_GSM_MESSAGE_RECEIVED        07:28:41.486     HANDOVER_COMMAND
+	EVENT      [00430]    EVENT_GSM_HANDOVER_START          07:28:41.486     HANDOVER_TYPE: GSM to GSM BCCH_ARFCN: 37405, BSIC: 0x27 <4,7> HandoverRef:99
 
 
 
@@ -404,7 +439,7 @@ EVENT      [00430]    EVENT_GSM_HANDOVER_START          07:28:41.486     HANDOVE
 **********************GSM L1***************************
 ----GSM voice call L1
 //received vocoder codec mode is not in active codec sets 
-MSG        [04001/03] GSM L1/Error                      02:13:14.523           l1_tch_amr.c  05658  Rcvd mode 7 from vocoder not in ACS
+	MSG        [04001/03] GSM L1/Error                      02:13:14.523           l1_tch_amr.c  05658  Rcvd mode 7 from vocoder not in ACS
 
 
 
@@ -1540,6 +1575,27 @@ MSG [03005/02] WCDMA RRC/High 01:55:48.478 rrclcm.c 01943 Rcvd MUI: 250 for RB i
 	MSG        [05000/01] Data Services/Medium              01:44:44.075         ps_phys_link.c  00827  ps_phys_link_enable_flow(): client 0x100000 enabling flow on phys link 0x0C7349A0 -> mask 0x0			
 	MSG        [05000/01] Data Services/Medium              01:44:44.075              ps_flow.c  01057  ps_flow_activate_ind(): FLOW ACTIVATE IND 0x0BAC0FC8, state 0x1, info code 0
 
+//EPS bearer ID map to bearer context(phys link ID)
+	[5025/0002] | MSG | 2017/09/21 07:47:07.548 | DS 3GPP/High | [ds_3gpp_bearer_flow_manager.c    417] Associated valid bearer flow manager to bearer: 0x845f0518 | 
+	[5026/0002] | MSG | 2018/08/09 04:28:09.681 | DS LTE/High | [ds_eps_bearer_context.c   7228] Reset dl count for bearer context 0x 845f0518 bearer_new_byte_count for bear_id 6  is 0 
+
+	[5025/0003] | MSG | 2017/09/21 07:47:07.548 | DS 3GPP/Error | [ds_3gpp_bearer_flow_manager.c   3018] Bearer flow manager is NULL | 
+	[5025/0002] | MSG | 2017/09/21 07:47:07.548 | DS 3GPP/High | [ds_3gpp_pdn_context.c  12280] Allocated Flow Manager and bearer Flow Manager | 
+	[5025/0002] | MSG | 2017/09/21 07:47:07.548 | DS 3GPP/High | [ds_3gpp_flow_manager.c  12635] binding flow to phys link for V6 IFACE [0x8004:1]  | 
+	[5000/0001] | MSG | 2017/09/21 07:47:46.204 | Data Services/Medium | [ps_phys_linki_event.c   1042] ps_phys_link_up_ind_ex(): PHYS LINK UP IND 0x845F0518, state 16 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:46.204 | Data Services/Medium | [      ps_phys_link.c    812] ps_phys_link_enable_flow(): client 0x100000 enabling flow on phys link 0x845F0518 -> mask 0x0 | 
+	[5000/0001] | MSG | 2017/09/21 07:49:06.293 | Data Services/Medium | [ps_phys_linki_event.c    969] ps_phys_link_down_ind_ex(): PHYS LINK DOWN IND 0x845F0518, state 4 | 
+
+//LTE data transfer on phys link，UID 0x845F0518 maps to EPS bearer id 6,keyword phys link
+	[5000/0001] | MSG | 2017/09/21 07:47:08.195 | Data Services/Medium | [      ps_phys_link.c    812] ps_phys_link_enable_flow(): client 0x100000 enabling flow on phys link 0x845F0518 -> mask 0x0 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:08.195 | Data Services/Medium | [ ps_inet_event_mgr.c    326] Rcvd evt 5 on phys link 0x845F0518 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:08.195 | Data Services/Medium | [            ps_dpm.c   3667] ps_dpmi_um_reg_bearer_hdlr(): rat 3 v4 Um iface 0x00000000 v6 Um iface 0x845F2C38 phys link 0x845F0518 l2_to_ps WM 0x845F06F0 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:08.761 | Data Services/Medium | [            ps_dpm.c    553] ps_dpmi_get_phys_link_from_uid(): Found phys link entry 0xE1764580 for UID 0x845F0518 in um_info 0xE1788A80 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:10.419 | Data Services/Medium | [            ps_dpm.c    553] ps_dpmi_get_phys_link_from_uid(): Found phys link entry 0xE1764580 for UID 0x845F0518 in um_info 0xE1788A80 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:10.935 | Data Services/Medium | [            ps_dpm.c    553] ps_dpmi_get_phys_link_from_uid(): Found phys link entry 0xE1764580 for UID 0x845F0518 in um_info 0xE1788A80 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:10.991 | Data Services/Medium | [            ps_dpm.c    553] ps_dpmi_get_phys_link_from_uid(): Found phys link entry 0xE1764580 for UID 0x845F0518 in um_info 0xE1788A80 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:11.217 | Data Services/Medium | [            ps_dpm.c    553] ps_dpmi_get_phys_link_from_uid(): Found phys link entry 0xE1764580 for UID 0x845F0518 in um_info 0xE1788A80 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:11.575 | Data Services/Medium | [            ps_dpm.c    553] ps_dpmi_get_phys_link_from_uid(): Found phys link entry 0xE1764580 for UID 0x845F0518 in um_info 0xE1788A80 | 
 
 
 	
@@ -2348,9 +2404,11 @@ MSG        [00000/03] Legacy/Error                  09:21:15.410     PlatformAbs
 
 	  
 //PS data call(call_type:2->PS data call;0->voice call)
-MSG        [05005/02] DS 3G Manager/High                11:23:03.245             ds3gcmif.c  01228  ds3gi_cm_call_event_cb: call_event:37 call_id:4, call_type:2
-MSG        [00005/01] Call Manager/Medium               11:23:03.245                cmlog.c  02571  =CM= RAB reestab for call 4
-MSG        [05025/02] DS 3GPP/High                      11:23:03.245     ds_3gpp_flow_manager.c  08903  Create Flow Context for PDN:211111876, bearer:211113784
+	MSG        [05005/02] DS 3G Manager/High                11:23:03.245             ds3gcmif.c  01228  ds3gi_cm_call_event_cb: call_event:37 call_id:4, call_type:2
+	MSG        [00005/01] Call Manager/Medium               11:23:03.245                cmlog.c  02571  =CM= RAB reestab for call 4
+	MSG        [05025/02] DS 3GPP/High                      11:23:03.245     ds_3gpp_flow_manager.c  08903  Create Flow Context for PDN:211111876, bearer:211113784
+	[5025/0002] | MSG | 2017/09/21 07:47:07.442 | DS 3GPP/High | [ds_eps_pdn_context.c   4184] Update APN table: ip_support:3 for pdn 0x851600f0 apn:cmnet | 
+	[5025/0002] | MSG | 2017/09/21 07:47:08.188 | DS 3GPP/High | [ds_eps_pdn_context.c   4184] Update APN table: ip_support:2 for pdn 0x851600f4 apn:ims | 
 
 
 
@@ -2366,9 +2424,32 @@ MSG        [05026/02] DS LTE/High                       11:23:03.245     ds_3gpp
 
 
 
-//Link to PS PS flow
-MSG        [05000/01] Data Services/Medium              11:23:03.245              ps_flow.c  00285  ps_flow_activate_cmd(): FLOW ACTIVATE CMD 0x0C02DCE8, state 0x1    
-MSG        [05000/01] Data Services/Medium              11:23:03.246         ps_phys_link.c  00319  ps_phys_link_up_cmd(): PS PHYS LINK UP CMD 0x0C955738 in state 64 
+//Link to PS flow
+	MSG        [05000/01] Data Services/Medium              11:23:03.245              ps_flow.c  00285  ps_flow_activate_cmd(): FLOW ACTIVATE CMD 0x0C02DCE8, state 0x1    
+	MSG        [05000/01] Data Services/Medium              11:23:03.246         ps_phys_link.c  00319  ps_phys_link_up_cmd(): PS PHYS LINK UP CMD 0x0C955738 in state 64 
+	
+
+//EPS bearer ID map to bearer context(phys link ID)
+	[5025/0002] | MSG | 2017/09/21 07:47:07.548 | DS 3GPP/High | [ds_3gpp_bearer_flow_manager.c    417] Associated valid bearer flow manager to bearer: 0x845f0518 | 
+	[5026/0002] | MSG | 2018/08/09 04:28:09.681 | DS LTE/High | [ds_eps_bearer_context.c   7228] Reset dl count for bearer context 0x 845f0518 bearer_new_byte_count for bear_id 6  is 0 
+
+	[5025/0003] | MSG | 2017/09/21 07:47:07.548 | DS 3GPP/Error | [ds_3gpp_bearer_flow_manager.c   3018] Bearer flow manager is NULL | 
+	[5025/0002] | MSG | 2017/09/21 07:47:07.548 | DS 3GPP/High | [ds_3gpp_pdn_context.c  12280] Allocated Flow Manager and bearer Flow Manager | 
+	[5025/0002] | MSG | 2017/09/21 07:47:07.548 | DS 3GPP/High | [ds_3gpp_flow_manager.c  12635] binding flow to phys link for V6 IFACE [0x8004:1]  | 
+	[5000/0001] | MSG | 2017/09/21 07:47:46.204 | Data Services/Medium | [ps_phys_linki_event.c   1042] ps_phys_link_up_ind_ex(): PHYS LINK UP IND 0x845F0518, state 16 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:46.204 | Data Services/Medium | [      ps_phys_link.c    812] ps_phys_link_enable_flow(): client 0x100000 enabling flow on phys link 0x845F0518 -> mask 0x0 | 
+	[5000/0001] | MSG | 2017/09/21 07:49:06.293 | Data Services/Medium | [ps_phys_linki_event.c    969] ps_phys_link_down_ind_ex(): PHYS LINK DOWN IND 0x845F0518, state 4 | 
+
+//LTE data transfer on phys link，UID 0x845F0518 maps to EPS bearer id 6,keyword phys link
+	[5000/0001] | MSG | 2017/09/21 07:47:08.195 | Data Services/Medium | [      ps_phys_link.c    812] ps_phys_link_enable_flow(): client 0x100000 enabling flow on phys link 0x845F0518 -> mask 0x0 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:08.195 | Data Services/Medium | [ ps_inet_event_mgr.c    326] Rcvd evt 5 on phys link 0x845F0518 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:08.195 | Data Services/Medium | [            ps_dpm.c   3667] ps_dpmi_um_reg_bearer_hdlr(): rat 3 v4 Um iface 0x00000000 v6 Um iface 0x845F2C38 phys link 0x845F0518 l2_to_ps WM 0x845F06F0 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:08.761 | Data Services/Medium | [            ps_dpm.c    553] ps_dpmi_get_phys_link_from_uid(): Found phys link entry 0xE1764580 for UID 0x845F0518 in um_info 0xE1788A80 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:10.419 | Data Services/Medium | [            ps_dpm.c    553] ps_dpmi_get_phys_link_from_uid(): Found phys link entry 0xE1764580 for UID 0x845F0518 in um_info 0xE1788A80 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:10.935 | Data Services/Medium | [            ps_dpm.c    553] ps_dpmi_get_phys_link_from_uid(): Found phys link entry 0xE1764580 for UID 0x845F0518 in um_info 0xE1788A80 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:10.991 | Data Services/Medium | [            ps_dpm.c    553] ps_dpmi_get_phys_link_from_uid(): Found phys link entry 0xE1764580 for UID 0x845F0518 in um_info 0xE1788A80 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:11.217 | Data Services/Medium | [            ps_dpm.c    553] ps_dpmi_get_phys_link_from_uid(): Found phys link entry 0xE1764580 for UID 0x845F0518 in um_info 0xE1788A80 | 
+	[5000/0001] | MSG | 2017/09/21 07:47:11.575 | Data Services/Medium | [            ps_dpm.c    553] ps_dpmi_get_phys_link_from_uid(): Found phys link entry 0xE1764580 for UID 0x845F0518 in um_info 0xE1788A80 | 
 
 
 //LTE PDCP register
@@ -4201,6 +4282,47 @@ Reg_cm.h----definition of message ID
 
 	}sys_ims_reg_state_e_type;
 	
+
+
+//GSM data req cause
+	typedef enum
+	{   
+	  GRR_CAUSE_LAY3_DATA           = 0x0,
+	  GRR_CAUSE_GMM_SIGNALLING      = 0x1,
+	  GRR_CAUSE_LLC_SIGNALLING      = 0x2,
+	  GRR_CAUSE_GMM_PAGE_RESPONSE   = 0x3,
+	  GRR_CAUSE_GMM_CELL_UPDATE     = 0x4,
+	  GRR_CAUSE_GMM_CELL_NOTIFY     = 0x5,
+	  /* New cause in RLC , transparent to MAC as used for PDU marking.
+	  ** RLC when sending est_tbf_req translated the cause to GMM_SIGANNALING.
+	  */      
+	  GRR_CAUSE_SM_SIGNALLING       = 0x6
+	} grr_data_req_cause_t;
+
+
+//WCDMA RRC about cause  ../modem_proc/wcdma/api/rrcmmif.h
+	typedef enum
+	{ 
+	  RRC_FAIL_TO_CAMP_ON,
+	  RRC_INTERNAL_ERROR,
+	  RRC_UNSUPPORTED_REDIRECTION,
+	  RRC_MAX_ACCESS_FAILURE,
+	  RRC_FAILURE_DUE_TO_CONGESTION,
+	  RRC_FAILURE_UNSPECIFIED,
+	  RRC_UNSUPPORTED_INITIAL_UE_ID,
+	  /* Below cause is still present for legacy events */
+	  RRC_ACCESS_CLASS_NOT_ALLOWED,
+	  RRC_CONNECTION_NOT_AVAILABLE,
+	  RRC_PCCO_FAILURE,
+	  RRC_NO_RESOURCE_AVAILABLE,
+	  RRC_ABORT_LAI_RAI_CHANGED,
+	  RRC_AC_NOT_ALLOWED_CS_DOMAIN,
+	  RRC_AC_NOT_ALLOWED_PS_DOMAIN,
+	  RRC_ABORT_CONN_REJECT_WAIT_TMR,
+	  /*New abort causes should be added here.*/
+	  RRC_ABORT_CAUSE_TYPE_MAX
+	}rrc_abort_cause_e_type;
+
 ***********************************************************************************
 *********************************QC Documents**************************************
 ***********************************************************************************
