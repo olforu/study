@@ -1,18 +1,19 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 if [ $# -ne 2 ];then
     echo "Usage:$0 dir1 dir2"
     exit 1
 fi
-if [ ! -d $1 -o ! -d $2 ];then
+if [ ! -d "$1" -o ! -d "$2" ];then
     echo "$1 or $2 is not derectory!"
     exit 1
 fi
 
 ## 注意，Mac的readlink程序和GNU readlink功能不同，Mac需要下载greadlink
-arg1=`readlink -f $1`
-arg2=`readlink -f $2`
+arg1=`readlink -f "$1"`
+arg2=`readlink -f "$2"`
 
-tmp_dir=/tmp/tmp.$$
+
+tmp_dir=$PREFIX/tmp/tmp.$$
 rm -rf $tmp_dir
 mkdir -p $tmp_dir || exit 0
 #echo $tmp_dir
@@ -27,7 +28,7 @@ function get_file_md5
         return 1
     fi
     local file=$1
-    md5sum $file | awk -F" " '{print $1}'
+    md5sum "$file" | awk -F" " '{print $1}'
 }
 
 function myexit
@@ -43,18 +44,17 @@ function show_diff
     fi
     local diff_file=$1
     echo "diff file:"
-    printf "    %-55s  %-52s\n" $arg1 $arg2
+    printf "    %-55s  %-52s\n" "$arg1" "$arg2"
     if [ -f $tmp_dir/A_only_file ];then
-        awk '{printf("    [%2d] %-50s\n", NR, $1)}' $tmp_dir/A_only_file
-        python -c 'print "-"*100'
+        awk '{printf("    [%2d] %-50s\n", NR, $0)}' $tmp_dir/A_only_file
+	python -c 'print("-"*100)'
     fi
     if [ -f $tmp_dir/B_only_file ];then
-		printf "				                         "
-        awk '{printf("    [%2d] %-50s\n", NR, $1)}' $tmp_dir/B_only_file
-        python -c 'print "-"*100'
+	    awk '{for(i=0;i<60;i++)printf(" "); printf(" [%2d] %-50s\n",NR, $0)}' $tmp_dir/B_only_file
+	python -c 'print("-"*100)'
     fi
 	if [ -f $diff_file ];then
-    	awk '{printf("    [%2d] %-50s  %-50s\n", NR, $1, $1)}' $diff_file
+    	awk '{printf("    [%2d] %-50s  %-50s\n", NR, $0, $0)}' $diff_file
     	echo "(s):show diff files (a):open all diff files (q):exit"
     	echo
 	fi
@@ -77,23 +77,23 @@ function check_value
         if [ -z "$end" ];then
             sed -n $begin'p' $diff_file >> $tmp_file
         else
-        if [ "$end" -lt $begin ];then
-            return 1
-        fi
-        sed -n $begin','$end'p' $diff_file >> $tmp_file
+            if [ "$end" -lt $begin ];then
+                return 1
+            fi
+            sed -n $begin','$end'p' $diff_file >> $tmp_file
         fi
         if [ $? -ne 0 ];then
-        return 1
+            return 1
         fi
     done
-    awk -v dir1=$arg1 -v dir2=$arg2 '{
+    awk -v dir1="$arg1" -v dir2="$arg2" '{
     if (NR==1)
         {
-        printf("edit %s/%s\nvertical diffsplit %s/%s\n", dir1, $0, dir2, $0)
+            printf("edit %s/%s\nvertical diffsplit %s/%s\n", dir1, $0, dir2, $0)
         }
         else
         {
-        printf("tabnew %s/%s\nvertical diffsplit %s/%s\n", dir1, $0, dir2, $0)
+            printf("tabnew %s/%s\nvertical diffsplit %s/%s\n", dir1, $0, dir2, $0)
         }
     }' $tmp_file
 }
@@ -101,20 +101,44 @@ function check_value
 #############################################################
 # 获取diff info
 #############################################################
-for file in `find $arg1 | grep -v "/\." | grep -v "^\."`
+#for file in `find $arg1 | grep -v "/\." | grep -v "^\."`
+#do
+#    file_relative_name=${file#$arg1/}
+#    file $file | grep -Eq "text"
+#    if [ $? -ne 0 ];then
+#        continue
+#    fi
+#    if [ -f $arg2/$file_relative_name ];then
+#        file $arg2/$file_relative_name | grep -Eq "text"
+#        if [ $? -ne 0 ];then
+#            continue
+#        fi
+#        md5_1=`get_file_md5 $file`
+#        md5_2=`get_file_md5 $arg2/$file_relative_name`
+#        if [[ "$md5_1" = "$md5_2" ]];then
+#            continue
+#        fi
+#        ## file not same
+#        echo "$file_relative_name" >> $tmp_dir/diff_file
+#    else
+#        echo "$file_relative_name" >> $tmp_dir/A_ony_file
+#    fi
+#done
+for file1 in `find "$arg1" | sed 's% %#%g'`
 do
+    file=`echo $file1 | sed 's%#% %g'`
     file_relative_name=${file#$arg1/}
-    file $file | grep -Eqv "directory"
+    file "$file" | grep -Eqv "directory"
     if [ $? -ne 0 ];then
         continue
     fi
-    if [ -f $arg2/$file_relative_name ];then
-        file $arg2/$file_relative_name | grep -Eqv "directory"
+    if [ -f "$arg2/$file_relative_name" ];then
+        file "$arg2/$file_relative_name" | grep -Eqv "directory"
         if [ $? -ne 0 ];then
             continue
         fi
-        md5_1=`get_file_md5 $file`
-        md5_2=`get_file_md5 $arg2/$file_relative_name`
+        md5_1=`get_file_md5 "$file"`
+        md5_2=`get_file_md5 "$arg2/$file_relative_name"`
         if [[ "$md5_1" = "$md5_2" ]];then
             continue
         fi
@@ -125,23 +149,25 @@ do
     fi
 done
 
-for file in `find $arg2 | grep -v "/\." | grep -v "^\."`
+for file1 in `find "$arg2" | sed 's% %#%g'`
 do
+    file=`echo $file1 | sed 's%#% %g'`
     file_relative_name=${file#$arg2/}
-    file $file | grep -Eqv "directory"
+    file "$file" | grep -Eqv "directory"
     if [ $? -ne 0 ];then
         continue
     fi
-    if [ ! -f $arg1/$file_relative_name ];then
+    if [ ! -f "$arg1/$file_relative_name" ];then
         echo "$file_relative_name" >> $tmp_dir/B_only_file
     fi
 done
+
 #############################################################
 # 根据输入标签打开用vim打开文件比较diff
 #############################################################
 if [[ ! -f $tmp_dir/diff_file && ! -f $tmp_dir/A_only_file && ! -f $tmp_dir/B_only_file ]];then
-	echo folders are the same!
-	myexit
+    echo folders are the same!
+    myexit
 fi
 
 show_diff $tmp_dir/diff_file
