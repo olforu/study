@@ -8,19 +8,25 @@ set hlsearch
 "enable outside clipboard
 "set clipboard=unamed
 set tags+=/home/duke/Downloads/mosquitto-1.3.1/tags
-
+"ignore case when search
+set ignorecase
+set nu
+syntax on 
 "//////////vim shortcut/////////////////
-nmap <F4> :grep "" ./ -r -n
+nmap <F4> yiw:grep "<C-r>"" ./ -r -n --include=*.h
 let mapleader="\<space>"
 "nnoremap <Leader>co   :copen<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>c bye
-cnoremap <C-p> <C-r>"
+nnoremap <Leader>c "ayiw
+cnoremap <C-p> <C-r>a
 nnoremap <Leader>f :/
 nnoremap <Leader>r :%s///g
-map <Leader>y "+y<CR>
-map <Leader>p "+p<CR>
+nnoremap <Leader>n :cn<CR>
+nnoremap <Leader>p :cp<CR>
+inoremap <C-s> <Esc>:w<CR>i
+"map <Leader>y "+y<CR>
+"map <Leader>p "+p<CR>
 map <F6> :copen<CR>
 map <F9> :tabnew<CR>
 map <F2> :bn<CR>
@@ -57,6 +63,7 @@ Plugin 'Lokaltog/vim-powerline'
 "
 Plugin 'Yggdroot/LeaderF'
 
+Plugin 'https://github.com/will133/vim-dirdiff'
 
 " git repos on your local machine (i.e. when working on your own plugin)
 " Plugin 'file:///home/gmarik/path/to/plugin'
