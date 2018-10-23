@@ -16,13 +16,13 @@ position=`echo "($start_money/$final_price/100+1)*100" | bc`
 market_value=`echo "$position*$final_price" | bc`
 cost=`echo "$position*$final_price" | bc`
 total_cost=$cost
-total_postion=$position
+total_position=$position
 max_cost=$cost
 total_transaction_fees=0
-threshold_sell=1.06
-threshold_buy=0.94
+threshold_sell=1.2
+threshold_buy=0.8
 num_of_transaction=1
-echo total position=$total_postion
+echo total position=$total_position
 echo market value=$market_value
 echo total cost=$total_cost
 #exit
@@ -53,6 +53,10 @@ function TransactionFees
 	esac
 }
 
+
+
+if false;then 
+###################################涨卖跌买法##################################
 while [ $start_num -le $end_num ]
 do
 	#echo line=$start_num
@@ -77,24 +81,24 @@ do
 		if [ "`echo "$position>0" | bc`" -eq 1 ];then
 			let num_of_transaction++
 		fi
-		if [ "`echo "($total_postion-$position)>0" | bc`" -eq 1 ]; then
+		if [ "`echo "($total_position-$position)>0" | bc`" -eq 1 ]; then
 			cost=`echo "$final_price*$position" | bc`
 			transaction_fees=`TransactionFees  $cost sell`
 		#	echo transaction_fee=$transaction_fees
 		#	exit
  			total_cost=`echo "$total_cost-$final_price*$position-$transaction_fees" | bc`
-			total_postion=`echo "$total_postion-$position" | bc`
+			total_position=`echo "$total_position-$position" | bc`
 			total_transaction_fees=`echo "$total_transaction_fees+$transaction_fees" | bc`
 		else
-			cost=`echo "$final_price*$total_postion" | bc`
+			cost=`echo "$final_price*$total_position" | bc`
 			transaction_fees=`TransactionFees  $cost sell`
 			echo transaction fee=$transaction_fees
-			total_cost=`echo "$total_cost-$final_price*$total_postion-$transaction_fees" | bc`
-			total_postion=0
+			total_cost=`echo "$total_cost-$final_price*$total_position-$transaction_fees" | bc`
+			total_position=0
 			total_transaction_fees=`echo "$total_transaction_fees+$transaction_fees" | bc`
 		fi
-		#average_cost=`echo "$total_cost/$total_postion" | bc`
-		market_value=`echo "$total_postion*$closing_price" | bc`
+		#average_cost=`echo "$total_cost/$total_position" | bc`
+		market_value=`echo "$total_position*$closing_price" | bc`
 		echo "total cost=$total_cost"
 		echo "market value=$market_value"
 	#	echo total fee=$transaction_fees
@@ -112,10 +116,10 @@ do
 		#	echo transaction_fee=$transaction_fees
 		#	exit
 			total_cost=`echo "$total_cost+$final_price*$position-$transaction_fees" | bc`
-			total_postion=`echo "$total_postion+$position" | bc`
+			total_position=`echo "$total_position+$position" | bc`
 			total_transaction_fees=`echo "$total_transaction_fees+$transaction_fees" | bc`
-			#average_cost=`echo "$total_cost/$total_postion" | bc`
-			market_value=`echo "$total_postion*$closing_price" | bc`
+			#average_cost=`echo "$total_cost/$total_position" | bc`
+			market_value=`echo "$total_position*$closing_price" | bc`
 			echo "toal cost=$total_cost"
 			echo "market value=$market_value"
 			#exit
@@ -129,6 +133,29 @@ do
 		max_cost=$total_cost
 	fi
 	let start_num++
+done
+fi
+
+
+
+###################################定投法##################################
+#echo start $start_num
+#awk -F" " '{if($1 ~ /.*\/1$/ && NR>'$start_num') print $1,$4}' $3
+#exit
+for final_price in `awk -F" " '{if($1 ~ /.*\/1$/ && NR>'$start_num') print $4}' $3`; do
+	echo final price=$final_price
+	if [ "$final_price" = "0" ] ; then
+		continue	
+	fi
+	position=`echo "($start_money/$final_price/100+1)*100" | bc`
+	cost=`echo "$position*$final_price" | bc`
+	total_cost=`echo "$cost+$total_cost" | bc`
+	total_position=`echo "$position+$total_position" | bc`
+	market_value=`echo "$total_position*$final_price" | bc`
+	echo total position=$total_position
+	echo market value=$market_value
+	echo total cost=$total_cost
+	
 done
 
 echo max cost $max_cost

@@ -1,0 +1,95 @@
+// ratio=0.05 2010.1.4
+toal cost=26077.89516
+market value=56895.00
+max cost 143393.53522
+total tax=3385.10484
+total times of transaction=416
+
+
+// ratio=0.06 2010.1.4
+toal cost=7692
+market value=46044
+max cost 109845
+total tax=2477
+total times of transaction=303
+
+
+// ratio=0.05 2008.1.4
+toal cost=21146.99892
+market value=56895.00
+max cost 160163.40246
+total tax=5298.00108
+total times of transaction=640
+
+// ratio=0.06 2008.1.4
+total cost=-1713.76612
+market value=46044.00
+max cost 132405.18882
+total tax=3836.76612
+total times of transaction=462
+
+
+// ratio=0.06 2000.1.4
+st=-35161.66656
+market value=46044.00
+max cost 103110.76794
+total tax=5776.66656
+total times of transaction=707
+
+// ratio=0.07 2010.1.4
+st=11061.59790
+market value=43857.00
+max cost 102045.90556
+total tax=1736.40210
+total times of transaction=214
+
+
+// ratio=0.07 2000.1.4
+toal cost=-33939.80312
+market value=38460.00
+max cost 92415.84172
+total tax=4407.80312
+total times of transaction=539
+
+///////////////////////////
+// ratio=0.07 2006.10.27
+ICBC simulate record
+total cost=-2817.59102
+market value=20160.0
+max cost 51685.08626
+total tax=1446.59102
+total times of transaction=192
+
+// ratio=0.06 2006.10.27
+ICBC simulate record
+total cost=-5275.86740
+market value=20195.00
+max cost 61352.08314
+total tax=2017.86740
+total times of transaction=267
+
+
+// ratio=0.05 2006.10.27
+ICBC simulate record
+total cost=-834.42446
+market value=26450.00
+max cost 69028.35932
+total tax=2669.42446
+total times of transaction=353
+
+// ratio=0.05 2010.10.27
+total cost=12115.83846
+market value=26450.00
+max cost 35829.13480
+total tax=1120.16154
+total times of transaction=150
+
+
+
+// ratio=0.1 2010.10.27
+toal cost=-5421.94954
+market value=14337.00
+max cost 37496.69104
+total tax=779.94954
+total times of transaction=104
+
