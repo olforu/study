@@ -1,0 +1,1022 @@
+----2016.05.03----
+	Dear all
+		我是刚入职的曾庆东，很高兴能加入天软信息与大家一起工作，下面分享我的一些基本信息。
+	姓名：曾庆东                       部门：LTE软件          职位：软件工程师              
+
+	自我介绍： 
+		本人籍贯山城重庆，本科哈尔滨工业大学电子信息工程，研究生北京大学通信工程。毕业后在广州
+	三星从事手机研发，主要负责手机终端无线通信协议栈（4G/3G/2G）的开发维护，协议相关标准比
+	较繁琐，希望与有志于此的同事交流进步。
+		工作之余，兴趣比较广泛。爬山，跑步，游泳，羽毛球，电影等等，期望有相同爱好的同事一起活动。
+		最后祝各位工作顺利，公司蓬勃发展！
+
+		
+----2016.05.04----
+你好，我是IT网络管理Daniel，你的Samba、SVN的账号信息如下：
+
+         Samba账号：zengqingdong
+         Samba密码：Pwd120697
+         密码修改入口：http://10.8.2.35/samba/changepassword.cgi
+
+         SVN账号：zengqingdong
+         SVN密码：Pwd120697
+         密码修改入口：http://10.8.2.35/cgi-bin/ChangePasswd.cgi
+	
+	
+	kodu wiki	 
+	http://10.8.2.208/doku.php
+    上午弄microsoft project 相关，没有成功，要找daniel帮忙弄。
+	下午准备WWRC060review会议。
+	 Microsoft Project，可以叫Daniel帮忙用U盘安装
+	 
+----2016.05.05----
+	WIKI帐号：duke.zeng  12345678
+	//QXDM activation
+	User ID: AskeyCMP
+	Password: aK326drs
+	Admin Key: 2962
+
+----2016.05.09----
+
+	 USB CDC-ACM (Abstract Control Model),
+	 CDC-ECM (Ethernet Networking Control Model),
+	 CDC-NCM (Network Control Model), 
+	 OBEX (Object Exchange) 
+	 and WCM-Device Management USB class and function drivers
+
+	CDC-ACM (Abstract Control Model) allows any communication device to provide a serial communication interface (e.g modem devices that send and receive AT commands).
+
+	/lib/modules/$(uname -r)/kernel/drivers/usb/class目录下看到cdc-acm.ko文件。
+
+
+
+	CDC-ECM (Ethernet Networking Control Model) offers device manufacturers to interface as a standard NIC (Network Interface Card) device. This interface is usually adopted by high speed LAN networking devices allowing high speed Ethernet data transfer over USB.
+
+	CDC-NCM (Network Control Model).
+
+	OBEX (Object Exchange) is compliant with the Wireless Mobile Communication OBEX function model, supporting OBEX applications over USB.
+
+	WMC-Device Management is compliant with the Device Management function model, supporting a minimal AT command based control model.
+
+	RNDIS - provides CDC like communication capabilities on Windows PCs supporting the Microsoft RNDIS protocol. Please refer to the RNDIS webpage for more info. 
+
+
+	ACM - Abstract Communication Model
+	ECM - Ethernet Control Module
+	NCM - Network Control Model
+	OBEX - Object Exchange Function Model
+	WMC - Device management Function Model 
+
+	The CDC ACM driver exposes the USB device as a virtual modem or a virtual COM port to the operating system.
+	The driver enables sending both data and AT commands, either through ACM (separating data and AT commands over different channels) or through Serial Emulation (passing the AT commands as is and as part of the data stream).
+
+
+	The ECM (Ethernet Networking Control Model) protocol is used for exchanging Ethernet-framed data between the device and host. A CDC ECM compliant device exposes itself as a virtual NIC to the host operating system. The NIC is assigned with a MAC and an IP address.
+	A general use case of a CDC ECM device is a point-to-point Ethernet adapter to a LAN/WLAN.
+
+    //SVN zengqingdong  Pwd120697
+----2016.05.10----
+     Build 生成目录：\\10.8.3.132\zengqingdong    用户名：zengqingdong  密码：zengqingdong
+	 
+
+----2016.05.11----	 
+	80-VF299-1 - K_UMTS_NV_Items.pdf
+	■ 80-V6968-12 - H_RF NV Items.pdf
+	■ 80-VG439-1 - E NV Items for gpsOne G
+	■ 80-VU905-1 - B_gpsOne_Gen8_Engine_1X_UMTS_NV_Items
+	■ 80-N5074-1 - B_LTE_NAS_EFS-NV_Config.pdf
+	■ 80-U0434-1 Rev.A
+	
+    工号：960362 曾庆东 duke_zeng   OC分机号：17874
+	Askey 邮箱  duke_zeng@askey.com.tw   密码：#*c960362
+ 
+	烧版本：
+	1.安装驱动（高通的和通用USB driver），先安QDART，安装过程中，自动安装高通的驱动。
+	2.连接设备，运行ADB shell,
+		/# sys_reboot bootloader 
+	3.运行fast reboot, c:\windows\system32\fastboot reboot
+	3.运行脚本(在编译生成结果里面)
+		例Z:\WWRC051-LE3.0\askey_proc\build\WWRC051_MIFI\img\WWRC051.00.02.F03_4\updatesw
+	4.自动运行QPST->software download->SB3.0->选com口和选XML file
+	   -----:com口->右键sahara configuration->upon receiving sahara->选择“if a RAM dump request,perform a download instead”
+----2016.05.12----	
+	QC account:duke_zeng@askey.com.tw   Pwd120697
+----2016.05.16----
+	Done:
+		1.LTE概述PPT制作
+		2.周例会，Yonlanda和steven参加了。发现会议记录比较重要。
+	Todo:
+	
+	//打卡记录系统
+		http://10.8.2.37:8080/attendanceRemind/92/20160516
+		曾庆东，您好！
+
+		您在绩效考核查询系统中的权限已开通，账号信息如下：
+		账户名：duke.zeng
+		初始密码：591222
+
+
+----2016.05.18----		
+	//QXDM激活码
+	User ID: AskeyCMP
+	Password: aK326drs
+	Admin Key: 2962
+
+
+----2016.05.19----	
+	版本路径：
+	FTP服务器
+	内网URL：ftp://10.8.2.182
+	外网URL：ftp://182.151.214.170 端口21
+	版本路径：/LTE_SW/WWRC051/ WWRC051.01.02.F03_3
+	用户名：ftpUser_askey_lte
+	密码：  wg#9*jk
+	
+	
+	aSRVCC VoLTE终端应支持主叫及被叫的alerting-phased SRVCC。
+	bSRVCC  srvcc before ringing
+----2016.05.25----
+	51JOB上筛选简历，与deon一起面试柯彬。结果：技术方面OK。
+	
+----2016.05.30----
+	准备并主持周例会，例会时间控制不好，需要精简。
+	人力缺失，还需要再招人，BSP RF 相关。
+	统计了seminar topic
+	组内活动
+----2016.06.02----	
+	成都人才引进（学历入户）
+	政策咨询：（028）61670656、61675218
+	乒乓球比赛，LTE HW 第一名
+	
+	EC5377U-872与E5377产品亮点： 
+	1.搭载高通*规格、28nm超低功耗芯片-高通MDM9625；支持移动+联通+电信LTE 4G，电信3G 联通3G及移动2G；
+	2.采用2.4GHz和5GHz双频段设计，使信号受干扰的可能性降到*；  
+	3.钢琴烤漆工艺，完美支持E5助手； 
+	4.可选国际版(e5377)与运营商(ec5377u-872)订制版,国际版(E5377)适合联通电信双网FDD LTE 4G及联通DC-HSPA+ WCDMA 3G及联通移动EDGE/GPRS 2G网络,适合联通官方采购,用着礼品等,无运营商LOGO
+
+	RC051切换工程模式：
+		设备插上电脑，网页登录 192.168.225.1/admin_eng.html
+		command:usb_composition 9025 n y y y
+		
+		
+----2016.06.06----			
+	周例会 新同事 蔡水发  agassi
+	
+	
+	异次元密室逃脱
+	仅售49.9元，价值120元密室逃脱门票！7大主题任选其一，根据故事背景，融入到扮演的角色中去，趣味横生，让您感受到非凡的逃脱体验，节假日通用！
+	
+----2016.06.20----
+	All,
+
+	编译服务器IP修改：
+	10.8.3.131 -> 10.8.3.70
+	10.8.3.132 -> 10.8.3.71
+	周例会   场测具体实施讨论
+	
+----2016.06.23----
+	//公司代码
+	Key in Organization Number(Askey Organization Number: 118910)
+	
+	
+----2016.06.24----
+	成都的FTP服务器，存放开发工具路径：/LTE_SW/Tool
+	 
+	LTE部门的FTP server info:
+	FTP服务器
+	内网URL：ftp://10.8.2.182
+	外网URL：ftp://182.151.214.170 端口21
+	用户名：ftpUser_askey_lte
+	密码：  wg#9*jk
+	出于网络安全方面的考虑，公司对外的共享文件将使用SFTP服务，原来的FTP服务器将于下周三零点开始停服。
+	SFTP服务器已搭建完毕，登陆地址如下：
+	公司内部： sftp://10.8.2.43                  端口号：22（SFTP默认端口，可以不填）
+	公司外部：sftp://182.151.214.170       端口号：9103
+
+----2016.06.30----
+	HSIC(全称：High-Speed Inter-Chip)是一种芯片间互连标准，在2007年USB开发者论坛上被采纳。
+	
+	LPDDR2	Low Power Double Data Rate SDRAM，是DDR SDRAM的一种，又称为 mDDR(Mobile DDR SDRAM),
+	是美国JEDEC固态技术协会（JEDEC Solid State Technology Association）面向低功耗内存而制定的通信标准，
+	以低功耗和小体积著称，专门用于移动式电子产品。
+	
+	NAND闪存是一种比硬盘驱动器更好的存储设备，在不超过4GB的低容量应用中表现得犹为明显。随着人们持续追求功耗更低、
+	重量更轻和性能更佳的产品，NAND被证明极具吸引力。NAND闪存是一种非易失性存储技术，即断电后仍能保存数据。它的发展目标就是降低每比特存储成本、提高存储容量。
+	
+	I2S(Inter—IC Sound)总线, 又称 集成电路内置音频总线，是飞利浦公司为数字音频设备之间的音频数据传输而制定的一种总线标准，该总线专责于音频设备之间的数据传输，
+	广泛应用于各种多媒体系统。它采用了沿独立的导线传输时钟与数据信号的设计，通过将数据和时钟信号分离，避免了因时差诱发的失真，为用户节省了购买抵抗音频抖动的专业设备的费用。
+	
+----2016.07.01----
+	支持RC051场测，西南财经大学柳林校区，当地网络情况：联通 B3，B41, 移动：B38,39,40,41
+	EMM Information
+	Triggered by the network to provide NITZ (Network Information and Time Zone) information	
+	
+	EMM uses the existing AMSS interface, i.e., Multimode Generic SIM Driver Interface (MMGSDI), to read/write from/to the USIM
+	
+	
+----2016.07.06----
+
+	MSGPACK:
+		http://my.oschina.net/u/225700/blog/152143
+		http://www.360doc.com/content/14/0913/12/1073512_409129181.shtml
+		
+	MQQT:
+		http://blog.csdn.net/xukai871105/article/details/39252653
+		
+		
+----2016.07.07----
+	Git-gerrit location :
+	http://10.1.53.19:30000
+	 
+
+	 
+	 #include "qmi_port_defs.h"
+
+	qmi_qmux.c  
+		--->  int qmi_qmux_open_connection (
+	
+	qmi_qmux_if.c
+		int qmi_qmux_if_open_connection(qmi_qmux_if_hndl_t      qmux_if_client_handle,qmi_connection_id_type  conn_id)	
+		
+		
+	linux_qmi_qmux_if_server.c
+		static int linux_qmi_qmux_if_server_open_port(qmi_connection_id_type    conn_id,unsigned int num_retries,linux_qmi_qmux_if_mode_t  mode)
+		
+		
+		
+		
+		ap_query_wms_init ->  qmi_connection_init (QMI_PORT_RMNET_0, &qmi_err_code)) < 0) ==>
+				#define qmi_connection_init(a,b) qmi_dev_connection_init(a,b)
+
+		qmi_wms_srvc_init_client-->client_handle =  qmi_service_init (conn_id,			
+				
+	 qmi_dev_connection_init  ->  QMI_PLATFORM_DEV_NAME_TO_CONN_ID_EX(dev_id, &ep_type, &epid, &mux_id)	==>
+	 
+	 
+			#define QMI_PLATFORM_DEV_NAME_TO_CONN_ID_EX(dev_id, ep_type, epid, mux_id) \
+			qmi_linux_get_conn_id_by_name_ex (dev_id, ep_type, epid, mux_id)
+			
+			
+			
+
+----2016.07.08----			
+	ARM
+	Microcontroller Development Kit
+	Version 5.20
+	The Keil ARM Evaluation Kit allows you to create programs for ARM7, ARM9, Cortex-M and MCU devices.
+
+	Review the hardware requirements before installing this software.
+	Note the limitations of the evaluation tools.
+	MDK5 Overview and Introduction
+	MDK5 Installation instructions
+	(MD5:7757c147af27a5547ee263e930bb1858)
+
+	To install the ARM Software...
+	Right-click on MDK520.EXE and save it to your computer.
+	PDF files may be opened with Acrobat Reader.
+	ZIP files may be opened with PKZIP or WINZIP.
+	MDK520.EXE (580,378K) 
+	Friday, May 6, 2016
+
+	Estimated File Download Time: 
+	< 42.5 Hours: 56Kb Modem
+	< 18.6 Hours: 128Kb ISDN
+	< 1.5 Hours: T1/Broadband
+	
+	
+	
+	
+	MSGPACK_ENDIAN_LITTLE_BYTE
+	
+	
+----2016.07.14----	
+	
+	预编译生成结果  gcc -E m.cpp -o m.i
+	
+	
+	define _msgpack_be16(x) ntohs(x)
+	
+	LTE SW FOTA 流程：
+		1.	主动去查询当前是否有新版本
+		2.	如果存在新版本，需要手动进行选择升级与否
+		3.	如果没有新版本，提示无新版本
+		4.	进行升级时，首先通过http下载到设备的FOTA分区；切换到recovery 模式，进行升级。
+		5.	如果升级过程中出现异常，会尝试3次；如果3次还是失败，结束FOTA升级。
+		6.	升级异常发生时，可能会出现开机失败问题；没有backup机制。
+
+----2016.07.15----			
+Unpack.c (d:\projects\货物跟综器\msgpack-c-master\msgpack-c-master\src):    _msgpack_sync_incr_and_fetch((volatile _msgpack_atomic_counter_t*)buffer);
+
+成都人才网：
+	http://s.rc114.com/Doc/Query.aspx
+	
+	
+----2016.07.20----	
+	Dear All,
+
+	BOLT WEB GUI会议纪要如下，如有遗漏请补充：
+
+	由于RTL8192es芯片不支持APC模式，去掉APC（internet WIFI）功能。
+
+	1.	Quota获取方式和接口参数 @Sarah
+	2.	MSISDN CGI获取接口 @Deon
+	3.	PCI&RSRP&SINR CGI获取接口 @Deon
+	4.	Statistics页面Current Session @Deon
+	5.	Advanced Selection页面status获取CGI接口 @Deon
+	6.	Advanced Selection页面 Country/Region Code CGI接口 @Deon
+	7.	Advanced Selection页面Max clients 设置和获取CGI接口 @Deon
+	8.	Remove WIFI 5G & APC mode @Andy
+	9.	Remove SD Card Sharing页面 @Andy
+	10.	Add TR069 Setting 页面 @Andy
+	11.	BOLT Style design @Andy
+	
+	
+----2016.07.25----	
+LTE SW 公网地址：
+	http://182.151.214.170:9090/
+	
+	
+AP Log放在:
+	/cache/ap_data ，可以取到本地：adb pull  /cache/ap_data   aplog.txt
+
+系统log：
+	/cache # ls /var/log
+	ls /var/log
+	error.log   messages.1  messages.4  messages.7  wtmp
+	messages    messages.2  messages.5  messages.8
+	messages.0  messages.3  messages.6  messages.9
+	
+	83355323!@#
+
+----2016.08.01----		
+	LeCroy Corporation Chengdu Office
+	Unit C, 33/F,
+	First City Plaza,
+	No.308, Shuncheng St,
+	Chengdu 610017,
+	P.R.China
+	Phone: ++86 28- 86527180/81/82
+	Fax: +86 28-8652 7183
+	Email Sales: Marketing.China@teledynelecroy.com
+
+	
+----2016.08.03----	
+	Hi ALL
+
+	为了方便查找公司wifi，公司wifi名已统一修改。
+	原WIFI名                更改后的WIFI名
+	CdSkySoft                 Cdskysoft-703-public-2.4G
+	CdSkySoft-5G           Cdskysoft-703-public-5G
+	密码：83355323!@#
+
+----2016.08.04----	
+	1.HC061(RoHs)  MAC需要烧几个，SN和IMEI需要
+	2.RC052-D223(RoHs)基于RC050，5个工作日内出一个版本，要求换成客户需要的Logo和开机界面。
+	
+	
+	-DFEATURE_LCD_PIXEL_16BPP  -DFEATURE_LCD_128X128
+	
+----2016.08.10----	
+Todo:
+	1.AP service卡顿问题，timer相关，解决方案。
+	2.RC051 F03_9版本新问题分配
+	3.Bolt OLED 显示图标太大，更新图片库问题
+	4.D223 Telekom.de版本release，更换开机logo和运营商名字。
+	
+	
+	
+	链接: http://pan.baidu.com/s/1micvNDm 密码: 83tz
+	
+	公司打印机：
+	\\10.8.3.236\Kyocera FS-6525MFP KX
+	
+	
+	MPSS: MPSS.BO.2.5.c4.1-00010-M9635TAAAANAZM-1
+	
+	nv_items.h 定义了所有NV及 nv 的INDEX
+	
+	
+-----------------------------2016-08-29~2016-09-02-----------------------------------------
+	--Mon
+		组会
+			1.讨论测试遗留问题
+			2.TR069开发日程细化
+	--Tue
+		1.上午办户口迁移，房产分中心锦城大道999号，高新区人力资源管理中心--天晖路，
+		  高新区公安居办证中心，人很多。
+		2.下午，TR069日程细化专门讨论会，SAM主负责。
+		
+	--Thu
+		1.at指令  at+csgn：获取IMEI号  at$imei=[14位IMEI号]：写IMEI号
+		2.如何DISABLE 一个NV.
+		3.GCI 接口  Y:\MDM9x35-LE3.0\apps_proc\askey\web_gui\cgi
+		
+	--Friday
+		1.怎么样使一个NV inactive
+	Log path:
+		 "/usr/log.on"
+		 ./log.on    //控制log打印等级  echo 2>log.on
+		 ./johnny.log
+		 /usr/johnny.log
+		 
+		 
+		 
+	Y:\MDM9x35-LE3.0\apps_proc\kernel\drivers\video\ssd1307fb.c   ----->welcome page
+	Y:\MDM9x35-LE3.0\apps_proc\bootable\bootloader\lk\target\mdm9635\ssd1306_oled.c --------128X64 开机logo。
+	Y:\MDM9x35-LE3.0\apps_proc\bootable\bootloader\lk\target\mdm9635\poweron.h      --------128X128 开机logo
+	
+	
+-----------------------------2016-08-29~2016-09-19-----------------------------------------
+	--Mon
+		Readmine 默认密码12345678
+		从web界面debug,  ap_query 55 'at+cpin?'  ap_query 55 'at+CGREG=?'  ap_query 55 'at+csgn' ap_query 55 'at+CGNWS' 
+						 cat /usr/bin/at_output.txt
+						 cat /usr/bin/sv_imei.txt 
+						 cat /usr/bin/sv_deviceid
+					查看基本信息：ATI 
+						 
+		（1）NITZ(network identity and time zone)同步时间
+        NITZ是一种GSM/WCDMA基地台方式，必须插入SIM卡，且需要operator支持；可以提供时间和时区信息。中国大陆运营商基本是不支持的。
+		（3）NTP(network time protocol)同步时间
+        NTP在无SIM卡或operator不支持NITZ时使用，单纯通过网络（GPRS/WIFI）获取时间，只提供时间信息，没有时区信息（因此在不支持NITZ的地区，
+		自动获取时区功能实际上是无效的）。NTP还有一种缓存机制：当前成功获取的时间会保存下来，当用户下次开启自动更新时间功能时会结合手机
+		clock来进行时间更新。这也是没有任何网络时手机却能自动更新时间的原因。此外，因为NTP是通过对时的server获取时间，当同步时间失败时，
+		可以检查一下对时的server是否有效，并替换为其他server试一下。
+	--Tue
+		升级服务器：
+			IP:10.8.3.69   
+			ID:download
+			PWD:ltetest2016
+		
+	--Thu
+		设备时间更新机制： WEBUI登录时，从电脑本地获取时间，下发到设备。
+		接口：setServerTime  ->syncTimeHwClock( tmLocal );
+		设置linux系统时间：date -s "2012-05-18 04:53:00"
+		设置NTP server调用：ap_query 105   在ap_query.c中 
+		设备默认开始时间：Sun Jan  6 00:00:38 UTC 1980
+		
+	--Friday
+		apps 单独编译：source build/conf/set_bb_env.sh
+		               bitbake -fc cleanall data;bitbake -fc install data
+					   
+			替换设备里面的对应文件：C:\Users\skysoft>adb push Y:\MDM9x35-LE3.0\apps_proc\oe-core\build\tmp-eglibc\work\armv7a-vfp-neon-oe-linux-gnueabi\data-git-r18\image\usr\bin\ap_query /usr/bin && adb shell chmod 777 usr/bin/ap_query && adb reboot
+	    Modem改系统时间 的函数和机制
+		
+		
+		int UnlockPuk(webs_t wp, char_t * path, char_t * query)
+		iLen = SIM_GetPukCount();
+		
+		WIfi名字：/userdb/factory/nvramfiles/SSID1
+		WIfi默认密码：/userdb/factory/nvramfiles/WPAPSK1
+		
+		
+		boolean ds3g_set_cm_oprt_lpm_mode( void )
+		boolean ds3g_set_cm_oprt_online_mode(void)
+		
+		//get and set operation mode 
+		case 62: //Get Operating Mode
+        {
+            remove("/usr/bin/result_62.txt");
+            remove("/usr/bin/result_62_ack.txt");
+            set_AP_QUERY_status(dms_get_operatingmode, 0 , 0 ,0);
+        }
+        break;
+        case 63: //Set Operating Mode
+        {
+            remove("/usr/bin/result_63.txt");
+            remove("/usr/bin/result_63_ack.txt");
+		
+	MAC烧写：
+		1.USB连接设备到电脑，设备管理器->端口->Qualcomm HS-USB Android DIAG 902D
+			   如果没有端口，进入http://192.168.1.1/admin_eng.html，输入命令：usb_composition 902D n y y y ，运行命令并重启设备。
+		2.运行CMD，输入命令：adb shell ap_query 55 'at+cwlanmac=MAC1,MAC2' ，MAC1,MAC2是需要烧写的MAC代替。
+
+	ds_qmi_at.c
+	
+	
+	static const qmi_cflog_cmd_name_type qmi_cflog_command_name_at[] = 
+		{
+		  /* qmi_cflog_command_name[8] - AT service */
+		  {"QMI_AT_REG_AT_CMD_FWD",0x0020},
+		  {"Unknown AT service cmd",0xFFFFFFFF}
+		};
+
+Youlin skype账号:encipher_asdf
+
+
+-----------------------------2016-09-26~2016-09-30-----------------------------------------
+	--Mon
+		SVN revert研究
+		http://10.8.2.35/manage/HR/招聘/2017校园招聘/1.嵌入式开发笔试题
+		
+	高通网站资料查看，登录信息如下：
+	IP：182.151.214.170:9002
+	用户名：skysoft              
+	密码：sky123!@#
+	
+	
+	ap_common.h
+	#define VBAT_RESULT "Result:"
+	#define VBAT_CAPACITY "Capacity:"
+
+	#define FOTA_SERVER_URL "http://182.151.214.170:9090/update/WWRC051"
+	#define FOTA_SERVER_IP      "182.151.214.170"
+	#define FOTA_SERVER_PORT "9090"
+
+	
+	
+	
+	MAC address: NV4678
+	nv_item_type  nv_items_enum_type
+	nvi_wlan_mac_address_type   
+	
+	Dsatctab.c  dsatvend.c
+	
+	dsat_result_enum_type dsatvend_exec_askey_cwlanmac_cmd
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+#	Name	Skype ID				ASKEY Email
+1	Deon	zhang.deon　		deon_zhang@askey.com.tw
+
+2	Agassi	afaeveryday			agassi_cai@askey.com.tw
+
+3	Andy	leiguoyu104			andy_lei@askey.com.tw
+
+4	Sam	　	sam2_li				Sam2_li@askey.com.tw
+
+5	Duke	rushcao				duke_zeng@askey.com.tw
+
+6	Jay		mymsnid@live.cn 	jay_k@askey.com.tw
+
+7	Tony	tony.tang@cdskysoft.com	tony_tang1@askey.com.tw
+8 	Leaf    tlzqf_hj			leaf.huang@askey.com.tw
+
+
+
+
+--------------------AP_query command	
+	set operation mode:
+		ap_query 63 X
+		
+		typedef struct {
+		  /* Mandatory */
+		  /*  Operating Mode */
+		  uint8_t operating_mode;	/*  Selected operating mode
+			   - 0x00 - Online
+			   - 0x01 - Low Power
+			   - 0x02 - Factory Test Mode
+			   - 0x03 - Offline
+			   - 0x04 - Reset
+			   - 0x05 - Shut Down
+		   */
+	}dms_set_operating_mode_req_msg_v01;	/* Message */
+
+	
+can not back to 4G :02668255
+upload speed low:02668257
+
+
+SN写入和读取方法如下：
+写入：AT$NVSN=xxxxxxx
+读取：AT$NVSN
+
+
+姓名：   陈德进
+英文名： Dodge
+邮箱：   dodge.chen@cdskysoft.com
+
+
+//volte setting
+	Hi duke, 
+	This is a MDM device, correct? if YES, pls set NV70287 = 0; 
+	IMS not found the matched ds profile, so IMS register failed. 
+	I see the ims ds profile is already in the config MBN, Pls check if the ims ds profile is there by at+cgdcont? if no, you need to create one ims profile and re-test this issue. 
+
+	Eg to create ims ds profile by AT command. 
+	AT+CGDCONT=2,"IPV4V6","ims","",0,0 
+	AT$QCPDPIMSCFGE=2,0,0,0 (Unset PCO for profile 2) 
+
+	07:21:31.099 PDPRATHandlerVoLTE.cpp 1376 M CPDPRATHandlerVoLTE::PdpActivate m_pDcmProfile NULL RegType[0] 
+	
+	
+常用mac:	
+	FCB4E66A1319
+	FCB4E66A131B
+	FCB4E66A131D
+	FCB4E66A131F
+	FCB4E66A1307
+	FCB4E66A1305
+	FCB4E66A1303
+	FCB4E66A1301
+	FCB4E66A1317
+	FCB4E66A1315
+	FCB4E66A1313
+	FCB4E66A1311
+
+	
+I:cmd 1: $QCPWRDN
+I:cmd 2: +CWLANMAC
+I:cmd 3: +CWWAN
+I:cmd 4: +CIPFAMILY
+I:cmd 5: +CAUTOCONNECT
+I:cmd 6: +CADB
+I:cmd 7: +CAUTOAPN
+I:cmd 8: +CCATFILE
+I:cmd 9: +CEXECFILE
+I:cmd 10: +CLED
+I:cmd 11: +COLED
+I:cmd 12: +CCHARGER
+I:cmd 13: +CCKEY
+I:cmd 14: +RESET
+I:cmd 15: +WIFISSID
+I:cmd 16: +WIFIPWD
+
+
+F03_3-2821 update.zip http://pan.baidu.com/s/1boBMHmn
+
+
+
+cat /usr/bin/sv_swversion
+echo WWRC051.06.05.F03_19 > /usr/bin/sv_swversion
+
+
+
+C:\Users\skysoft>adb shell
+/ # ap_query 55
+ap_query 55
+At command daemon start ! input 'Q' or 'q' to exit!
+ati
+ati
+Manufacturer: QUALCOMM INCORPORATED
+Model: 4093
+Revision: WWRC051.06.05.F03_19 2214  1  [Nov 08 2016 02:00:00]
+IMEI: 356234070040535
++GCAP: +CGSM
+
+OK
+
+at+cwlanmac
+at+cwlanmac
+Intf0MacAddress=086A0A59C6EC
+Intf1MacAddress=086A0A59C6ED
+END
+
+
+OK
+
+
+
+* daemon started successfully *
+/ # ap_query 55
+ap_query 55
+At command daemon start ! input 'Q' or 'q' to exit!
+ati
+ati
+Manufacturer: QUALCOMM INCORPORATED
+Model: 4093
+Revision: WWRC051.06.05.F03_22 2906  1  [Apr 27 2017 02:00:00]
+IMEI: 356234070054197
++GCAP: +CGSM
+
+OK
+
+at+cwlanmac
+at+cwlanmac
+Intf0MacAddress=
+Intf1MacAddress=086A0A7133A2
+END
+
+
+OK
+
+at$NVSN
+at$NVSN
+4171H119811
+
+OK
+
+
+
+///////////////////For MTN Nasim
+C:\Users\skysoft>adb shell
+adb server is out of date.  killing...
+* daemon started successfully *
+/usr/www/cgi-bin # ap_query 55
+ap_query 55
+At command daemon start ! input 'Q' or 'q' to exit!
+ati
+ati
+Manufacturer: QUALCOMM INCORPORATED
+Model: 4093
+Revision: WWRC051.06.05.F03_22 2906  1  [Apr 27 2017 02:00:00]
+IMEI: 356234070052613
++GCAP: +CGSM
+
+OK
+
+at+cwlanmac
+at+cwlanmac
+Intf0MacAddress=086A0A713265
+Intf1MacAddress=086A0A713266
+END
+
+
+OK
+
+at$NVSN
+at$NVSN
+4171H119653
+
+OK
+
+
+
+Dear Moshen
+
+	 I’m going to MTN to support CA60 issue checking and test, please help prepare invitation letter(stay one month)
+	Personal info as below(detail refer attachment):
+	 Name: ZENG, QINGDONG(曾庆东)    
+	 Birth Day:06 DEC 1986
+	 Passport Num:E32982661
+
+	 
+	 
+CMCC volte NV setting
+NV70287 = 0; 
+
+
+Eg to create ims ds profile by AT command. 
+AT+CGDCONT=2,"IPV4V6","ims","",0,0 
+AT$QCPDPIMSCFGE=2,1,0,0 (Unset PCO for profile 2) 
+at+cgdcont?
+
+usage setting    65777    1
+ims config       71527
+ims enable       67218
+hybrid feature   70287    0
+Voice Domain Pre  66048   3
+
+MPSS.JO.1.2.c1-00104-9607_GEN_PACK-  
+
+http://modem.wifi/cgi-bin/mycgi.cgi?ACT=diagnostic-info.html
+
+D:\Projects\RTL0053VW-D257\RTL0053VW-D257 SIM LOCK\MyMcc_Mnc_Pairs_GW.csv
+
+
+/usr/bin/sv_imsi_extend.txt
+
+1. flash 4056
+2. Witch to 9025
+3. mac sn
+4. restore qcn
+5. SPC lock
+6. SIM lock
+6. local upgrade
+7. check basic function
+8. swith to F000 n y y y
+
+FWT版本loading icon.
+
+sim卡220速率低
+
+
+加班：  
+	2017.12.15    20：00~23：00   复现crash问题
+	2017.12.16    9：00~18：00   跑现网case
+	2017.12.18    20：00~14：00  验证D2 crash方案
+	
+smartfren 卡信息：
+卡号：628818079952    	编号后四位：3076   PUK:52977832
+卡号：628818079863    	编号后四位：2664   PUK:38910737
+卡号：628818079862    	编号后四位：2656   PUK:74222922
+
+
+1. password 5Z2V5F1N5C
+2. echo RTL0053VW.07.01.PR01_02 > /usr/bin/sv_swversion
+
+
+tcpdump -i rmnet_data0 -w /gre.pcap
+
+echo 1 > /sys/module/msm_poweroff/parameters/panic_allow
+
+
+BD01   wd_oom_reboot_direct.7z     测试死机后自动重启修改  cat /proc/uptime  120.13 84.46     时间：21：45
+
+/ # cat /etc/resolv.conf
+/ # ps | grep dnsmasq
+ap_query 46 39重启下dnsmasq
+
+
+sed -n '/address=/=' /etc/dnsmasq.conf
+sed -i '64c #address=/#/192.168.1.1' /etc/dnsmasq.conf
+killall dnsmasq
+dnsmasq -i bridge0 -I lo -z --dhcp-range=bridge0,192.168.1.20,192.168.1.60,255.255.255.0,43200 --dhcp-option-force=6,192.168.1.1 --dhcp-option-force=26,1500 --dhcp-option-force=120,abcd.com
+
+
+C:\Users\skysoft>adb shell
+adb server is out of date.  killing...
+* daemon started successfully *
+/ # cat /usr/bin/signal_type.txt
+cat /usr/bin/signal_type.txt
+SIGNAL_NO_SERVICE
+/ # cat /usr/bin/registration_state.txt
+cat /usr/bin/registration_state.txt
+
+cat /sys/class/android_usb/android0/idProduct   //查看设备端口
+
+
+[9501/0002] | MSG | 1980/01/06 00:09:58.284 | LTE RRC/High | [     lte_rrc_llcdb.c  17436] UL EARFCN not signaled. UL EARFCN will be determined based on 36.101 section 5.7.4 |  | 0x790000000028a34d070000001c441d2504800000554c2045415246434e206e6f74207369676e616c65642e20554c2045415246434e2077696c6c2062652064657465726d696e6564206261736564206f6e2033362e3130312073656374696f6e20352e372e34006c74655f7272635f6c6c6364622e6300 |  | 
+[9501/0002] | MSG | 1980/01/06 00:09:57.890 | LTE RRC/High | [       lte_rrc_cre.c   2648] Received LTE_RLCUL_MAX_RETX_IND causing RLF |  | 0x79000000001c684c07000000580a1d25040004005265636569766564204c54455f524c43554c5f4d41585f524554585f494e442063617573696e6720524c46006c74655f7272635f6372652e6300 |  | 
+
+
+549755813904
+
+
+Dear Duke,
+應該是你的efuse 已經燒成SDIO3.0
+你可以往前看11/29 mail 寫的
+有T-put 問題的efuse是設定為SDIO2.0
+>>設定是 SDIO2.0
+root@mdm9607-perf:~# iwpriv wlan0 efuse_get SD
+wlan0     efuse_get:SD=ffffffffff
+root@mdm9607-perf:~#
+
+後面的一片板子:
+>>設定是 SDIO3.0
+root@mdm9607-perf:~# iwpriv wlan0 efuse_get SD
+wlan0     efuse_get:SD=6e50ff0334
+
+
+//实时看NAS log 
+/cache # echo 1,128 > ap_mask
+echo 1,128 > ap_mask
+/cache # tail -f /var/log/messages | grep rsrp
+
+3.18.20
+
+
+[Project] RTL0053VW-D257
+[Problem] change supported LTE band to B40,B5
+[Description] Customer request to ugrade all Home Router and FWT version to support dual band B5 and B40
+[Solution] modify band switch logic to set NV65633 to 549755813904
+[Checking Method] at$nv65633
+[Developer] Duke
+[Reviewer] NULL
+
+
+Dear ALL
+
+好消息！好消息！公司企业级wifi已布置完毕，大家不用担心在公司手机连不了wifi啦，赶快试试吧。
+ 
+
+公司公共wifi：
+Wifi名：    Cdskysoft-public
+密码：           Skysoft123!@#
+Wifi覆盖区域：办公区703、702、701
+Wifi信号盲区：走廊尽头、休息区附近、厕所、货梯等，因墙体阻挡，信号较差
+
+备注：
+1、可以访问公司服务器
+2、可以使用lync、亚旭邮箱
+3、上班时间该wifi不能上QQ、微信，也不能开视频
+
+
+username：admin   password：db40sw3
+
+
+void load_default(void)
+{
+  #if 0
+   do_system("ralink_init clear 2860");
+#if defined CONFIG_LAN_WAN_SUPPORT || defined CONFIG_MAC_TO_MAC_MODE
+   do_system("ralink_init renew 2860 /etc_ro/Wireless/RT2860AP/RT2860_default_vlan");
+#elif defined CONFIG_ICPLUS_PHY
+   do_system("ralink_init renew 2860 /etc_ro/Wireless/RT2860AP/RT2860_default_oneport");
+#else
+   do_system("ralink_init renew 2860 /etc_ro/Wireless/RT2860AP/RT2860_default_novlan");
+#endif
+//#if defined RTDEV_SUPPORT
+   do_system("ralink_init clear rtdev");
+   do_system("ralink_init renew rtdev /etc_ro/Wireless/iNIC/RT2860AP.dat");
+//#endif
+#if defined CONFIG_MTK_VOIP
+   system("ralink_init clear voip");
+   system("ralink_init renew voip /etc_ro/voip_default_settings");
+#endif
+  #endif
+
+  do_system("factoryWrite NV_LTE_ImsiLock \"\"");
+  do_system("reset_default.sh");
+  printf("Done...rebooting");
+  system("sysmgr reboot reset default");
+}
+
+duke，你的10.8.2.46服务器jenkins账号：duke.zeng，密码：123456
+
+Dominick: 我的分享题目是:平衡小车DIY
+
+jekens SFTP 配置
+RTL0053-D216/askey_proc/build/RTL0053VW_CPE/img/**
+RTL0053-D216/askey_proc/build/RTL0053VW_CPE/img
+'CT_RDS_LTE/2_Projects/RTL0053VW-D257/17_DailyBuild/R${SVN_REVISION}_'yyyy-MM-dd_HH-mm-ss
+[0021/0003] | MSG | 1980/01/06 00:00:00.420 | User Identity Module/Error | [        uimdrv_clk.c    574] UIM_2: Error while validating FI and DI parameters | 
+
+
+
+	[HC061-D198] Lab test-TDS SIM case 6.1.2 fail
+	MPSS.JO.1.2.c1-00104-9607_GEN_PACK   
+
+[5000/0001] | MSG | 2017/09/21 07:47:08.761 | Data Services/Medium | [            ps_dpm.c    553] ps_dpmi_get_phys_link_from_uid(): Found phys link entry 0xE1764580 for UID 0x845F0518 in um_info 0xE1788A80 |
+
+//Web gitlab address
+http://10.8.2.38/web/CPE_formal_project
+FCB4E66A131D FCB4E66A131E
+
+//
+"Flash IMEI MAC SN.bat" 356540060015075 7829EDD6B0AC 7829EDD6B0AD A188J129207
+UE doesn't report A5_1 in service request, pls set first bit of NV553 to 1
+
+//Lab test-TDS UIM case 8.1 fail
+3,Make sure there is ongoing data exchange during test. Otherwise, set NV73779 explicitly to 0 to disable the polling optimization. 
+
+
+MPSS.JO.1.2.c1-00104-9607_GEN_PACK   
+[HC061-D198] Lab test-TDS Protocol case 12.2.1.2.
+
+Dear QC
+
+We are testing TDS protocol related case in CTLL lab. Case 12.2.1.2 fail.
+Log uploaded ,please help to check asap.
+
+Thanks
+Duke
+
+
+000111000000
+
+./uim/uimdrv/src/uimglobals.h|967| struct uim_instance_global_type
+typedef struct
+{
+  uint32                voltage_class;
+
+  /* Holds the mode for the current command */
+  uim_command_mode_type cmd_mode;
+
+  uim_convention_type   convention;
+  /* uim_ctl initialized as:
+     This is set to UIM_MC in R-UIM targets so that the UIM is powered down
+     only after MC indicates that is finished with power up */
+  uim_voter_type        ctl;
+
+/* Indicate command handling options */
+typedef enum {
+  UIM_NONE          = 0x00, /* Disabled */
+  UIM_AUTH          = 0x01, /* uim power-down bit for Auth task */
+  UIM_MC            = 0x02, /* uim power-down bit for MC task */
+  UIM_PROACTIVE_UIM = 0x4,  /* power up bit if the UIM is pro active */
+  UIM_UI            = 0x8,  /* uim power down bit for UI task */
+  UIM_UICC_SESSION  = 0x10,   /* bit indicating a UICC session */
+  UIM_USIM_SESSION  = UIM_UICC_SESSION, /* Replaced USIM with UICC voter type */
+  UIM_SESSION       = 0x20, /* any module that wants to execute a series of cmds
+                               without powering down between commands */
+  UIM_TC            = 0x40, /* uim powerdown bit for traffic channel */
+  UIM_CDMA_TC       = 0x80, /* uim voting for CDMA traffic channel */
+  UIM_GW_TC         = 0x100,/* uim voting for GSM/WCDMA traffic channel */
+  UIM_PASSIVE       = 0x200 /* uim voting for presence detection in passive mode */
+} uim_voter_type;       
+
+----PLMN RAT search order
+ mmcp/nas/reg/src/reg_mode_automatic_plmn_selection.c
