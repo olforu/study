@@ -17,11 +17,26 @@
 **************************************************************************************
 ***********************************TDS-CDMA***************************************
 **************************************************************************************
+
+Keylogs:camped on;tdscdma rrc
+
 [3010/0002] | MSG | 1980/01/06 00:00:30.452 | NAS REG/High | [          reg_send.c   1581] DS: SUB 1 =REG= MMR_REG_REQ PLMN(1-1) RAT(TDSCDMA) | 
 
+//TDSCDMA cell info 
+	[10255/0002] | MSG | 1980/01/06 00:26:13.251 | TDSCDMA RRC/High | [         tdsrrccsp.c  20456] Resel camped on acceptable cellID 3, (10062, 12) | 
+	[10255/0002] | MSG | 1980/01/06 00:26:13.251 | TDSCDMA RRC/High | [         tdsrrccsp.c  20461] PLMN.MCC 2, PLMN.MNC 1 | 
+	[10255/0002] | MSG | 1980/01/06 00:26:13.251 | TDSCDMA RRC/High | [       tdsrrcsibdb.c   1134] PSEUDO SIB19: new sib19 NAS data plmn 2-1, lac 0x1, short cell_id 3 = 0x3 | 
+	
+//TDSCDMA ACQ reqeust
+	[10255/0002] | MSG | 1980/01/06 00:02:53.320 | TDSCDMA RRC/High | [    tdsrrccspfscan.c    959] Starting acq on UARFCN 10086 | 
+	[10251/0003] | MSG | 1980/01/06 00:00:31.259 | TDSCDMA L1/Error | [        tdssrchacq.c   1041] CPHY_ACQ_CNF(fail) on Freq: 10080, num_tried_freq 3 |  
 
-[10255/0002] | MSG | 1980/01/06 00:02:53.320 | TDSCDMA RRC/High | [    tdsrrccspfscan.c    959] Starting acq on UARFCN 10086 | 
-[10251/0003] | MSG | 1980/01/06 00:00:31.259 | TDSCDMA L1/Error | [        tdssrchacq.c   1041] CPHY_ACQ_CNF(fail) on Freq: 10080, num_tried_freq 3 |  
+
+//TDSCDMA random access
+	[10253/0002] | MSG | 1980/01/06 03:32:56.509 | TDSCDMA MAC/High | [        tdsmacrach.c    862] rcvd L1_PRACH_ACK from L1 | 
+
+//TDSCDMA signal strength
+	[10251/0002] | MSG | 1980/01/06 03:33:53.244 | TDSCDMA L1/High | [        tdssrchset.c   2940] JDCS update: Serving cell: Freq 10054, cpi 127, filt_rscp -99 | 
 
 
 
@@ -333,79 +348,79 @@ Call Manager/High         00:06:52.592           cmdiag.c  00207  =CM= Received 
 		
 
 **********************GSM DATA Call***************************
-//SM 发送连接请求给GMM
-MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           05:04:29.195                 smcm.c  00854  ds2CM PDP Activate Request for NSAPI = 5; Received Ctxt id = 3
-MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           05:04:29.195                 smcm.c  01614  ds2Send GMMSM_ESTABLISH_REQ, REQ CONN
-MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           01:10:11.132                 smcm.c  02404  ds2 Sending SMREG_PDP_ACTIVATE_CNF to CM TI: 0, NSAPI: 5
-//GMM收到建立请求并应
-MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           01:10:10.143              gmmconn.c  03306  ds2=MM= Received GMMSM_ESTABLISH_REQ
-MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           01:10:10.143              gmmconn.c  03512  ds2=MM= Sending GMMSM_ESTABLISH_CNF
-MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           01:10:10.143              gmmconn.c  04184  ds2=MM= Received GMMSM_UNITDATA_REQ
-
-//SM打包PDP请求L3 PDU,并发送给GMM
-MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           05:04:27.555                 smix.c  00441  ds2Packing L3 msg: PDP ACTIVATE REQUEST
-MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           05:04:30.232                smgmm.c  00913  ds2Sending SM-PDU to GMM, pdp_inactive_flag=0
-
-//GMM sends PDU down to LLC layer
-MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           05:38:50.283              gmmconn.c  04184  ds2=MM= Received GMMSM_UNITDATA_REQ
-MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           05:38:51.183              gmmllcm.c  05861  ds2=MM= GLIF: Received STATUS IND with cause = 6
-
-
-//RACH OTA
-MSG        [04009/07] GSM GPRS GRR/Sys Info             01:10:03.955        rr_gprs_debug.c  03663  gs1:OMsg: DL_RANDOM_ACCESS_REQ sent to L2
-MSG        [04001/01] GSM L1/Medium                     01:12:48.610              l1_rach.c  00585  gs1:RACH(118) sent (FN=13919)
-
-
-//wait for immediate assignment for packet traffic channels
-MSG        [04009/01] GSM GPRS GRR/Medium               01:10:10.145     rr_gprs_conn_establish.c  02324  gs1:Waiting for GPRS Imm Ass...
-// UE matches the IA based on the random reference number sent out in the rach
-MSG        [04009/02] GSM GPRS GRR/High                 01:10:10.260     rr_gprs_conn_establish.c  01335  gs1:Matched IA using Request Refs
-MSG        [04009/02] GSM GPRS GRR/High                 01:10:10.260     rr_gprs_conn_establish.c  01357  gs1:Immed. Assign is for mobile
-//nubmer of time slots allocated is only1,with TN=6
-MSG        [04001/01] GSM L1/Medium                     01:10:10.595     gpl1_gprs_shared_transfer.c  00782  gs1: RX num 1 lowest 6 highest 6
-//release the tbf in normal way
-MSG        [04001/01] GSM L1/Medium                     01:10:11.455     gpl1_gprs_transfer_if.c  07802  gs1:PL1: RELEASE UL TBF
-
-//UE decodes PCH for immediate assignment by matching TLLI(temporary logic link identifier)
-	MSG        [04001/02] GSM L1/High                       01:09:14.987     l1_idle.c  04776  gs2:PCH decoded (Arfcn=675 PgBlk=1 fn=2160337) for GAS ID 0x01
-	MSG        [04009/02] GSM GPRS GRR/High                 01:10:27.725     rr_gprs_conn_establish.c  01349  gs1:Matched IA using TLLI
-	MSG        [04009/02] GSM GPRS GRR/High                 01:10:27.725     rr_gprs_conn_establish.c  01357  gs1:Immed. Assign is for mobile
-	MSG        [04009/02] GSM GPRS GRR/High                 01:10:27.725     rr_gprs_conn_establish.c  00798  gs1:Rcvd single IA msg
-
-//receives the downlink tbf establishment from the network
-	MSG        [04001/01] GSM L1/Medium                     01:10:11.025     gpl1_gprs_shared_transfer.c  01932  gs1: RLC ACK mode
-	MSG        [04001/01] GSM L1/Medium                     01:11:26.190     gpl1_gprs_transfer.c  00592  gs1:PL1: PH_CONNECT_IND [1] [802269]
-
-//GMM sends PDP accept to SM
-	MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           01:10:11.131             gmm_main.c  03174  ds2=MM= Send GMMSM_UNITDATA_IND
-	MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           01:10:11.132                smgmm.c  02185  ds2Received ACTIVATE_PDP_ACCEPT
-
-//LLC confirm,  LLC RAB has to be established before sending before sending SMREG_PDP_ACTIVATE_CNF
-	[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [           smsndcp.c    304] Sent GSNSM_ACTIVATE_IND, PDP : 5 | 
-	[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [             smgmm.c   2874] PDP 0 ACTIVATED, Waiting LLC Confirm  | 
-	[3011/0001] | MSG | 2017/02/21 09:01:33.799 | NAS SM/Medium | [            smtask.c   1136]  Putting CMD in sm_cmd_q  | 
-	[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [           smsndcp.c    155] Received command from SNDCP | 
-	[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [           smsndcp.c    447] Received LLC Activate confirm | 
-
-//PDP activate confirmed
-	[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [              smcm.c   2584]  Sending SMREG_PDP_ACTIVATE_CNF to CM TI: 0, NSAPI: 5 | 
-
-
-//data call connected
-	MSG        [05005/02] DS 3G Manager/High                01:10:11.133             ds3gcmif.c  05268  Rx'ed CM_CALL_CONNECTED_CMD
-
-//data call end
-	MSG        [05005/02] DS 3G Manager/High                02:57:42.490             ds3gcmif.c  02869  Data call ended for call_id 1
-
-
-	MSG        [04001/01] GSM L1/Medium                     01:58:15.595       gpl1_gprs_rrbp.c  00936  RRBP:slamTn=0,OTA_Tn=7,FN=1106151
-
-	MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_umts_pdn_context.c  00793  Setting up UMTS PDP IP call
-	MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  15272  Setting up Type PDP-IP stack
-	MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  15286  PDP type IPV4 is selected in setupPdpIP
-	MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  14437  Setting up Type IP V4 PS Iface
-	MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  14463  PDP address for type IP call :ac03084
-
+	//SM 发送连接请求给GMM
+	MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           05:04:29.195                 smcm.c  00854  ds2CM PDP Activate Request for NSAPI = 5; Received Ctxt id = 3
+	MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           05:04:29.195                 smcm.c  01614  ds2Send GMMSM_ESTABLISH_REQ, REQ CONN
+	MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           01:10:11.132                 smcm.c  02404  ds2 Sending SMREG_PDP_ACTIVATE_CNF to CM TI: 0, NSAPI: 5
+	//GMM收到建立请求并应
+	MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           01:10:10.143              gmmconn.c  03306  ds2=MM= Received GMMSM_ESTABLISH_REQ
+	MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           01:10:10.143              gmmconn.c  03512  ds2=MM= Sending GMMSM_ESTABLISH_CNF
+	MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           01:10:10.143              gmmconn.c  04184  ds2=MM= Received GMMSM_UNITDATA_REQ
+	
+	//SM打包PDP请求L3 PDU,并发送给GMM
+	MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           05:04:27.555                 smix.c  00441  ds2Packing L3 msg: PDP ACTIVATE REQUEST
+	MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           05:04:30.232                smgmm.c  00913  ds2Sending SM-PDU to GMM, pdp_inactive_flag=0
+	
+	//GMM sends PDU down to LLC layer
+	MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           05:38:50.283              gmmconn.c  04184  ds2=MM= Received GMMSM_UNITDATA_REQ
+	MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           05:38:51.183              gmmllcm.c  05861  ds2=MM= GLIF: Received STATUS IND with cause = 6
+	
+	
+	//RACH OTA
+	MSG        [04009/07] GSM GPRS GRR/Sys Info             01:10:03.955        rr_gprs_debug.c  03663  gs1:OMsg: DL_RANDOM_ACCESS_REQ sent to L2
+	MSG        [04001/01] GSM L1/Medium                     01:12:48.610              l1_rach.c  00585  gs1:RACH(118) sent (FN=13919)
+	
+	
+	//wait for immediate assignment for packet traffic channels
+	MSG        [04009/01] GSM GPRS GRR/Medium               01:10:10.145     rr_gprs_conn_establish.c  02324  gs1:Waiting for GPRS Imm Ass...
+	// UE matches the IA based on the random reference number sent out in the rach
+	MSG        [04009/02] GSM GPRS GRR/High                 01:10:10.260     rr_gprs_conn_establish.c  01335  gs1:Matched IA using Request Refs
+	MSG        [04009/02] GSM GPRS GRR/High                 01:10:10.260     rr_gprs_conn_establish.c  01357  gs1:Immed. Assign is for mobile
+	//nubmer of time slots allocated is only1,with TN=6
+	MSG        [04001/01] GSM L1/Medium                     01:10:10.595     gpl1_gprs_shared_transfer.c  00782  gs1: RX num 1 lowest 6 highest 6
+	//release the tbf in normal way
+	MSG        [04001/01] GSM L1/Medium                     01:10:11.455     gpl1_gprs_transfer_if.c  07802  gs1:PL1: RELEASE UL TBF
+	
+	//UE decodes PCH for immediate assignment by matching TLLI(temporary logic link identifier)
+		MSG        [04001/02] GSM L1/High                       01:09:14.987     l1_idle.c  04776  gs2:PCH decoded (Arfcn=675 PgBlk=1 fn=2160337) for GAS ID 0x01
+		MSG        [04009/02] GSM GPRS GRR/High                 01:10:27.725     rr_gprs_conn_establish.c  01349  gs1:Matched IA using TLLI
+		MSG        [04009/02] GSM GPRS GRR/High                 01:10:27.725     rr_gprs_conn_establish.c  01357  gs1:Immed. Assign is for mobile
+		MSG        [04009/02] GSM GPRS GRR/High                 01:10:27.725     rr_gprs_conn_establish.c  00798  gs1:Rcvd single IA msg
+	
+	//receives the downlink tbf establishment from the network
+		MSG        [04001/01] GSM L1/Medium                     01:10:11.025     gpl1_gprs_shared_transfer.c  01932  gs1: RLC ACK mode
+		MSG        [04001/01] GSM L1/Medium                     01:11:26.190     gpl1_gprs_transfer.c  00592  gs1:PL1: PH_CONNECT_IND [1] [802269]
+	
+	//GMM sends PDP accept to SM
+		MSG        [03007/02/03/04]NAS MM/High/Error/Fatal           01:10:11.131             gmm_main.c  03174  ds2=MM= Send GMMSM_UNITDATA_IND
+		MSG        [03011/02/03/04]NAS SM/High/Error/Fatal           01:10:11.132                smgmm.c  02185  ds2Received ACTIVATE_PDP_ACCEPT
+	
+	//LLC confirm,  LLC RAB has to be established before sending before sending SMREG_PDP_ACTIVATE_CNF
+		[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [           smsndcp.c    304] Sent GSNSM_ACTIVATE_IND, PDP : 5 | 
+		[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [             smgmm.c   2874] PDP 0 ACTIVATED, Waiting LLC Confirm  | 
+		[3011/0001] | MSG | 2017/02/21 09:01:33.799 | NAS SM/Medium | [            smtask.c   1136]  Putting CMD in sm_cmd_q  | 
+		[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [           smsndcp.c    155] Received command from SNDCP | 
+		[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [           smsndcp.c    447] Received LLC Activate confirm | 
+	
+	//PDP activate confirmed
+		[3011/0002] | MSG | 2017/02/21 09:01:33.799 | NAS SM/High | [              smcm.c   2584]  Sending SMREG_PDP_ACTIVATE_CNF to CM TI: 0, NSAPI: 5 | 
+	
+	
+	//data call connected
+		MSG        [05005/02] DS 3G Manager/High                01:10:11.133             ds3gcmif.c  05268  Rx'ed CM_CALL_CONNECTED_CMD
+	
+	//data call end
+		MSG        [05005/02] DS 3G Manager/High                02:57:42.490             ds3gcmif.c  02869  Data call ended for call_id 1
+	
+	
+		MSG        [04001/01] GSM L1/Medium                     01:58:15.595       gpl1_gprs_rrbp.c  00936  RRBP:slamTn=0,OTA_Tn=7,FN=1106151
+	
+		MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_umts_pdn_context.c  00793  Setting up UMTS PDP IP call
+		MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  15272  Setting up Type PDP-IP stack
+		MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  15286  PDP type IPV4 is selected in setupPdpIP
+		MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  14437  Setting up Type IP V4 PS Iface
+		MSG        [05025/02] DS 3GPP/High                      06:00:29.703     ds_3gpp_pdn_context.c  14463  PDP address for type IP call :ac03084
+	
 
 //RLC sequence is 44, 29 octets is to be sent
 	[4008/0001] | MSG | 1980/01/06 00:01:51.081 | GSM GPRS GRLC/Medium | [           grlcsgm.c    665] gs1:GRLU SGM p=44 l=29 rem=0 | 
@@ -1579,7 +1594,9 @@ MSG [03005/02] WCDMA RRC/High 01:55:48.478 rrclcm.c 01943 Rcvd MUI: 250 for RB i
 	[5025/0002] | MSG | 2017/09/21 07:47:07.548 | DS 3GPP/High | [ds_3gpp_bearer_flow_manager.c    417] Associated valid bearer flow manager to bearer: 0x845f0518 | 
 	[5026/0002] | MSG | 2018/08/09 04:28:09.681 | DS LTE/High | [ds_eps_bearer_context.c   7228] Reset dl count for bearer context 0x 845f0518 bearer_new_byte_count for bear_id 6  is 0 
 
-	[5025/0003] | MSG | 2017/09/21 07:47:07.548 | DS 3GPP/Error | [ds_3gpp_bearer_flow_manager.c   3018] Bearer flow manager is NULL | 
+	[5025/0003] | MSG | 2017/09/21 07:47:07.548 | DS 3GPP/Error |
+at+cwlanmac=7829EDD6B0AC,7829EDD6B0AD
+   3018] Bearer flow manager is NULL | 
 	[5025/0002] | MSG | 2017/09/21 07:47:07.548 | DS 3GPP/High | [ds_3gpp_pdn_context.c  12280] Allocated Flow Manager and bearer Flow Manager | 
 	[5025/0002] | MSG | 2017/09/21 07:47:07.548 | DS 3GPP/High | [ds_3gpp_flow_manager.c  12635] binding flow to phys link for V6 IFACE [0x8004:1]  | 
 	[5000/0001] | MSG | 2017/09/21 07:47:46.204 | Data Services/Medium | [ps_phys_linki_event.c   1042] ps_phys_link_up_ind_ex(): PHYS LINK UP IND 0x845F0518, state 16 | 
@@ -1805,6 +1822,20 @@ MSG        [09509/02/16]LTE ML1/High/ULM                  06:40:38.881      lte_
 
 	
 
+
+**************************LTE cell selection *************************
+//LTE cell selection fisrt perfrom system scan, then perform band scan if not found suitable cell
+//LTE system scan
+	[9501/0000] | MSG | 2018/12/18 07:38:16.362 | LTE RRC/Low | [       lte_rrc_csp.c  16625] CSP: Starting System Scan on Mode Change Cnf | 
+	[9501/0000] | MSG | 2018/12/18 07:38:16.362 | LTE RRC/Low | [       lte_rrc_csp.c   3789] CSP: Roaming restriction is allow none | 
+	[9501/0000] | MSG | 2018/12/18 07:38:16.362 | LTE RRC/Low | [       lte_rrc_csp.c   3994] CSP: SS req trans ID = 6 | 
+	[9501/0000] | MSG | 2018/12/18 07:38:16.363 | LTE RRC/Low | [       lte_rrc_csp.c   4014] CSP: earfcn= 2452 | 
+	[9501/0000] | MSG | 2018/12/18 07:38:16.363 | LTE RRC/Low | [       lte_rrc_csp.c   4014] CSP: earfcn= 38950 | 
+	[9501/0000] | MSG | 2018/12/18 07:38:16.363 | LTE RRC/Low | [       lte_rrc_csp.c   4014] CSP: earfcn= 2446 | 	
+	[9501/0002] | MSG | 2018/12/18 07:38:16.471 | LTE RRC/High | [       lte_rrc_csp.c  18474] CSP: System scan results after prioritization | 
+	[9501/0002] | MSG | 2018/12/18 07:38:16.471 | LTE RRC/High | [       lte_rrc_csp.c  18481] CSP: band:40 earfcn:38950 energy:-118 | 
+	[9501/0002] | MSG | 2018/12/18 07:38:16.471 | LTE RRC/High | [       lte_rrc_csp.c  18481] CSP: band: 5 earfcn: 2446 energy: -76 | 
+	[9501/0002] | MSG | 2018/12/18 07:38:16.471 | LTE RRC/High | [       lte_rrc_csp.c  18481] CSP: band: 5 earfcn: 2452 energy: -80 | 
 
 **************************LTE reselection *************************
 //system information configuration result
@@ -3896,8 +3927,42 @@ QXDM main menu->Option->settings->Protocol Categories/Reversion->WCDMA  choose "
 	MSG        [00051/03] IMS/Error                         02:49:05.551           ims_task.cpp  02551  ims_task failed / Disabled in NV settings ims_enabled 0
 	MSG        [06002/02] User Interface/High               02:49:11.407              ipc_ims.c  00374  [IMS_IPC] send_ims_ipc_response : Entry
 	MSG        [00000/03] Legacy/Error                      07:11:30.200           media_mngr.c  00850  IMS_STACK :MediaMngr: Entering Shutdown             
-	MSG        [00000/03] Legacy/Error                      07:11:30.201           media_mngr.c  00907  IMS_STACK :MediaMngr: Exiting Shutdown                
+	MSG        [00000/03] Legacy/Error                      07:11:30.201           media_mngr.c  00907  IMS_STACK :MediaMngr: Exiting Shutdown               
+//Attach request with "IMS voice preferred"
+	msg_type = 65 (0x41) (Attach request)
+	lte_emm_msg
+	  emm_attach_request
+	    tsc = 0 (0x0) (cached sec context)
+	    nas_key_set_id = 1 (0x1)
+	    att_type = 2 (0x2) (combined EPS/IMSI attach) 
+	voice_domain_pref
+	      length = 1 (0x1)
+	      UE_usage_setting = 0 (0x0) (Voice centric)
+	      voice_domain_pref_for_EUTRAN = 3 (0x3) (IMS PS Voice preferred, CS Voice as secondary)
 
+//attach accept with IMS Vo PS Session in S1 Mode supported
+	lte_emm_msg
+	  emm_attach_accept
+	    attach_result = 2 (0x2) (comb EPS/IMSI attach)
+	eps_netwk_feature_support
+	      length = 1 (0x1)
+	      ESRPS = 0 (0x0)
+	      CS_LCS = 0 (0x0) (No info about support of loc service via cs is available)
+	      EPC_LCS = 0 (0x0) (Location Services via EPC not supported)
+	      EMC_BS = 0 (0x0) (Emergency bearer services in S1 Mode not supported)
+	      IMSVoPS = 1 (0x1) (IMS Vo PS Session in S1 Mode supported)
+
+//CM and DS inform IMS DPL regarding service availibility DS rat_value=3(LTE) 1(WCDMA) 5(IWLAN)
+	[0051/0002] | MSG | 2018/11/22 02:41:50.424 | IMS/High | [             qpDcm.c   8393] qpDplProcessDSSysEvent: Iterating DS Sys Info, rat_value = 3, so_mask = 1000 | 
+
+//Keywords: new rat  
+DPL inform all IMS registered clients about the availibility of radio access technology(RAT) register manager(RM) policy manager(PM) QIPcall and so on
+and RM decide RAT valid or not New Rat=10(LTE),3(WCDMA),9(eHRPD),6(IWLAN)
+new RAT mask is a combination of all RATs available in RAT mask format-	0x400- LTE, 0x50- WLAN +IWLAN, 0x450- LTE+WLAN+IWLAN RAT mask in NV 73835 (AllowedRATMask)
+
+	[0051/0001] | MSG | 2018/11/22 02:41:50.424 | IMS/Medium | [      PDPHandler.cpp    834] CPDPHandler::EventChangeRat - New RAT is valid: 1, PDNType[1], RAT[10] | 
+
+	
 //Get APN config for RAT=10
 	[0051/0001] | MSG | 2017/09/19 02:42:51.508 | IMS/Medium | [qpIMSPolicyManager.cpp    859] QPConfigurationHandler::GetIMSAPNPriority Entered |  
 	[0051/0001] | MSG | 2017/09/19 02:42:51.508 | IMS/Medium | [qpIMSPolicyManager.cpp    882] QPConfigurationHandler::GetIMSAPNPriority n_pInputParam = 10 iRAT = 10 | 
@@ -3944,7 +4009,7 @@ Fro |
 	[0051/0002] | MSG | 2017/01/25 09:08:46.982 | IMS/High | [   sipConnection.cpp   2777] EVENT_SIP_REG_RESP_RCVD : 44 Code = 401 RAT = 10 |  | 
 	[6062/0002] | MSG | 2017/01/25 09:08:46.984 | IMS IMS CORE/High | [  qpSipRegisterServi   1743] EVENT_SIP_REGISTER_END:CallId: 1139415322_105487544@2409:880b:8101:4924:1:1:9209:ca62 |  | 
 
-//IMS REG status	
+//IMS REG status  (-1 unkown ; 0 needs reg; 1 reg in progress; 2 registered; //3 needs dereg; 4 dereg in progress; 5 deregistered)
 	[0005/0002] | MSG | 2017/09/21 05:43:06.077 | Call Manager/High | [             cmsds.c    296] =CM= IMS voice reg_status 2 on mode 9 | 
 
 //VoLTE call	
