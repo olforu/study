@@ -1616,7 +1616,7 @@ at+cwlanmac=7829EDD6B0AC,7829EDD6B0AD
 
 
 	
-//attach request(PDN connectivity request)
+//attach request(PDN connectivity request),pdn type 1: Ipv4;pdn type 2: Ipv6;pdn type 3: Ipv4v6;
 	2014 Sep 12  01:44:43.696  [00]  0xB0ED  LTE NAS EMM Plain OTA Outgoing Message  --  Attach request Msg
 	pkt_version = 1 (0x1)
 	rel_number = 9 (0x9)
@@ -3560,7 +3560,7 @@ sys_network_selection_mode_e
 
 
 
-----supplementary service
+----supplementary service over CS
 
 	//call forward setting command
 	2014 Aug  8  10:11:45.076  [00]  0x138E  QMI Link 1 RX PDU
@@ -3581,7 +3581,92 @@ sys_network_selection_mode_e
 			 Reason = FWDREASON_NOREPLY
 		  }
 	   }
+	//unconditional forward
+	2019/01/25 06:28:03.554	[0x138E]	QMI Link 1 RX PDU
+	IFType = 1
+	QmiLength = 31
+	QmiCtlFlags = 0
+	QmiType = VOICE
+	ClientId = 2
+	SduCtlFlags = REQ
+	TxId = 1
+	MsgType = QMI_VOICE_SET_SUPS_SERVICE
+	MsgLength = 19
+	Service_Voc_V2 {
+	   Tlvs[0] {
+	      Type = 1
+	      Length = 2
+	      Supplementary Service Info {
+	         Service = REGISTER
+	         Reason = FWD_UNCONDITIONAL
+	      }
+	   }
+	   Tlvs[1] {
+	      Type = 18
+	      Length = 11
+	      Call forwarding Number {
+	         Call Forwarding Number = 18284515579
+	      }
+	   }
 	}
+
+
+	//origination USSD code
+	2019/01/25 06:53:31.809	[0x138E]	QMI Link 1 RX PDU
+	IFType = 1
+	QmiLength = 23
+	QmiCtlFlags = 0
+	QmiType = VOICE
+	ClientId = 2
+	SduCtlFlags = REQ
+	TxId = 2
+	MsgType = QMI_VOICE_ORIG_USSD
+	MsgLength = 11
+	Service_Voc_V2 {
+	   Tlv[0] {
+	      Type = 1
+	      Length = 8
+	      USSInfo {
+	         USSDcs = ASCII coding scheme
+	         UssLen = 6
+	         UssData = { 42, 35, 53, 53, 53, 35 }
+	      }
+	   }
+	}
+
+
+//Network reject SS request
+	[5012/0002] | 2019/01/31 01:52:56.841 | MSG | DS AT Command Parser/High | [           dsatrsp.c    310] Command output +CME ERROR: network rejected request | 
+	[0x713A/011/042] | OTA LOG | 2019/01/31 01:52:56.834 | SS/Release Complete | Direction : Network To MSLength: 15 |  
+	2019/01/31 01:52:56.834
+	Message Direction = To UE
+	chan_type = 0 (0x0)
+	prot_disc_check = 11 (0xb)
+	trans_id_or_skip_ind = 8 (0x8)
+	prot_disc = 11 (0xb) (GSM_SS_MESSAGES)
+	msg_type = 42 (0x2a)
+	prot
+	  supp_serv_prot
+	    release_comp
+	      cause_incl = 0 (0x0)
+	      facility_incl = 1 (0x1)
+	      facility
+	        num_components = 1 (0x1)
+	        components[0]
+	          component_type_tag = 163 (0xa3)
+	          component_length_byte_1 = 9 (0x9)
+	          invoke_id_tag = 2 (0x2)
+	          invoke_id_length = 1 (0x1)
+	          invoke_id[0] = 0 (0x0)
+	          return_error_comp
+	            error_code_tag = 2 (0x2)
+	            error_code_length = 1 (0x1)
+	            error_code[0] = 17 (0x11)
+	            num_parms = 3 (0x3)
+	            parameter[0] = 4 (0x4)
+	            parameter[1] = 1 (0x1)
+	            parameter[2] = 0 (0x0)
+
 
 	MSG        [05000/01] Data Services/Medium              10:11:45.076      qmi_voice_cm_if.c  05633  qmi_voice_cm_if_sups_get_call_forwarding():
 	MSG        [03008/02] NAS MN/High                       10:11:45.078              mnutils.c  00573  MN <- CM_INTERROGATE_SS_REQ <- CM
@@ -3614,9 +3699,130 @@ sys_network_selection_mode_e
 		nas_key_set_id = 1 (0x1)
 		service_type = 0 (0x0) (mobile originating CS fallback)
 		
-		
+
+
+
+
+----supplementary service over IMS
+
+//QCMAP call forward getting command
+	2019/01/31 03:25:46.621	[0x1544]	MCS QCSI Payload Packet
+	packetVersion = 2
+	MsgType = Request
+	Counter = 5
+	ServiceId = 9
+	MajorRev = 2
+	MinorRev = 72
+	ConHandle = 0x00000000
+	MsgId = 0x00000038
+	QmiLength = 8
+	Service_VOICE {
+	   ServiceVOICEV2 {
+	      voice_get_call_forwarding {
+	         voice_get_call_forwarding_reqTlvs[0] {
+	            Type = 0x01
+	            Length = 1
+	            reason {
+	               reason = VOICE_REASON_FWD_UNCONDITIONAL
+	            }
+	         }
+	         voice_get_call_forwarding_reqTlvs[1] {
+	            Type = 0x10
+	            Length = 1
+	            service_class {
+	               service_class = 1
+	            }
+	         }
+	      }
+	   }
+	}	
+
+
+
+
+//QCMAP call forward getting reponse
+	2019/01/31 03:25:47.277	[0x1544]	MCS QCSI Payload Packet
+	packetVersion = 2
+	MsgType = Response
+	Counter = 5
+	ServiceId = 9
+	MajorRev = 2
+	MinorRev = 72
+	ConHandle = 0x048C0100
+	MsgId = 0x00000038
+	QmiLength = 79
+	Service_VOICE {
+	   ServiceVOICEV2 {
+	      voice_get_call_forwarding {
+	         voice_get_call_forwarding_respTlvs[0] {
+	            Type = 0x02
+	            Length = 4
+	            resp {
+	               result = QMI_RESULT_SUCCESS
+	               error = QMI_ERR_NONE
+	            }
+	         }
+	         voice_get_call_forwarding_respTlvs[1] {
+	            Type = 0x10
+	            Length = 16
+	            get_call_forwarding_info {
+	               num_instances = 1
+	               get_call_forwarding_info[0] {
+	                  service_status = SERVICE_STATUS_ACTIVE
+	                  service_class = 1
+	                  number_len = 11
+	                  number = { 
+	                     49, 51, 53, 51, 51, 52, 57, 53, 
+	                     50, 53, 51
+	                  }
+	                  no_reply_timer = 0
+	               }
+	            }
+	         }
+
+
+//CM send SUPS CMD to IMS
+	[0005/0001] | MSG | 2019/01/31 03:25:46.624 | Call Manager/Medium | [           cmipapp.c   6006] =CM= CM->IMS: CMIPAPP: Send PS sups cmd, type=4,app_id 1,as_id 0 | 
+	[0051/0002] | MSG | 2019/01/31 03:25:46.624 | IMS/High | [     qpDplCallCtrl.c  12394] CM_SUPS_CMD_INTERROGATE:BS code [16] code type [1] and present[1] | 
+	[0051/0002] | MSG | 2019/01/31 03:25:46.627 | IMS/High | [IMSSupplementaryService.cpp    640] IMSSupplementaryService::SupsServiceCB Enters | 
+
+
+//Activate PDP	
+	[0051/0001] | MSG | 2019/01/31 03:25:46.629 | IMS/Medium | [      PDPHandler.cpp    633] CPDPHandler::CanPDPActivated RAT is valid and PDP can be activated, ProfileDeletionPending[0], m_ePreferredIPType[0] | 
+	[0051/0002] | MSG | 2019/01/31 03:25:46.637 | IMS/High | [      PDPHandler.cpp    417] CPDPHandler ===== PdpActivate PDPConnection established | 
+
+
+//prepare to send message
+	[0051/0001] | MSG | 2019/01/31 03:25:46.652 | IMS/Medium | [IMSSupplementaryService.cpp   2437] IMSSupplementaryService SendHttpMessage  | 
+	[0051/0001] | MSG | 2019/01/31 03:25:46.652 | IMS/Medium | [imsserviceconfigGBA.cpp    958] IMSServiceConfigGBA::SendMessage Entered | 
+	[0051/0001] | MSG | 2019/01/31 03:25:46.868 | IMS/Medium | [        QimfHttp.cpp    608] HttpConnection::handleClientSocketConnected n_pParam=e17bf030, pHttpConnection=86df4460 | 
+	[0051/0001] | MSG | 2019/01/31 03:25:46.868 | IMS/Medium | [        QimfHttp.cpp    611] HttpConnection::handleClientSocketConnected| m_HttpConnProfile=e17bf030, m_bTCPConnected=1 | 
+	[0051/0001] | MSG | 2019/01/31 03:25:46.868 | IMS/Medium | [        QimfHttp.cpp    619] HttpConnection::handleClientSocketConnected calling HttpsSendData | 
+
+
+//SUPS message sent successfully
+	[0051/0001] | MSG | 2019/01/31 03:25:46.868 | IMS/Medium | [          qpdplnet.c   5194] SocketWrite | Packet was sent successfully! - bytesent: 1071, packet len: 1071, iPacketKey: 0 | 
+	[0051/0001] | MSG | 2019/01/31 03:25:46.868 | IMS/Medium | [          qpdplnet.c   5361] SocketWrite - No more packets are in queue | 
+	[0051/0001] | MSG | 2019/01/31 03:25:46.868 | IMS/Medium | [        QimfHttp.cpp   1113] HttpConnection::HttpsSendData()| TCP message sent out | 
+	[6053/0002] | MSG | 2019/01/31 03:25:46.868 | IMS FW/High | [        QimfHttp.cpp   1114] HttpConnection::HttpsSendData| HTTP message : GET /simservs.ngn.etsi.org/users/sip:+8615002804794@sc.i | 
+
+//get HTTP response and decode message
+	[6052/0002] | MSG | 2019/01/31 03:25:47.263 | IMS DPL/High | [          qpdplnet.c   2570] qpDplHandleReceivedPacket - Remote Address 117.136.179.9 | 
+	[6053/0002] | MSG | 2019/01/31 03:25:47.264 | IMS FW/High | [        QimfHttp.cpp   2022] HttpConnection::ProcessMessage|Response: HTTP/1.1 200 OK
+	[6070/0002] | MSG | 2019/01/31 03:25:47.267 | IMS UNKNOWN/High | [  XMLCommunicationDi   2067] nc002.mcc460.3gppnetwork.org;user=phone</xcap:target> </xcap:forward-to> </cp:actions> </cp:rule> | 
+
+//send response to CM
+	[0051/0002] | MSG | 2019/01/31 03:25:47.271 | IMS/High | [IMSSupplementaryService.cpp   2750] IMSSupplementaryService::SendIndicationToCM sending sups indication type 3 | 
+	[0051/0002] | MSG | 2019/01/31 03:25:47.272 | IMS/High | [     qpDplCallCtrl.c   8718] qpDplSUPPSrvCtrlReportInd: eSUPS_INTERROGATE_SS_CONF frwd ss_active 1 | 
+	[0051/0002] | MSG | 2019/01/31 03:25:47.272 | IMS/High | [     qpDplCallCtrl.c   8720] qpDplSUPPSrvCtrlReportInd: eSUPS_INTERROGATE_SS_CONF frwd basic serv struct: present[1], bs_code[10], code_type[1] | 
+
+
+
+
+
 ------LTE SMS-----
-	//UE send SMS over NAS signalling
+
+//UE send SMS over NAS signalling
 	2016 May 17  10:34:57.380  [5E]  0xB0ED  LTE NAS EMM Plain OTA Outgoing Message  --  Uplink NAS transport Msg
 	pkt_version = 1 (0x1)
 	rel_number = 9 (0x9)
@@ -3631,7 +3837,7 @@ sys_network_selection_mode_e
 		  trans_id = 0 (0x0)
 		  prot_disc = 9 (0x9) (GSM_SMS_MESSAGES)
 		  
-	//CP layer reply CP_ACK
+//CP layer reply CP_ACK
 	2016 May 17  10:34:57.471  [D5]  0xB0EC  LTE NAS EMM Plain OTA Incoming Message  --  Downlink NAS transport Msg
 	        sms_cp_ack
 	
@@ -3657,7 +3863,7 @@ sys_network_selection_mode_e
 					rp_ack_to_ue
 	
 	
-	//UE reply CP_ACK
+//UE reply CP_ACK
 	2016 May 17  10:34:58.565  [A4]  0xB0ED  LTE NAS EMM Plain OTA Outgoing Message  --  Uplink NAS transport Msg
 	prot_disc = 7 (0x7) (EPS mobility management messages)
 	msg_type = 99 (0x63) (Uplink NAS transport)
@@ -3671,61 +3877,55 @@ sys_network_selection_mode_e
 			sms_cp_ack
 
 			
-			
-			
-			
-			
-			
-			
-			
+
 			
 //network release RRC
-2014 Aug  8  10:11:45.020  [00]  0xB0C0  LTE RRC OTA Packet  --  DL_DCCH / RRCConnectionRelease
-Pkt Version = 7
-RRC Release Number.Major.minor = 10.7.1
-Radio Bearer ID = 1, Physical Cell ID = 428
-Freq = 1385
-  message c1 : rrcConnectionRelease :
-      {
-        rrc-TransactionIdentifier 2,
-        criticalExtensions c1 : rrcConnectionRelease-r8 :
-            {
-              releaseCause other
-            }
-      }
-	
+	2014 Aug  8  10:11:45.020  [00]  0xB0C0  LTE RRC OTA Packet  --  DL_DCCH / RRCConnectionRelease
+	Pkt Version = 7
+	RRC Release Number.Major.minor = 10.7.1
+	Radio Bearer ID = 1, Physical Cell ID = 428
+	Freq = 1385
+	  message c1 : rrcConnectionRelease :
+	      {
+	        rrc-TransactionIdentifier 2,
+	        criticalExtensions c1 : rrcConnectionRelease-r8 :
+	            {
+	              releaseCause other
+	            }
+	      }
+		
 	
 //CSFB aborted for RRC connection release before getting SS service REQ	
-MSG        [03007/03] NAS MM/Error                      10:11:45.078     emm_service_request_lib.c  01168  EMM: EXTENDED Service request failed due to transmission failure conn rel
-MSG        [03007/02] NAS MM/High                       10:11:45.078     emm_service_request_lib.c  00808  EMM: Aborting EXTENDED service request for 3GPP CSFB. T3417_EXT is stopped
-MSG        [03007/02] NAS MM/High                       10:11:45.080     mm_multimode_handler.c  05448  CSFB: ESR failed, sending reject to CM for: type= 2 cause = 187
-MSG        [03007/02] NAS MM/High                       10:11:45.091     emm_connection_handler.c  01609  EMM: Received LTE_RRC_CONN_REL_IND (0)
+	MSG        [03007/03] NAS MM/Error                      10:11:45.078     emm_service_request_lib.c  01168  EMM: EXTENDED Service request failed due to transmission failure conn rel
+	MSG        [03007/02] NAS MM/High                       10:11:45.078     emm_service_request_lib.c  00808  EMM: Aborting EXTENDED service request for 3GPP CSFB. T3417_EXT is stopped
+	MSG        [03007/02] NAS MM/High                       10:11:45.080     mm_multimode_handler.c  05448  CSFB: ESR failed, sending reject to CM for: type= 2 cause = 187
+	MSG        [03007/02] NAS MM/High                       10:11:45.091     emm_connection_handler.c  01609  EMM: Received LTE_RRC_CONN_REL_IND (0)
 
 //Inform CM SS interrogate CNF
-MSG        [03008/02] NAS MN/High                       10:11:45.080              mnutils.c  01154  MN <- MNSS_REJ_IND <- CNM
-MSG        [03008/02] NAS MN/High                       10:11:45.080              mnutils.c  00688  MN -> CM_INTERROGATE_SS_CONF -> CM
+	MSG        [03008/02] NAS MN/High                       10:11:45.080              mnutils.c  01154  MN <- MNSS_REJ_IND <- CNM
+	MSG        [03008/02] NAS MN/High                       10:11:45.080              mnutils.c  00688  MN -> CM_INTERROGATE_SS_CONF -> CM
 
 
-2014 Aug  8  10:11:45.080  [00]  0x138F  QMI Link 1 TX PDU
-IFType = 1
-QmiLength = 24
-QmiCtlFlags = 128
-QmiType = VOICE
-ClientId = 2
-SduCtlFlags = RSP
-TxId = 8
-MsgType = QMI_VOICE_GET_CALL_FORWARDING
-MsgLength = 12
-Service_Voc_V2 {
-   Tlvs[0] {
-      Type = 2
-      Length = 4
-      ResultCode {
-         QmiResult = QMI_RESULT_FAILURE
-         QmiError = QMI_ERR_SUPS_FAILURE_CAUSE
-      }
-   }
-
+	2014 Aug  8  10:11:45.080  [00]  0x138F  QMI Link 1 TX PDU
+	IFType = 1
+	QmiLength = 24
+	QmiCtlFlags = 128
+	QmiType = VOICE
+	ClientId = 2
+	SduCtlFlags = RSP
+	TxId = 8
+	MsgType = QMI_VOICE_GET_CALL_FORWARDING
+	MsgLength = 12
+	Service_Voc_V2 {
+	   Tlvs[0] {
+	      Type = 2
+	      Length = 4
+	      ResultCode {
+	         QmiResult = QMI_RESULT_FAILURE
+	         QmiError = QMI_ERR_SUPS_FAILURE_CAUSE
+	      }
+	   }
+	
 
    
    
@@ -3756,45 +3956,45 @@ and as UE is set as 2g/3g/4g auto, it's normal that UE camp on 3G according to t
 
 
 //But Before 08:03:32.17, UE is kept on DCCH, so it wouldn't do LTE scanning.
-EVENT      [00455]    EVENT_RRC_MESSAGE_SENT                  08:03:31.520     Logical Chan: UL DCCH Signal Msg Type: MEASUREMENT_REPORT_MSG
-logical_chan  = UL DCCH
-sig_mess_type = MEASUREMENT_REPORT_MSG
-
-EVENT      [00456]    EVENT_RRC_MESSAGE_RECEIVED              08:03:32.127     Logical Chan: DL DCCH Signal Msg Type: MEASUREMENT_CONTROL_MSG
-logical_chan  = DL DCCH
-sig_mess_type = MEASUREMENT_CONTROL_MSG
-
-
-until, 
-MSG        [03005/02] WCDMA RRC/High                          08:03:35.647               rrcrcr.c  01161  Rcvd RRC Connection Release DCCH
-EVENT      [00456]    EVENT_RRC_MESSAGE_RECEIVED              08:03:35.647     Logical Chan: DL DCCH Signal Msg Type: RRC_CONNECTION_RELEASE_MSG
-logical_chan  = DL DCCH
-sig_mess_type = RRC_CONNECTION_RELEASE_MSG
-EVENT      [00456]    EVENT_RRC_MESSAGE_RECEIVED              08:03:35.927     Logical Chan: DL DCCH Signal Msg Type: RRC_CONNECTION_RELEASE_MSG
-logical_chan  = DL DCCH
-sig_mess_type = RRC_CONNECTION_RELEASE_MSG
-
-EVENT      [00455]    EVENT_RRC_MESSAGE_SENT                  08:03:35.968     Logical Chan: UL DCCH Signal Msg Type: RRC_CONNECTION_RELEASE_COMPLETE_MSG
-logical_chan  = UL DCCH
-sig_mess_type = RRC_CONNECTION_RELEASE_COMPLETE_MSG
+	EVENT      [00455]    EVENT_RRC_MESSAGE_SENT                  08:03:31.520     Logical Chan: UL DCCH Signal Msg Type: MEASUREMENT_REPORT_MSG
+	logical_chan  = UL DCCH
+	sig_mess_type = MEASUREMENT_REPORT_MSG
+	
+	EVENT      [00456]    EVENT_RRC_MESSAGE_RECEIVED              08:03:32.127     Logical Chan: DL DCCH Signal Msg Type: MEASUREMENT_CONTROL_MSG
+	logical_chan  = DL DCCH
+	sig_mess_type = MEASUREMENT_CONTROL_MSG
+	
+	
+	until, 
+	MSG        [03005/02] WCDMA RRC/High                          08:03:35.647               rrcrcr.c  01161  Rcvd RRC Connection Release DCCH
+	EVENT      [00456]    EVENT_RRC_MESSAGE_RECEIVED              08:03:35.647     Logical Chan: DL DCCH Signal Msg Type: RRC_CONNECTION_RELEASE_MSG
+	logical_chan  = DL DCCH
+	sig_mess_type = RRC_CONNECTION_RELEASE_MSG
+	EVENT      [00456]    EVENT_RRC_MESSAGE_RECEIVED              08:03:35.927     Logical Chan: DL DCCH Signal Msg Type: RRC_CONNECTION_RELEASE_MSG
+	logical_chan  = DL DCCH
+	sig_mess_type = RRC_CONNECTION_RELEASE_MSG
+	
+	EVENT      [00455]    EVENT_RRC_MESSAGE_SENT                  08:03:35.968     Logical Chan: UL DCCH Signal Msg Type: RRC_CONNECTION_RELEASE_COMPLETE_MSG
+	logical_chan  = UL DCCH
+	sig_mess_type = RRC_CONNECTION_RELEASE_COMPLETE_MSG
 
  
 
 //it release DCCH and back to idle and start LTE scan:
-MSG        [09501/00/09]LTE RRC/Low/CSP                   08:03:41.717          lte_rrc_csp.c  11285  CSP: Received IRAT To LTE Resel Reqi
-MSG        [09501/00/09]LTE RRC/Low/CSP                   08:03:41.717          lte_rrc_csp.c  02374  CSP: Initing band scan list
-MSG        [09501/00/09]LTE RRC/Low/CSP                   08:03:50.743          lte_rrc_csp.c  14855  CSP: Acq succeeded on physical cell ID 78 on earfcn 2850
-MSG        [09501/00/09]LTE RRC/Low/CSP                   08:03:50.780          lte_rrc_csp.c  17018  CSP: Cell select req is success, configuring
-MSG        [09501/00/09]LTE RRC/Low/CSP                   08:03:50.788          lte_rrc_csp.c  21888  CSP: Camped on physical cell ID 78 on earfcn 2850
-MSG        [09501/02/09]LTE RRC/High/CSP                  08:03:50.788          lte_rrc_csp.c  04054  CSP: Sending NAS Service Ind
-LOG        [0xB0ED]   LTE NAS EMM Plain OTA Outgoing Message              08:03:50.790     Length: 0111
+	MSG        [09501/00/09]LTE RRC/Low/CSP                   08:03:41.717          lte_rrc_csp.c  11285  CSP: Received IRAT To LTE Resel Reqi
+	MSG        [09501/00/09]LTE RRC/Low/CSP                   08:03:41.717          lte_rrc_csp.c  02374  CSP: Initing band scan list
+	MSG        [09501/00/09]LTE RRC/Low/CSP                   08:03:50.743          lte_rrc_csp.c  14855  CSP: Acq succeeded on physical cell ID 78 on earfcn 2850
+	MSG        [09501/00/09]LTE RRC/Low/CSP                   08:03:50.780          lte_rrc_csp.c  17018  CSP: Cell select req is success, configuring
+	MSG        [09501/00/09]LTE RRC/Low/CSP                   08:03:50.788          lte_rrc_csp.c  21888  CSP: Camped on physical cell ID 78 on earfcn 2850
+	MSG        [09501/02/09]LTE RRC/High/CSP                  08:03:50.788          lte_rrc_csp.c  04054  CSP: Sending NAS Service Ind
+	LOG        [0xB0ED]   LTE NAS EMM Plain OTA Outgoing Message              08:03:50.790     Length: 0111
 //registered OK.
-2014 Apr  2  08:03:50.790  [00]  0xB0ED  LTE NAS EMM Plain OTA Outgoing Message  --  Tracking area update request Msg
-msg_type = 72 (0x48) (Tracking area update request)
-
-LOG        [0xB0EC]   LTE NAS EMM Plain OTA Incoming Message              08:03:51.197     Length: 0073
-2014 Apr  2  08:03:51.198  [00]  0xB0EC  LTE NAS EMM Plain OTA Incoming Message  --  Tracking area update accept Msg
-msg_type = 73 (0x49) (Tracking area update accept)
+	2014 Apr  2  08:03:50.790  [00]  0xB0ED  LTE NAS EMM Plain OTA Outgoing Message  --  Tracking area update request Msg
+	msg_type = 72 (0x48) (Tracking area update request)
+	
+	LOG        [0xB0EC]   LTE NAS EMM Plain OTA Incoming Message              08:03:51.197     Length: 0073
+	2014 Apr  2  08:03:51.198  [00]  0xB0EC  LTE NAS EMM Plain OTA Incoming Message  --  Tracking area update accept Msg
+	msg_type = 73 (0x49) (Tracking area update accept)
 
  
 
@@ -3826,12 +4026,12 @@ call , this needs to be checked in detail by PhoneApp/CII team
 
 
 //CMCC and CU network configure different DRX cycle
-	//duo to CU/CMCC different network setting, the paging time is different.
-	//CMCC LOG, the DRX cycle is 1280ms
+//duo to CU/CMCC different network setting, the paging time is different.
+//CMCC LOG, the DRX cycle is 1280ms
 	MSG        LTE ML1/High     05:19:01.227     lte_ml1_common_paging_drx.c  00615  Next Pag Occ: cycle 1280 sfn_off 65 subfn_off 0 cur_sf 9620 pag_sf 650
 	MSG        LTE ML1/High     05:19:02.507     lte_ml1_common_paging_drx.c  00615  Next Pag Occ: cycle 1280 sfn_off 65 subfn_off 0 cur_sf 661 pag_sf 1930
 	MSG        LTE ML1/High     05:19:03.775     lte_ml1_common_paging_drx.c  00615  Next Pag Occ: cycle 1280 sfn_off 65 subfn_off 0 cur_sf 1930 pag_sf 3210
-	//but in CU log, the DRX cycle is 320ms
+//but in CU log, the DRX cycle is 320ms
 	MSG        LTE ML1/High     05:12:51.990     lte_ml1_common_paging_drx.c  00615  Next Pag Occ: cycle 320 sfn_off 1 subfn_off 9 cur_sf 5794 pag_sf 6099
 	MSG        LTE ML1/High     05:12:52.305     lte_ml1_common_paging_drx.c  00615  Next Pag Occ: cycle 320 sfn_off 1 subfn_off 9 cur_sf 6109 pag_sf 6419
 	MSG        LTE ML1/High     05:12:52.625     lte_ml1_common_paging_drx.c  00615  Next Pag Occ: cycle 320 sfn_off 1 subfn_off 9 cur_sf 6429 pag_sf 6739
@@ -3974,6 +4174,7 @@ new RAT mask is a combination of all RATs available in RAT mask format-	0x400- L
 	
 
 //IMS data call bringup
+	[0051/0002] | MSG | 2017/09/30 02:51:22.076 | IMS/High | [PDPRATHandlerVoLTE.cpp    726] InitPDP - DCM create Profile Succeeded 
 	[0051/0001] | MSG | 2017/01/25 09:08:37.186 | IMS/Medium | [PDPRATHandlerVoLTE.cpp   1334] CPDPRATHandlerVoLTE::PdpActivate enter, pdp state:0  RegType[0] | 
 	[0051/0003] | MSG | 2017/01/25 09:08:37.186 | IMS/Error | [PDPRATHandlerVoLTE.cpp   1353] CPDPRATHandlerVoLTE::PdpActivate set pref wwan  RegType[0] |  | 
 	[0051/0001] | MSG | 2017/01/25 09:08:37.186 | IMS/Medium | [             qpDcm.c   6910] qpDcmEstablishPDPConnection | pDcmProfile=64974c0 dsAppID=27 | 
@@ -4000,7 +4201,16 @@ new RAT mask is a combination of all RATs available in RAT mask format-	0x400- L
 	[6062/0002] | MSG | 2017/09/21 09:48:26.409 | IMS IMS CORE/High | [  qpSipRegisterServi   1296] EVENT_SIP_REGISTRATION_START:REGISTER sip:ims.mnc002.mcc460.3gppnetwork.org SIP/2.0 From: <sip:460023 | 	
 	[6054/0002] | MSG | 2017/09/21 09:48:27.364 | IMS SIP/High | [   sipConnection.cpp   3841] EVENT_SIP_REQUEST_SEND: SUBSCRIBE sip:+8615002804794@sc.ims.mnc000.mcc460.3gppnetwork.org SIP/2.0
 Fro | 
-
+//SIP message
+	2019 Jan 23 10:39:44.191 [44] 0x156E IMS SIP Message -- IMS_SIP_INVITE/INFORMAL_RESPONSE 
+	Version = 1 
+	Direction = UE_TO_NETWORK 
+	SDP Presence = 1 
+	SIP Call ID Length = 56 
+	SIP Message Length = 2395 
+	SIP Message Logged Bytes = 2396 
+	Message ID = IMS_SIP_INVITE 
+	Response Code = INFORMAL_RESPONSE (0) 
 //IMS registration fail
 	[0051/0002] | MSG | 2017/01/25 09:08:39.849 | IMS/High | [   sipConnection.cpp   2941] EVENT_SIP_REG_REQ_SENT: 43 Code = 0 RAT = 10 |  | 
 	[6054/0002] | MSG | 2017/01/25 09:08:39.854 | IMS SIP/High | [   sipConnection.cpp   3679] EVENT_SIP_REQUEST_SEND: REGISTER sip:ims.mnc002.mcc460.3gppnetwork.org SIP/2.0From: <sip:46002302804 |  | 
